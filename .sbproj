@@ -1,7 +1,7 @@
 {
-  "Title": "Sandbox (try return)",
+  "Title": "Sandbox (try return): Beta",
   "Type": "game",
-  "Org": "local",
+  "Org": "skop",
   "Ident": "sandbox__try_return",
   "Tags": null,
   "Schema": 1,

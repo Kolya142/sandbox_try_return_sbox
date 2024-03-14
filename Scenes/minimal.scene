@@ -1,14 +1,17 @@
 {
-  "Id": "9f832399-4887-46b0-8f21-2ee284f538e2",
+  "__guid": "9f832399-4887-46b0-8f21-2ee284f538e2",
   "GameObjects": [
     {
-      "Id": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Tags": "light_directional,light",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "DirectionalLight",
+          "__guid": "d27b5a49-2c00-41d5-b39d-1fadf7ff7f3d",
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.94419,0.97767,1,1",
@@ -18,17 +21,21 @@
       ]
     },
     {
-      "Id": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
       "Name": "2D Skybox",
+      "Tags": "skybox",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "SkyBox2D",
+          "__guid": "55508fc9-346c-4381-9ec8-62b3363c511d",
           "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
           "Tint": "1,1,1,1"
         },
         {
           "__type": "EnvmapProbe",
+          "__guid": "72b6bb2d-ccab-4612-8d6d-55d2e9696c8a",
           "Bounds": {
             "Mins": "-512,-512,-512",
             "Maxs": "512,512,512"
@@ -41,15 +48,16 @@
       ]
     },
     {
-      "Id": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
       "Scale": "5,5,5",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "12355758-ed97-4551-9f77-9cae73c85744",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
@@ -57,26 +65,27 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "0efb671c-fbbd-4ba9-a97d-e3ff3e18c6f5",
           "Center": "0,0,-5",
           "IsTrigger": false,
           "Scale": "100,100,10",
-          "Static": false,
-          "Surface": null
+          "Static": true
         }
       ]
     },
     {
-      "Id": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
+      "__guid": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
       "Name": "Cube",
-      "Position": "21.41682,74.1244,14.40159",
+      "Position": "-71.01518,-17.63688,272.7352",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "481f3ad5-18a3-48c2-87d7-a6d632f7e3ca",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -84,35 +93,39 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "4d370471-6072-4de8-b86b-8b8d54a40422",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
+          "__guid": "3dbcca86-2f14-44ed-a42f-a6e7413be43c",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "523e3e8f-a4ec-4ec1-af9a-d86ffc9c17e1",
+      "__guid": "523e3e8f-a4ec-4ec1-af9a-d86ffc9c17e1",
       "Name": "Cube (1)",
-      "Position": "40.81348,46.97572,14.40159",
+      "Position": "40.81346,46.97571,289.6462",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "6569d6ed-1960-4562-b08c-49717f1a93e2",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -120,35 +133,119 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "26789110-9ce4-409d-987c-0b63065efe9c",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
+          "__guid": "d7f4b390-e36b-4353-81f5-d8c73b724598",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "5b483a09-bbf2-4949-98c7-a73b789d0ee7",
+      "__guid": "303d2933-f5fe-4fba-8a09-6dcfccbb9073",
+      "Name": "Cube (4)",
+      "Position": "40.81345,46.97572,319.6397",
+      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
+      "Scale": "0.5632889,0.5632889,0.5632889",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "4440f316-5fa7-4754-9a8d-f643b5b1ebd8",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0.93333,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "6ad6e617-3ad5-4bde-bf83-d2ecd49ae560",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "17b4d670-769f-435f-a302-9db1224ffa73",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "067f1d47-cb47-471e-946b-ff8714f0a61b",
+      "Name": "Cube (5)",
+      "Position": "40.81343,46.97573,353.0412",
+      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
+      "Scale": "0.5632889,0.5632889,0.5632889",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "754f04f6-fa54-4f6c-8415-fc7809262efd",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0.93333,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "32b3ca3d-bf4a-4982-9976-f84ba5a865f7",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "d2c92d1f-9ec2-41a4-aa21-d71700de62d4",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "5b483a09-bbf2-4949-98c7-a73b789d0ee7",
       "Name": "Cube (2)",
-      "Position": "49.53707,34.08896,43.67614",
+      "Position": "37.89364,-56.90387,276.4331",
       "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
       "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "ModelRenderer",
+          "__guid": "85f0f32d-893d-4ff5-9b33-b824e4567ca0",
           "BodyGroups": 18446744073709551615,
-          "MaterialGroup": null,
           "MaterialOverride": "materials/default.vmat",
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
@@ -156,35 +253,80 @@
         },
         {
           "__type": "BoxCollider",
+          "__guid": "159cda02-55ab-4c53-bdeb-81d227ac5e56",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
-          "Static": false,
-          "Surface": null
+          "Static": false
         },
         {
           "__type": "Rigidbody",
+          "__guid": "38636683-fc4c-463c-a858-b231e0a2aa51",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
           "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
           "RigidbodyFlags": 0,
           "StartAsleep": false
         }
       ]
     },
     {
-      "Id": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Name": "Camera",
-      "Position": "-267.452,-379.653,297.7903",
-      "Rotation": "-0.1448582,0.2860239,0.4279631,0.8450171",
+      "__guid": "90dea424-9eb9-4d74-9e5f-a60ad3990092",
+      "Name": "Cube (3)",
+      "Position": "37.89367,-56.90386,313.4182",
+      "Rotation": "0.00000001819328,-0.00000000000000008235059,0.3052325,0.952278",
+      "Scale": "0.5632889,0.5632889,0.5632889",
       "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "16c62961-5fc2-4f18-8fa6-55b6e42cf112",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0.93333,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "751dbc56-a074-4f76-9a75-05a23b0e26e6",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "0da7e9f2-6ef9-4a9f-bb81-354a8f4aaaec",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+      "Name": "Camera",
+      "Position": "0.00000003047989,-0.00002059407,274.4789",
+      "Rotation": "0.0000000375149,0.00000000003273793,0.0008726645,0.9999996",
+      "Enabled": true,
+      "NetworkMode": 2,
       "Components": [
         {
           "__type": "CameraComponent",
+          "__guid": "191cfcf7-c682-4240-81bb-7ccd4cfeb6de",
           "BackgroundColor": "0.33333,0.46275,0.52157,1",
           "ClearFlags": "All",
-          "FieldOfView": 60,
+          "FieldOfView": 100,
           "IsMainCamera": true,
           "Orthographic": false,
           "OrthographicHeight": 1204,
@@ -194,10 +336,11 @@
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 10000,
-          "ZNear": 10
+          "ZNear": 1
         },
         {
           "__type": "Bloom",
+          "__guid": "7361b8e6-d920-47a6-8237-9968d972979f",
           "BloomColor": {
             "color": [
               {
@@ -207,7 +350,8 @@
                 "t": 1,
                 "c": "1,1,1,1"
               }
-            ]
+            ],
+            "alpha": []
           },
           "BloomCurve": [
             {
@@ -225,6 +369,7 @@
         },
         {
           "__type": "Tonemapping",
+          "__guid": "3b06fb85-4371-4102-80a6-c9152b85baf0",
           "ExposureCompensation": 0,
           "MaximumExposure": 2,
           "MinimumExposure": 1,
@@ -232,7 +377,109 @@
         },
         {
           "__type": "Sharpen",
+          "__guid": "a7fb9871-1ace-47f4-a0da-3fa320c1fce1",
           "Scale": 0.2
+        },
+        {
+          "__type": "Playercontroller",
+          "__guid": "7fcb80c5-fd9a-44a6-9fb1-7bc27b69b0f3",
+          "aim_show": {
+            "_type": "gameobject",
+            "go": "909415e3-f409-4c13-ba47-4f701f860910"
+          },
+          "point": {
+            "_type": "gameobject",
+            "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "29e856f4-2e26-4aa8-9a18-d901389c861c",
+      "Name": "Sphere",
+      "Position": "-71.50101,-87.31463,8.237617",
+      "Scale": "0.5,0.5,0.5",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "7fbca457-2357-4291-bf1c-2ecc1d4a5ec6",
+          "BodyGroups": 341,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0,1"
+        }
+      ]
+    },
+    {
+      "__guid": "76ac9e33-1043-465b-8f99-0ec6e90b92a9",
+      "Name": "Object",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MapInstance",
+          "__guid": "21626f19-7cb8-4c7c-9dc9-12d6ca9b3484",
+          "MapName": "facepunch.flatgrass",
+          "UseMapFromLaunch": false
+        }
+      ],
+      "Children": []
+    },
+    {
+      "__guid": "909415e3-f409-4c13-ba47-4f701f860910",
+      "Name": "Point",
+      "Enabled": true,
+      "NetworkMode": 2
+    },
+    {
+      "__guid": "05faa58a-6e97-4efd-801e-6e028bec6a33",
+      "Name": "Point (1)",
+      "Enabled": true,
+      "NetworkMode": 2
+    },
+    {
+      "__guid": "96397f85-18d6-4d23-8c7e-d4e07c23d650",
+      "Name": "Line",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "LineRenderer",
+          "__guid": "0e3ed1a2-de77-40c0-8f69-1395070203be",
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "EndCap": "Rounded",
+          "Opaque": false,
+          "Points": [
+            {
+              "_type": "gameobject",
+              "go": "909415e3-f409-4c13-ba47-4f701f860910"
+            },
+            {
+              "_type": "gameobject",
+              "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
+            }
+          ],
+          "SplineBias": 0,
+          "SplineContinuity": 0,
+          "SplineInterpolation": 8,
+          "SplineTension": 0,
+          "StartCap": "Rounded",
+          "Width": [
+            {
+              "y": 1
+            }
+          ],
+          "Wireframe": false
         }
       ]
     }
@@ -260,6 +507,8 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-02-08T13:32:32.3548959\u002B00:00",
+  "LastSaved": "2024-03-14T17:58:59.3532198\u002B03:00",
+  "ResourceVersion": 1,
+  "__version": 1,
   "__references": []
 }
