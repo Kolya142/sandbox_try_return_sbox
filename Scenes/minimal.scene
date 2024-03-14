@@ -50,6 +50,7 @@
     {
       "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
       "Name": "Plane",
+      "Position": "0,0,144.8206",
       "Scale": "5,5,5",
       "Enabled": true,
       "NetworkMode": 2,
@@ -422,7 +423,7 @@
           "__type": "MapInstance",
           "__guid": "21626f19-7cb8-4c7c-9dc9-12d6ca9b3484",
           "MapName": "facepunch.flatgrass",
-          "UseMapFromLaunch": false
+          "UseMapFromLaunch": true
         }
       ],
       "Children": []
@@ -451,8 +452,11 @@
           "Color": {
             "color": [
               {
-                "t": 0.5,
-                "c": "1,1,1,1"
+                "c": "0,0.66667,1,1"
+              },
+              {
+                "t": 1,
+                "c": "0,0,1,1"
               }
             ],
             "alpha": []
@@ -482,6 +486,52 @@
           "Wireframe": false
         }
       ]
+    },
+    {
+      "__guid": "881c4e40-bcc3-47d2-ac1d-2d0e5035d033",
+      "Name": "Cube",
+      "Position": "-52.55142,115.2893,182.0045",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "ef7330ac-437d-4f83-83a1-e7d502dffd47",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "1477a534-25e3-4495-baf1-d2ebc0b723f7",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "c7031342-f725-4b2b-b150-e5aaef6d5a29",
+      "Name": "Screen",
+      "Position": "157.6927,-295.7131,278.1873",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "__guid": "00102b5d-47f1-4fdd-b7ea-17ea57262f13",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "Hud",
+          "__guid": "6ea96b1d-bdb7-4d1b-a7bf-9527b1f4bfc1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -507,7 +557,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-14T17:58:59.3532198\u002B03:00",
+  "LastSaved": "2024-03-14T19:26:41.4974864\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
