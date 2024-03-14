@@ -5,10 +5,12 @@ using System.Diagnostics;
 public sealed class Playercontroller : Component
 {
 	Angles angles = new Angles();
+	Angles angles_object = new Angles();
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
 	Model model = Model.Cube;
 	bool CanDrag;
+	CameraComponent Camera;
 	Vector3 lastobjectPos;
 	GameObject moveObject = null;
 	float distObject;
@@ -19,6 +21,8 @@ public sealed class Playercontroller : Component
 	protected override void OnAwake()
 	{
 		base.OnAwake();
+		Transform.Scale = 0.5f;
+		Camera = Scene.Camera.Components.Get<CameraComponent>();
 	}
 	private SceneTraceResult Trace(Vector3 start, Vector3 end)
 	{
@@ -29,9 +33,13 @@ public sealed class Playercontroller : Component
 	}
 	protected override void OnUpdate()
 	{
-		angles += Input.AnalogLook * 0.5f;
-		angles.pitch = angles.pitch.Clamp( -60f, 80f );
-		Transform.Rotation = Rotation.Lerp( Transform.Rotation, angles.ToRotation(), Time.Delta * 16f );
+		Camera.FieldOfView = 80;
+		if ( !Input.Down( "Use" ) )
+		{
+			angles += Input.AnalogLook * 0.5f;
+			//angles.pitch = angles.pitch.Clamp( -60f, 80f );
+			Transform.Rotation = Rotation.Lerp( Transform.Rotation, angles.ToRotation(), Time.Delta * 16f );
+		}
 		SceneTraceResult aim = Trace( Transform.Position, Transform.Position + Transform.Rotation.Forward * 5000f );
 		aim_show.Transform.Position = aim.EndPosition;
 		point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
@@ -86,6 +94,15 @@ public sealed class Playercontroller : Component
 							CanDrag = false;
 						}
 					}
+					if ( Input.Pressed( "Use" ) )
+						angles_object = moveObject.Transform.Rotation.Angles();
+					if ( Input.Down( "Use" ) )
+					{
+						// Log.Info( Input.AnalogLook.Forward );
+						angles_object += Input.AnalogLook * 0.5f;
+						Rotation rotation = moveObject.Transform.Rotation;
+						moveObject.Transform.Rotation = Rotation.Lerp( rotation, angles_object.ToRotation(), Time.Delta * 16f );
+					}	
 					lastobjectPos = picker.Transform.Position;
 				}
 			}
@@ -106,6 +123,9 @@ public sealed class Playercontroller : Component
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
+		else if ( Input.Down( "Duck" ) )
+			move /= 5;
+
 		// Log.Info( move );
 		//Transform.Position += Transform.Rotation.ClosestAxis(move);
 		// /*
@@ -126,5 +146,7 @@ public sealed class Playercontroller : Component
 			Transform.Position += Transform.Rotation.Right * move.Length;
 		}
 		// */
+		Camera.Transform.Position = Transform.Position;
+		Camera.Transform.Rotation = Transform.Rotation;
 	}
 }
