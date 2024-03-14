@@ -1,0 +1,153 @@
+{
+  "RootObject": {
+    "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+    "Name": "Camera",
+    "Position": "0.00000003047989,-0.00002059407,274.4789",
+    "Rotation": "0.0000000375149,0.00000000003273793,0.0008726645,0.9999996",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "CameraComponent",
+        "__guid": "191cfcf7-c682-4240-81bb-7ccd4cfeb6de",
+        "BackgroundColor": "0.33333,0.46275,0.52157,1",
+        "ClearFlags": "All",
+        "FieldOfView": 100,
+        "IsMainCamera": true,
+        "Orthographic": false,
+        "OrthographicHeight": 1204,
+        "Priority": 1,
+        "RenderExcludeTags": "",
+        "RenderTags": "",
+        "TargetEye": "None",
+        "Viewport": "0,0,1,1",
+        "ZFar": 10000,
+        "ZNear": 1
+      },
+      {
+        "__type": "Bloom",
+        "__guid": "7361b8e6-d920-47a6-8237-9968d972979f",
+        "BloomColor": {
+          "color": [
+            {
+              "c": "1,1,1,1"
+            },
+            {
+              "t": 1,
+              "c": "1,1,1,1"
+            }
+          ],
+          "alpha": []
+        },
+        "BloomCurve": [
+          {
+            "y": 0.5
+          },
+          {
+            "x": 1,
+            "y": 1
+          }
+        ],
+        "Mode": "Additive",
+        "Strength": 0.5,
+        "Threshold": 0.5,
+        "ThresholdWidth": 0.5
+      },
+      {
+        "__type": "Tonemapping",
+        "__guid": "3b06fb85-4371-4102-80a6-c9152b85baf0",
+        "ExposureCompensation": 0,
+        "MaximumExposure": 2,
+        "MinimumExposure": 1,
+        "Rate": 1
+      },
+      {
+        "__type": "Sharpen",
+        "__guid": "a7fb9871-1ace-47f4-a0da-3fa320c1fce1",
+        "Scale": 0.2
+      },
+      {
+        "__type": "Playercontroller",
+        "__guid": "7fcb80c5-fd9a-44a6-9fb1-7bc27b69b0f3",
+        "aim_show": {
+          "_type": "gameobject",
+          "go": "909415e3-f409-4c13-ba47-4f701f860910"
+        },
+        "point": {
+          "_type": "gameobject",
+          "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "909415e3-f409-4c13-ba47-4f701f860910",
+        "Name": "Point",
+        "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
+        "Enabled": true,
+        "NetworkMode": 2
+      },
+      {
+        "__guid": "96397f85-18d6-4d23-8c7e-d4e07c23d650",
+        "Name": "Line",
+        "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "LineRenderer",
+            "__guid": "0e3ed1a2-de77-40c0-8f69-1395070203be",
+            "Color": {
+              "color": [
+                {
+                  "c": "0,0.66667,1,1"
+                },
+                {
+                  "t": 1,
+                  "c": "0,0,1,1"
+                }
+              ],
+              "alpha": []
+            },
+            "EndCap": "Rounded",
+            "Opaque": false,
+            "Points": [
+              {
+                "_type": "gameobject",
+                "go": "909415e3-f409-4c13-ba47-4f701f860910"
+              },
+              {
+                "_type": "gameobject",
+                "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
+              }
+            ],
+            "SplineBias": 0,
+            "SplineContinuity": 0,
+            "SplineInterpolation": 8,
+            "SplineTension": 0,
+            "StartCap": "Rounded",
+            "Width": [
+              {
+                "y": 1
+              }
+            ],
+            "Wireframe": false
+          }
+        ]
+      },
+      {
+        "__guid": "05faa58a-6e97-4efd-801e-6e028bec6a33",
+        "Name": "Point (1)",
+        "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
+        "Enabled": true,
+        "NetworkMode": 2
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

@@ -7,6 +7,7 @@ public sealed class Playercontroller : Component
 	Angles angles = new Angles();
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
+	Model model = Model.Cube;
 	bool CanDrag;
 	Vector3 lastobjectPos;
 	GameObject moveObject = null;
@@ -45,9 +46,14 @@ public sealed class Playercontroller : Component
 			GameObject newobject = new GameObject( true, "spawned" );
 			newobject.Transform.Position = aim.HitPosition;
 			newobject.Components.Create<ModelRenderer>();
-			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Model = Model.Cube;
+			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Model = model;
 			newobject.Components.Create<BoxCollider>();
+			//newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = model;
 			newobject.Components.Create<Rigidbody>();
+		}
+		if ( Input.Pressed( "Reload" ) )
+		{
+			model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
 		}
 		// Log.Info(picker);
 		if ( picker != null )

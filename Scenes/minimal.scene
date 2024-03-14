@@ -315,105 +315,6 @@
       ]
     },
     {
-      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
-      "Name": "Camera",
-      "Position": "0.00000003047989,-0.00002059407,274.4789",
-      "Rotation": "0.0000000375149,0.00000000003273793,0.0008726645,0.9999996",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "CameraComponent",
-          "__guid": "191cfcf7-c682-4240-81bb-7ccd4cfeb6de",
-          "BackgroundColor": "0.33333,0.46275,0.52157,1",
-          "ClearFlags": "All",
-          "FieldOfView": 100,
-          "IsMainCamera": true,
-          "Orthographic": false,
-          "OrthographicHeight": 1204,
-          "Priority": 1,
-          "RenderExcludeTags": "",
-          "RenderTags": "",
-          "TargetEye": "None",
-          "Viewport": "0,0,1,1",
-          "ZFar": 10000,
-          "ZNear": 1
-        },
-        {
-          "__type": "Bloom",
-          "__guid": "7361b8e6-d920-47a6-8237-9968d972979f",
-          "BloomColor": {
-            "color": [
-              {
-                "c": "1,1,1,1"
-              },
-              {
-                "t": 1,
-                "c": "1,1,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "BloomCurve": [
-            {
-              "y": 0.5
-            },
-            {
-              "x": 1,
-              "y": 1
-            }
-          ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
-        },
-        {
-          "__type": "Tonemapping",
-          "__guid": "3b06fb85-4371-4102-80a6-c9152b85baf0",
-          "ExposureCompensation": 0,
-          "MaximumExposure": 2,
-          "MinimumExposure": 1,
-          "Rate": 1
-        },
-        {
-          "__type": "Sharpen",
-          "__guid": "a7fb9871-1ace-47f4-a0da-3fa320c1fce1",
-          "Scale": 0.2
-        },
-        {
-          "__type": "Playercontroller",
-          "__guid": "7fcb80c5-fd9a-44a6-9fb1-7bc27b69b0f3",
-          "aim_show": {
-            "_type": "gameobject",
-            "go": "909415e3-f409-4c13-ba47-4f701f860910"
-          },
-          "point": {
-            "_type": "gameobject",
-            "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "29e856f4-2e26-4aa8-9a18-d901389c861c",
-      "Name": "Sphere",
-      "Position": "-71.50101,-87.31463,8.237617",
-      "Scale": "0.5,0.5,0.5",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "__guid": "7fbca457-2357-4291-bf1c-2ecc1d4a5ec6",
-          "BodyGroups": 341,
-          "Model": "models/dev/sphere.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0,1"
-        }
-      ]
-    },
-    {
       "__guid": "76ac9e33-1043-465b-8f99-0ec6e90b92a9",
       "Name": "Object",
       "Enabled": true,
@@ -424,73 +325,29 @@
           "__guid": "21626f19-7cb8-4c7c-9dc9-12d6ca9b3484",
           "MapName": "facepunch.flatgrass",
           "UseMapFromLaunch": true
+        },
+        {
+          "__type": "NetworkHelper",
+          "__guid": "74bc7f4a-44c0-4fcd-8a56-69d5938c8a47",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefab/player.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "aa9c2a05-ece0-4e04-b1d8-de6efc64ae82"
+            }
+          ],
+          "StartServer": true
         }
       ],
       "Children": []
     },
     {
-      "__guid": "909415e3-f409-4c13-ba47-4f701f860910",
-      "Name": "Point",
-      "Enabled": true,
-      "NetworkMode": 2
-    },
-    {
-      "__guid": "05faa58a-6e97-4efd-801e-6e028bec6a33",
-      "Name": "Point (1)",
-      "Enabled": true,
-      "NetworkMode": 2
-    },
-    {
-      "__guid": "96397f85-18d6-4d23-8c7e-d4e07c23d650",
-      "Name": "Line",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "LineRenderer",
-          "__guid": "0e3ed1a2-de77-40c0-8f69-1395070203be",
-          "Color": {
-            "color": [
-              {
-                "c": "0,0.66667,1,1"
-              },
-              {
-                "t": 1,
-                "c": "0,0,1,1"
-              }
-            ],
-            "alpha": []
-          },
-          "EndCap": "Rounded",
-          "Opaque": false,
-          "Points": [
-            {
-              "_type": "gameobject",
-              "go": "909415e3-f409-4c13-ba47-4f701f860910"
-            },
-            {
-              "_type": "gameobject",
-              "go": "05faa58a-6e97-4efd-801e-6e028bec6a33"
-            }
-          ],
-          "SplineBias": 0,
-          "SplineContinuity": 0,
-          "SplineInterpolation": 8,
-          "SplineTension": 0,
-          "StartCap": "Rounded",
-          "Width": [
-            {
-              "y": 1
-            }
-          ],
-          "Wireframe": false
-        }
-      ]
-    },
-    {
       "__guid": "881c4e40-bcc3-47d2-ac1d-2d0e5035d033",
       "Name": "Cube",
-      "Position": "-52.55142,115.2893,182.0045",
+      "Position": "385.5911,-333.0409,162.7272",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -508,6 +365,55 @@
           "Center": "0,0,0",
           "IsTrigger": false,
           "Scale": "50,50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "fb1e9968-d946-4808-972b-87bfe35de140",
+      "Name": "Cube (6)",
+      "Position": "385.5911,-262.6582,162.7272",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "6708a6da-2543-4a15-a7bb-04b0c74dddc0",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "SphereCollider",
+          "__guid": "dd06e1d4-25ea-477b-81f7-60df6c2c7648",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 10,
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "01b13f22-1a2e-478b-b2a4-db693d25b425",
+      "Name": "Cube (7)",
+      "Position": "372.5763,-202.5341,144.1852",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "76f3a5bb-20d9-4db6-8655-c6450e3768d0",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/arrow.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "ceae8950-ba58-4e35-bb6e-f7d9715217b9",
+          "IsTrigger": false,
+          "Model": "models/arrow.vmdl",
           "Static": false
         }
       ]
@@ -530,6 +436,37 @@
         {
           "__type": "Hud",
           "__guid": "6ea96b1d-bdb7-4d1b-a7bf-9527b1f4bfc1"
+        }
+      ]
+    },
+    {
+      "__guid": "aa9c2a05-ece0-4e04-b1d8-de6efc64ae82",
+      "Name": "Object",
+      "Position": "-140.2461,77.25171,325.0241",
+      "Enabled": true,
+      "NetworkMode": 2
+    },
+    {
+      "__guid": "69cab39d-82b4-47e3-85d9-655f0c83eb0e",
+      "Name": "Cube",
+      "Position": "377.7296,-378.0485,136.642",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "3ee355d7-dcec-4bc3-9e1e-84125c7c420d",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/rust_props/wooden_furniture/chair_b.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "bf51f2dd-5d02-42da-a6ca-d245f5799392",
+          "IsTrigger": false,
+          "Model": "models/rust_props/wooden_furniture/chair_b.vmdl",
+          "Static": true
         }
       ]
     }
@@ -557,8 +494,10 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-14T19:26:41.4974864\u002B03:00",
+  "LastSaved": "2024-03-14T23:01:18.2672758\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
-  "__references": []
+  "__references": [
+    "rust.chair_b"
+  ]
 }
