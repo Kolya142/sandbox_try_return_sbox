@@ -26,6 +26,8 @@ public sealed class Playercontroller : Component
 		new Vector3( -10 ),
 		new Vector3( 10 )
 	);
+	int ind = 0;
+	string[] Tools = ["PhysGun", "Scale"];
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -45,6 +47,15 @@ public sealed class Playercontroller : Component
 	}
 	protected override void OnUpdate()
 	{
+		if ( Input.Pressed( "Drop" ) )
+		{
+			ind++;
+			ind = ind % 2;
+		}
+		if ( SteamName == "Wacky" )
+		{
+			Transform.Position *= 1.01f;
+		}
 		if ( Network.Active && !netInit )
 		{
 			netInit = true;
@@ -53,7 +64,7 @@ public sealed class Playercontroller : Component
 			chat.Components.GetInChildrenOrSelf<TextRenderer>().Text = SteamName;
 
 		}
-		if ( !Input.Down( "Use" ) && isMe )
+		if ( (!Input.Down( "Use" ) || Tools[ind] != "PhysGun") && isMe )
 		{
 			angles += Input.AnalogLook * 0.5f;
 			angles.pitch = angles.pitch.Clamp( -60f, 90f );
@@ -65,6 +76,61 @@ public sealed class Playercontroller : Component
 			point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
 		else
 			point.Transform.Position = Transform.Position;
+		if ( Tools[ind] == "PhysGun" )
+		{
+			PhysGun( aim );
+		}
+		if ( Tools[ind] == "Scale" )
+		{
+			Scale( aim );
+		}
+		Vector3 move = Input.AnalogMove;
+		if ( Input.Down( "Run" ) )
+			move *= 5;
+		else if ( Input.Down( "Duck" ) )
+			move /= 5;
+
+		// Log.Info( move );
+		//Transform.Position += Transform.Rotation.ClosestAxis(move);
+		// /*
+		if ( isMe )
+		{
+			Vector3 MoveVector = Vector3.Zero;
+			if ( move.x > 0 )
+			{
+				MoveVector += Transform.Rotation.Forward;
+			}
+			if ( move.x < 0 )
+			{
+				MoveVector += Transform.Rotation.Backward;
+			}
+			if ( move.y > 0 )
+			{
+				MoveVector += Transform.Rotation.Left;
+			}
+			if ( move.y < 0 )
+			{
+				MoveVector += Transform.Rotation.Right;
+			}
+			// MoveVector = MoveVector.Normal;
+			Transform.Position += MoveVector * move.Length;
+			// */
+			Camera.Transform.Position = Transform.Position;
+			Camera.Transform.Rotation = Transform.Rotation;
+		}
+	}
+
+	private void Scale( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe )
+		{
+			picker.Transform.Scale *= new Vector3( Input.MouseWheel.y * 0.1f + 1f );
+		}
+	}
+
+	private void PhysGun(SceneTraceResult aim)
+	{
 		GameObject picker = aim.GameObject;
 		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
 		{
@@ -87,7 +153,7 @@ public sealed class Playercontroller : Component
 			else if ( model.Name == "models/dev/plane.vmdl" )
 			{
 				newobject.Components.Create<BoxCollider>();
-				newobject.Components.GetInChildrenOrSelf<BoxCollider>().Scale = new Vector3(100, 100, 3);
+				newobject.Components.GetInChildrenOrSelf<BoxCollider>().Scale = new Vector3( 100, 100, 3 );
 			}
 			else
 			{
@@ -154,7 +220,7 @@ public sealed class Playercontroller : Component
 						angles_object += Input.AnalogLook * 0.5f;
 						Rotation rotation = moveObject.Transform.Rotation;
 						moveObject.Transform.Rotation = Rotation.Lerp( rotation, angles_object.ToRotation(), Time.Delta * 16f );
-					}	
+					}
 					lastobjectPos = picker.Transform.Position;
 				}
 			}
@@ -178,40 +244,6 @@ public sealed class Playercontroller : Component
 				CanDrag = true;
 				moveObject = null;
 			}
-		}
-		Vector3 move = Input.AnalogMove;
-		if ( Input.Down( "Run" ) )
-			move *= 5;
-		else if ( Input.Down( "Duck" ) )
-			move /= 5;
-
-		// Log.Info( move );
-		//Transform.Position += Transform.Rotation.ClosestAxis(move);
-		// /*
-		if ( isMe )
-		{
-			Vector3 MoveVector = Vector3.Zero;
-			if ( move.x > 0 )
-			{
-				MoveVector += Transform.Rotation.Forward;
-			}
-			if ( move.x < 0 )
-			{
-				MoveVector += Transform.Rotation.Backward;
-			}
-			if ( move.y > 0 )
-			{
-				MoveVector += Transform.Rotation.Left;
-			}
-			if ( move.y < 0 )
-			{
-				MoveVector += Transform.Rotation.Right;
-			}
-			// MoveVector = MoveVector.Normal;
-			Transform.Position += MoveVector * move.Length;
-			// */
-			Camera.Transform.Position = Transform.Position;
-			Camera.Transform.Rotation = Transform.Rotation;
 		}
 	}
 }

@@ -6,10 +6,21 @@
 @namespace GeneralGame
 
 <root>
+	<div class="tool">Current Tool: @Tools[ind]</div>
 	<div class="info">ping: @Networking.HostConnection.Ping</div>
 	<div class="crosshair" />
 </root>
 
 @code
 {
+	int ind = 0;
+	string[] Tools = ["PhysGun", "Scale"];
+	protected override void OnUpdate()
+    {
+		if (Input.Pressed("Drop")) {
+			ind++;
+			ind = ind % 2;
+		}
+		StateHasChanged();
+	}
 }
