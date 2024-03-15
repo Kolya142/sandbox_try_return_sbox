@@ -1,8 +1,9 @@
+﻿﻿@using System.Collections.Generic;
 @using Sandbox;
-@using Sandbox.Network;
-@using System.Diagnostics;
 @using Sandbox.UI;
 @inherits PanelComponent
+@implements Component.INetworkListener
+@namespace GeneralGame
 
 <root>
 	<div class="info">ping: @Networking.HostConnection.Ping</div>

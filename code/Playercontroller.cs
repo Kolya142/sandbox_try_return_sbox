@@ -19,6 +19,7 @@ public sealed class Playercontroller : Component
 	bool CanDrag;
 	CameraComponent Camera;
 	Vector3 lastobjectPos;
+	Vector3 offsetobject;
 	GameObject moveObject = null;
 	float distObject;
 	BBox hull = new BBox(
@@ -64,11 +65,6 @@ public sealed class Playercontroller : Component
 			point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
 		else
 			point.Transform.Position = Transform.Position;
-		float dist = MathF.Sqrt(
-							MathF.Pow( aim.EndPosition.x - Transform.Position.x, 2 ) +
-							MathF.Pow( aim.EndPosition.y - Transform.Position.y, 2 ) +
-							MathF.Pow( aim.EndPosition.z - Transform.Position.z, 2 )
-							);
 		GameObject picker = aim.GameObject;
 		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
 		{
@@ -111,6 +107,12 @@ public sealed class Playercontroller : Component
 		// Log.Info(picker);
 		if ( picker != null && isMe )
 		{
+
+			float dist = MathF.Sqrt(
+								MathF.Pow( aim.HitPosition.x - Transform.Position.x, 2 ) +
+								MathF.Pow( aim.HitPosition.y - Transform.Position.y, 2 ) +
+								MathF.Pow( aim.HitPosition.z - Transform.Position.z, 2 )
+								);
 			if ( Input.Down( "attack1" ) && CanDrag )
 			{
 				if ( moveObject == null )
@@ -120,6 +122,7 @@ public sealed class Playercontroller : Component
 						moveObject = picker;
 						distObject = dist;
 						lastobjectPos = picker.Transform.Position;
+						offsetobject = aim.HitPosition - picker.Transform.Position;
 						Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
 						if ( moveBody != null )
 							moveBody.MotionEnabled = false;
@@ -129,7 +132,7 @@ public sealed class Playercontroller : Component
 				{
 					distObject += Input.MouseWheel.y * 6f * (Input.Down( "Run" ) ? 2f : 1f);
 					Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
-					moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * distObject;
+					moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * distObject - offsetobject;
 					if ( moveBody != null )
 					{
 						Vector3 velocity = moveBody.Velocity;
@@ -166,7 +169,7 @@ public sealed class Playercontroller : Component
 						moveBody.PhysicsBody.Enabled = true;
 						//moveBody.Enabled = true;
 					}
-					if ( moveBody.Velocity.Length > 100f )
+					if ( moveBody.Velocity.Length > 1000f )
 					{
 						Log.Info( "got \"velua\" stat" );
 						Sandbox.Services.Stats.Increment( "velya", 1 );
