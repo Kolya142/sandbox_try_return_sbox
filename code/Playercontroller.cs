@@ -52,7 +52,7 @@ public sealed class Playercontroller : Component
 			chat.Components.GetInChildrenOrSelf<TextRenderer>().Text = SteamName;
 
 		}
-		if ( !Input.Down( "Use" ) )
+		if ( !Input.Down( "Use" ) && isMe )
 		{
 			angles += Input.AnalogLook * 0.5f;
 			angles.pitch = angles.pitch.Clamp( -60f, 90f );
@@ -67,7 +67,7 @@ public sealed class Playercontroller : Component
 							MathF.Pow( aim.EndPosition.z - Transform.Position.z, 2 )
 							);
 		GameObject picker = aim.GameObject;
-		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) )
+		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
 		{
 			Log.Info( "got \"entitiescount\" stat" );
 			Sandbox.Services.Stats.Increment( "entitiescount", 1 );
@@ -98,14 +98,14 @@ public sealed class Playercontroller : Component
 			Log.Info( model.Name );
 			newobject.Components.Create<Rigidbody>();
 		}
-		if ( Input.Pressed( "Reload" ) )
+		if ( Input.Pressed( "Reload" ) && isMe )
 		{
 			model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
 			color = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint;
 			scale = picker.Transform.Scale;
 		}
 		// Log.Info(picker);
-		if ( picker != null )
+		if ( picker != null && isMe )
 		{
 			if ( Input.Down( "attack1" ) && CanDrag )
 			{
@@ -151,7 +151,7 @@ public sealed class Playercontroller : Component
 					lastobjectPos = picker.Transform.Position;
 				}
 			}
-			if ( !Input.Down( "attack1" ) )
+			if ( !Input.Down( "attack1" ) && isMe )
 			{
 				if ( moveObject != null && CanDrag )
 				{
@@ -181,27 +181,30 @@ public sealed class Playercontroller : Component
 		// Log.Info( move );
 		//Transform.Position += Transform.Rotation.ClosestAxis(move);
 		// /*
-		Vector3 MoveVector = Vector3.Zero;
-		if ( move.x > 0 )
+		if ( isMe )
 		{
-			MoveVector += Transform.Rotation.Forward;
+			Vector3 MoveVector = Vector3.Zero;
+			if ( move.x > 0 )
+			{
+				MoveVector += Transform.Rotation.Forward;
+			}
+			if ( move.x < 0 )
+			{
+				MoveVector += Transform.Rotation.Backward;
+			}
+			if ( move.y > 0 )
+			{
+				MoveVector += Transform.Rotation.Left;
+			}
+			if ( move.y < 0 )
+			{
+				MoveVector += Transform.Rotation.Right;
+			}
+			// MoveVector = MoveVector.Normal;
+			Transform.Position += MoveVector * move.Length;
+			// */
+			Camera.Transform.Position = Transform.Position;
+			Camera.Transform.Rotation = Transform.Rotation;
 		}
-		if ( move.x < 0 )
-		{
-			MoveVector += Transform.Rotation.Backward;
-		}
-		if ( move.y > 0 )
-		{
-			MoveVector += Transform.Rotation.Left;
-		}
-		if ( move.y < 0 )
-		{
-			MoveVector += Transform.Rotation.Right;
-		}
-		// MoveVector = MoveVector.Normal;
-		Transform.Position += MoveVector * move.Length;
-		// */
-		Camera.Transform.Position = Transform.Position;
-		Camera.Transform.Rotation = Transform.Rotation;
 	}
 }
