@@ -2,7 +2,6 @@
   "RootObject": {
     "__guid": "f6bea010-bfa3-4af4-b2a4-61c445c9e5d4",
     "Name": "player",
-    "Rotation": "0,-0.7071068,0,0.7071068",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
@@ -13,18 +12,14 @@
           "_type": "gameobject",
           "go": "1e19bf51-a001-448e-b5cf-b186df6b8c47"
         },
+        "chat": {
+          "_type": "gameobject",
+          "go": "ce86af36-6012-4625-b3db-37aa0ae62d57"
+        },
         "point": {
           "_type": "gameobject",
           "go": "645340ee-0cb1-4859-b305-5d3f028e1a78"
         }
-      },
-      {
-        "__type": "ModelRenderer",
-        "__guid": "a05ccdff-db56-48ae-a5f1-befa3c582459",
-        "BodyGroups": 18446744073709551615,
-        "Model": "models/dev/sphere.vmdl",
-        "RenderType": "On",
-        "Tint": "1,1,1,1"
       }
     ],
     "Children": [
@@ -89,6 +84,42 @@
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
+      },
+      {
+        "__guid": "ce86af36-6012-4625-b3db-37aa0ae62d57",
+        "Name": "Text",
+        "Position": "0,0,51.48011",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "TextRenderer",
+            "__guid": "bff94747-184e-4ac0-8019-1787d1c2a28a",
+            "Color": "0.45103,0.47149,0.5297,1",
+            "FontFamily": "Poppins",
+            "FontSize": 64,
+            "Scale": 0.3,
+            "Text": "\u0022Chat\u0022\nI make"
+          }
+        ]
+      },
+      {
+        "__guid": "8e0aba2f-da62-4352-bbd0-0b141dedf534",
+        "Name": "Object",
+        "Position": "24.60003,0,0",
+        "Rotation": "0,-0.7071068,0,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "c7131749-212b-4e53-9196-05aa0335e944",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/arrow.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
       }
     ]
   },

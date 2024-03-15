@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Utility;
 using System;
 using System.Diagnostics;
 
@@ -8,7 +9,13 @@ public sealed class Playercontroller : Component
 	Angles angles_object = new Angles();
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
+	[Property] public GameObject chat;
 	Model model = Model.Cube;
+	Color color = Color.Green;
+	Vector3 scale = Vector3.One;
+	Boolean isMe;
+	string SteamName = "No Name";
+	bool netInit;
 	bool CanDrag;
 	CameraComponent Camera;
 	Vector3 lastobjectPos;
@@ -23,6 +30,10 @@ public sealed class Playercontroller : Component
 		base.OnAwake();
 		Transform.Scale = 0.5f;
 		Camera = Scene.Camera.Components.Get<CameraComponent>();
+		Camera.FieldOfView = 80;
+		// chat.Components.GetInChildrenOrSelf<TextRenderer>().Text
+
+
 	}
 	private SceneTraceResult Trace(Vector3 start, Vector3 end)
 	{
@@ -33,11 +44,18 @@ public sealed class Playercontroller : Component
 	}
 	protected override void OnUpdate()
 	{
-		Camera.FieldOfView = 80;
+		if ( Network.Active && !netInit )
+		{
+			netInit = true;
+			isMe = Network.IsOwner;
+			SteamName = Network.OwnerConnection.Name;
+			chat.Components.GetInChildrenOrSelf<TextRenderer>().Text = SteamName;
+
+		}
 		if ( !Input.Down( "Use" ) )
 		{
 			angles += Input.AnalogLook * 0.5f;
-			//angles.pitch = angles.pitch.Clamp( -60f, 80f );
+			angles.pitch = angles.pitch.Clamp( -60f, 90f );
 			Transform.Rotation = Rotation.Lerp( Transform.Rotation, angles.ToRotation(), Time.Delta * 16f );
 		}
 		SceneTraceResult aim = Trace( Transform.Position, Transform.Position + Transform.Rotation.Forward * 5000f );
@@ -51,17 +69,40 @@ public sealed class Playercontroller : Component
 		GameObject picker = aim.GameObject;
 		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) )
 		{
+			Log.Info( "got \"entitiescount\" stat" );
+			Sandbox.Services.Stats.Increment( "entitiescount", 1 );
 			GameObject newobject = new GameObject( true, "spawned" );
 			newobject.Transform.Position = aim.HitPosition;
+			newobject.Transform.Scale = scale;
 			newobject.Components.Create<ModelRenderer>();
 			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Model = model;
-			newobject.Components.Create<BoxCollider>();
-			//newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = model;
+			if ( model == Model.Cube )
+			{
+				newobject.Components.Create<BoxCollider>();
+			}
+			else if ( model == Model.Sphere )
+			{
+				newobject.Components.Create<SphereCollider>();
+			}
+			else if ( model.Name == "models/dev/plane.vmdl" )
+			{
+				newobject.Components.Create<BoxCollider>();
+				newobject.Components.GetInChildrenOrSelf<BoxCollider>().Scale = new Vector3(100, 100, 3);
+			}
+			else
+			{
+				newobject.Components.Create<ModelCollider>();
+				newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = model;
+			}
+			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = color;
+			Log.Info( model.Name );
 			newobject.Components.Create<Rigidbody>();
 		}
 		if ( Input.Pressed( "Reload" ) )
 		{
 			model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
+			color = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint;
+			scale = picker.Transform.Scale;
 		}
 		// Log.Info(picker);
 		if ( picker != null )
@@ -82,6 +123,7 @@ public sealed class Playercontroller : Component
 				}
 				else
 				{
+					distObject += Input.MouseWheel.y * 6f * (Input.Down( "Run" ) ? 2f : 1f);
 					Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
 					moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * distObject;
 					if ( moveBody != null )
@@ -91,6 +133,9 @@ public sealed class Playercontroller : Component
 						moveBody.Velocity = velocity;
 						if ( Input.Pressed( "attack2" ) )
 						{
+							moveBody.Velocity = Vector3.Zero;
+							moveBody.AngularVelocity = Vector3.Zero;
+							moveBody.AngularDamping = 0;
 							CanDrag = false;
 						}
 					}
@@ -114,6 +159,13 @@ public sealed class Playercontroller : Component
 					if ( moveBody != null )
 					{
 						moveBody.MotionEnabled = true;
+						moveBody.PhysicsBody.Enabled = true;
+						//moveBody.Enabled = true;
+					}
+					if ( moveBody.Velocity.Length > 100f )
+					{
+						Log.Info( "got \"velua\" stat" );
+						Sandbox.Services.Stats.Increment( "velya", 1 );
 					}
 				}
 				CanDrag = true;
@@ -129,22 +181,25 @@ public sealed class Playercontroller : Component
 		// Log.Info( move );
 		//Transform.Position += Transform.Rotation.ClosestAxis(move);
 		// /*
+		Vector3 MoveVector = Vector3.Zero;
 		if ( move.x > 0 )
 		{
-			Transform.Position += Transform.Rotation.Forward * move.Length;
+			MoveVector += Transform.Rotation.Forward;
 		}
 		if ( move.x < 0 )
 		{
-			Transform.Position += Transform.Rotation.Backward * move.Length;
+			MoveVector += Transform.Rotation.Backward;
 		}
 		if ( move.y > 0 )
 		{
-			Transform.Position += Transform.Rotation.Left * move.Length;
+			MoveVector += Transform.Rotation.Left;
 		}
 		if ( move.y < 0 )
 		{
-			Transform.Position += Transform.Rotation.Right * move.Length;
+			MoveVector += Transform.Rotation.Right;
 		}
+		// MoveVector = MoveVector.Normal;
+		Transform.Position += MoveVector * move.Length;
 		// */
 		Camera.Transform.Position = Transform.Position;
 		Camera.Transform.Rotation = Transform.Rotation;
