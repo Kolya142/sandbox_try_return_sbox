@@ -340,6 +340,14 @@
             }
           ],
           "StartServer": true
+        },
+        {
+          "__type": "GameController",
+          "__guid": "1affbe18-b056-4ea9-a544-bc76d7c091a0",
+          "ServerTitle": {
+            "_type": "gameobject",
+            "go": "2cb00bd8-3b08-4233-8e4d-8468c88e1918"
+          }
         }
       ],
       "Children": []
@@ -370,9 +378,85 @@
       ]
     },
     {
+      "__guid": "2a3017c7-c795-430f-9f94-8b4add6294e8",
+      "Name": "Cube (9)",
+      "Position": "315.0252,-333.0409,165.0081",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "6331021d-931c-4c25-8a41-cba850bf2ce7",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0,1,0.45,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "30239b80-b8f6-4721-aed3-e6731f629775",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "154b2cef-fcf6-47f9-9c13-ac3d3f3e9c20",
+      "Name": "Cube (10)",
+      "Position": "315.0252,-333.0409,225.5959",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "a5d9b95e-d61e-4c11-8727-a10a291ab044",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0,0.18333,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "bdf05613-5e42-4ffe-92b1-29abf1f6e2e3",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "fc61657e-7875-4809-a9e5-4b67cb991d2a",
+      "Name": "Cube (11)",
+      "Position": "315.0252,-268.7987,225.5959",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "3b17e336-4748-4534-a0b1-ce21c98b0884",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0,0,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "fbbd918c-f2fc-4a04-b4d1-9d73ef25cfcf",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
       "__guid": "fb1e9968-d946-4808-972b-87bfe35de140",
       "Name": "Cube (6)",
       "Position": "385.5911,-262.6582,162.7272",
+      "Scale": "0.5,0.5,0.5",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -387,6 +471,31 @@
         {
           "__type": "SphereCollider",
           "__guid": "dd06e1d4-25ea-477b-81f7-60df6c2c7648",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 5,
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "9e81fc6c-c055-47a6-a7c8-94f7c48f7f10",
+      "Name": "Cube (12)",
+      "Position": "324.4977,-262.6582,162.7272",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "55c32bcf-6e83-4b5e-98b0-454c30a793e9",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "SphereCollider",
+          "__guid": "9a80cbb6-c054-4e4e-b157-d1723c548cb5",
           "Center": "0,0,0",
           "IsTrigger": false,
           "Radius": 10,
@@ -438,6 +547,30 @@
           "__guid": "df612fc7-92ae-4ce8-b083-3b954546b698",
           "IsTrigger": false,
           "Model": "models/arrow.vmdl",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "47a0d8a7-4ea3-46d1-9036-17a7803bccb4",
+      "Name": "Cube (13)",
+      "Position": "405.3754,-104.2047,210.7827",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "4704b57c-ee15-4acf-b746-28dbf66e818a",
+          "BodyGroups": 341,
+          "Model": "models/adboard_1.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "2ab73d6a-1d45-46c0-93b7-70724fdd451c",
+          "IsTrigger": false,
+          "Model": "models/adboard_1.vmdl",
           "Static": true
         }
       ]
@@ -542,7 +675,8 @@
     {
       "__guid": "29b50acb-f799-47c0-b921-deaaa22a35b7",
       "Name": "Text (1)",
-      "Position": "88.21156,65.5881,319.8378",
+      "Position": "1088.623,71.93658,359.0765",
+      "Scale": "2.798649,2.798649,2.798649",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -553,14 +687,32 @@
           "FontFamily": "Poppins",
           "FontSize": 64,
           "Scale": 0.3,
-          "Text": "mouse1(r2)-drag\nmouse2(l2)-(fix,newobject)\nr(x)-grab mode\ne(y)-rotate object"
+          "Text": "mouse1 - drag\nmouse2 - (fix,newobject)\nr - grab mode\ne - rotate object\nmousewhell - change distanse to object\nshift - fast\nctrl - slow\nwasd - movement"
+        }
+      ]
+    },
+    {
+      "__guid": "2cb00bd8-3b08-4233-8e4d-8468c88e1918",
+      "Name": "Text (2)",
+      "Position": "335.2441,65.5881,210.9297",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "82a9b684-5219-41c2-8431-a2594aafcd21",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "IS NOT DEV SERVER"
         }
       ]
     },
     {
       "__guid": "44f21a5b-15e0-46ff-9f3a-418d7f53485d",
       "Name": "Plane",
-      "Position": "363.4321,117.6787,282.2442",
+      "Position": "363.4321,-33.42318,197.9054",
       "Rotation": "0.5,-0.5,-0.5,0.5",
       "Enabled": true,
       "NetworkMode": 2,
@@ -607,10 +759,11 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-15T12:13:01.6015013\u002B03:00",
+  "LastSaved": "2024-03-15T13:34:57.2857175\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
+    "koutarou.adboard_1",
     "rust.chair_b"
   ]
 }

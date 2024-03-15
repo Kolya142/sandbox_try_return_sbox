@@ -60,7 +60,10 @@ public sealed class Playercontroller : Component
 		}
 		SceneTraceResult aim = Trace( Transform.Position, Transform.Position + Transform.Rotation.Forward * 5000f );
 		aim_show.Transform.Position = aim.EndPosition;
-		point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
+		if ( isMe ) 
+			point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
+		else
+			point.Transform.Position = Transform.Position;
 		float dist = MathF.Sqrt(
 							MathF.Pow( aim.EndPosition.x - Transform.Position.x, 2 ) +
 							MathF.Pow( aim.EndPosition.y - Transform.Position.y, 2 ) +
@@ -83,6 +86,7 @@ public sealed class Playercontroller : Component
 			else if ( model == Model.Sphere )
 			{
 				newobject.Components.Create<SphereCollider>();
+				newobject.Components.GetInChildrenOrSelf<SphereCollider>().Radius *= 2;
 			}
 			else if ( model.Name == "models/dev/plane.vmdl" )
 			{
