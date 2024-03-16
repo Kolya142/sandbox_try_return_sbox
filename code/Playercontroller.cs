@@ -52,10 +52,6 @@ public sealed class Playercontroller : Component
 			ind++;
 			ind = ind % 2;
 		}
-		if ( SteamName == "Wacky" )
-		{
-			Transform.Position *= 1.01f;
-		}
 		if ( Network.Active && !netInit )
 		{
 			netInit = true;
@@ -64,6 +60,7 @@ public sealed class Playercontroller : Component
 			chat.Components.GetInChildrenOrSelf<TextRenderer>().Text = SteamName;
 
 		}
+		chat.Transform.Rotation = Camera.Transform.Rotation;
 		if ( (!Input.Down( "Use" ) || Tools[ind] != "PhysGun") && isMe )
 		{
 			angles += Input.AnalogLook * 0.5f;
@@ -117,6 +114,7 @@ public sealed class Playercontroller : Component
 			// */
 			Camera.Transform.Position = Transform.Position;
 			Camera.Transform.Rotation = Transform.Rotation;
+
 		}
 	}
 
@@ -245,5 +243,9 @@ public sealed class Playercontroller : Component
 				moveObject = null;
 			}
 		}
+	}
+	protected override void OnDestroy()
+	{
+		base.OnDestroy();
 	}
 }

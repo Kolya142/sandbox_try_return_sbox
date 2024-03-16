@@ -673,28 +673,28 @@
       ]
     },
     {
-      "__guid": "29b50acb-f799-47c0-b921-deaaa22a35b7",
-      "Name": "Text (1)",
-      "Position": "1088.623,71.93658,359.0765",
+      "__guid": "19a4e514-0cd7-47b5-99ff-feeaeb313f73",
+      "Name": "Text (3)",
+      "Position": "1164.934,71.93658,401.9745",
       "Scale": "2.798649,2.798649,2.798649",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "TextRenderer",
-          "__guid": "e07f1947-d4be-4399-af97-103235ff1ba6",
+          "__guid": "83cc197f-48b4-4c77-8931-72cfb6c97566",
           "Color": "0.45103,0.47149,0.5297,1",
           "FontFamily": "Poppins",
           "FontSize": 64,
           "Scale": 0.3,
-          "Text": "mouse1 - drag\nmouse2 - (fix,newobject)\nr - grab mode\ne - rotate object\nmousewhell - change distanse to object\nshift - fast\nctrl - slow\nwasd - movement\ng - change tool"
+          "Text": "mouse1 - drag\nmouse2 - (fix,newobject)\nenter - chat(i not get code)\nr - grab mode\ne - rotate object\nmousewhell - change distanse to object\nshift - fast\nctrl - slow\nwasd - movement\ng - change tool"
         }
       ]
     },
     {
       "__guid": "2cb00bd8-3b08-4233-8e4d-8468c88e1918",
       "Name": "Text (2)",
-      "Position": "335.2441,65.5881,210.9297",
+      "Position": "436.4128,248.6567,148.406",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -772,7 +772,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-15T23:42:21.6643207\u002B03:00",
+  "LastSaved": "2024-03-16T21:37:38.6960963\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
