@@ -57,13 +57,23 @@ public sealed class Playercontroller : Component
 		if ( Network.Active && !netInit )
 		{
 			netInit = true;
-			isMe = Network.IsOwner;
-			SteamName = Network.OwnerConnection.Name;
-			chat.Components.GetInChildrenOrSelf<TextRenderer>().Text = SteamName;
-
+			isMe = Network.IsOwner; // Assuming isMe has been declared elsewhere
+			if ( Network.OwnerConnection != null )
+			{
+				SteamName = Network.OwnerConnection.Name; // Assuming SteamName has been declared elsewhere
+			}
 		}
-		chat.Transform.Rotation = Camera.Transform.Rotation;
-		if ( (!Input.Down( "Use" ) || Tools[ind] != "PhysGun") && isMe )
+
+		if ( chat != null && chat.Components != null )
+		{
+			var textRenderer = chat.Components.GetInChildrenOrSelf<TextRenderer>();
+			if ( textRenderer != null )
+			{
+				textRenderer.Text = SteamName;
+			}
+		}
+		// chat.Transform.Rotation = Camera.Transform.Rotation; TODO fix this
+		if ( isMe && ( !Input.Down( "Use" ) || Tools[ind] != "PhysGun") )
 		{
 			angles += Input.AnalogLook * 0.5f;
 			angles.pitch = angles.pitch.Clamp( -60f, 90f );
