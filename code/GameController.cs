@@ -14,6 +14,10 @@ public sealed class GameController : Component
 				Log.Info( "Dev Server" );
 				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS DEV SERVER\nIs automatic message\nIf (Networking.IsHost && Game.IsEditor)";
 			}
+			else
+			{
+				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS NOT DEV SERVER";
+			}
 		}
 	}
 	protected override void OnUpdate()
