@@ -28,7 +28,7 @@ public sealed class Playercontroller : Component
 		new Vector3( 10 )
 	);
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove"];
 
 	protected override void OnAwake()
 	{
@@ -52,7 +52,7 @@ public sealed class Playercontroller : Component
 		if ( Input.Pressed( "Drop" ) )
 		{
 			ind++;
-			ind = ind % 2;
+			ind = ind % Tools.Count();
 		}
 		if ( Network.Active && !netInit )
 		{
@@ -93,6 +93,14 @@ public sealed class Playercontroller : Component
 		{
 			Scale( aim );
 		}
+		if ( Tools[ind] == "GravGun" )
+		{
+			GravGun( aim );
+		}	
+		if ( Tools[ind] == "Remove" )
+		{
+			Remove( aim );
+		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
@@ -127,6 +135,64 @@ public sealed class Playercontroller : Component
 			Camera.Transform.Position = Transform.Position;
 			Camera.Transform.Rotation = Transform.Rotation;
 
+		}
+	}
+
+	private void Remove( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
+		{
+			if ( Input.Pressed( "attack1" ) )
+			{
+				picker.Destroy();
+			}
+		} 
+	}
+
+	private void GravGun( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && aim.Distance < 500f ) {
+			if ( Input.Pressed( "attack2" ) )
+			{
+				if ( moveObject == null )
+				{
+					moveObject = picker;
+					if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
+					{
+						moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = false;
+					}
+				}
+				else
+				{
+					if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
+					{
+						moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
+					}
+					moveObject = null;
+				}
+			} 
+			else if ( Input.Pressed( "attack1" ) )
+			{
+				if ( moveObject == null )
+					moveObject = picker;
+				if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
+				{
+					moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
+					moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Transform.Rotation.Forward * 1000f;
+				}
+				moveObject = null;
+			}
+		}
+		if ( moveObject != null )
+		{
+			moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * 150f;
+			moveObject.Transform.Rotation = Rotation.Identity;
+			if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
+			{
+				moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Vector3.Zero;
+			}
 		}
 	}
 

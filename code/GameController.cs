@@ -7,12 +7,12 @@ public sealed class GameController : Component
 	protected override void OnAwake()
 	{
 		base.OnAwake();
-		if (Networking.IsHost)
+		if ( Networking.IsHost )
 		{
 			if ( Game.IsEditor )
 			{
 				Log.Info( "Dev Server" );
-				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS DEV SERVER, i know.\nIs automatic message";
+				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS DEV SERVER\nIs automatic message\nIf (Networking.IsHost && Game.IsEditor)";
 			}
 		}
 	}

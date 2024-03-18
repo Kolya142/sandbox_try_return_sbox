@@ -27,7 +27,7 @@
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove"];
 	private TextEntry InputBox { get; set; }
 	
 	private List<Entry> Entries { get; set; } = new();
@@ -35,7 +35,7 @@
     {
 		if (Input.Pressed("Drop")) {
 			ind++;
-			ind = ind % 2;
+			ind = ind % (int)Tools.Count();
 		}
 		if ( InputBox is null )
 			return;
