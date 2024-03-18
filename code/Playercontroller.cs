@@ -29,6 +29,7 @@ public sealed class Playercontroller : Component
 	);
 	int ind = 0;
 	string[] Tools = ["PhysGun", "Scale"];
+
 	protected override void OnAwake()
 	{
 		base.OnAwake();
@@ -133,6 +134,7 @@ public sealed class Playercontroller : Component
 		GameObject picker = aim.GameObject;
 		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
 		{
+			Sound.PlayFile( SoundFile.Load( "Sounds/balloon_pop_cute.sound" ) );
 			Log.Info( "got \"entitiescount\" stat" );
 			Sandbox.Services.Stats.Increment( "entitiescount", 1 );
 			GameObject newobject = new GameObject( true, "spawned" );
