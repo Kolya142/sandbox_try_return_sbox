@@ -2,6 +2,7 @@
   "RootObject": {
     "__guid": "f6bea010-bfa3-4af4-b2a4-61c445c9e5d4",
     "Name": "player",
+    "Tags": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [

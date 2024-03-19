@@ -27,7 +27,7 @@
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color"];
 	private TextEntry InputBox { get; set; }
 	
 	private List<Entry> Entries { get; set; } = new();

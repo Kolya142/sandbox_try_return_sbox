@@ -28,7 +28,12 @@ public sealed class Playercontroller : Component
 		new Vector3( 10 )
 	);
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove"];
+	List<SceneParticles> particles = new List<SceneParticles>();
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color"];
+	Dictionary<GameObject, Color> DefaultColors = new();
+	private List<Color> cycleColors = new List<Color> { Color.Red, Color.Green, Color.Cyan, Color.Blue, Color.Yellow, Color.Magenta, Color.Orange, Color.Yellow };
+	private Dictionary<GameObject, int> currentColorIndex = new Dictionary<GameObject, int>();
+
 
 	protected override void OnAwake()
 	{
@@ -49,6 +54,16 @@ public sealed class Playercontroller : Component
 	}
 	protected override void OnUpdate()
 	{
+		// Log.Info( particles );
+		foreach ( var particle in particles )
+		{
+			particle.Simulate( Time.Delta );
+			if ( particle.Finished )
+			{
+				particles.Remove( particle );
+				particle.Delete();
+			}
+		}
 		if ( Input.Pressed( "Drop" ) )
 		{
 			ind++;
@@ -101,6 +116,10 @@ public sealed class Playercontroller : Component
 		{
 			Remove( aim );
 		}
+		if ( Tools[ind] == "Color" )
+		{
+			ColorTool( aim );
+		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
@@ -135,6 +154,36 @@ public sealed class Playercontroller : Component
 			Camera.Transform.Position = Transform.Position;
 			Camera.Transform.Rotation = Transform.Rotation;
 
+		}
+	}
+
+	private void ColorTool( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
+		{
+			if ( Input.Pressed( "attack1" ) )
+			{
+				if ( !DefaultColors.ContainsKey( picker ) )
+				{
+					DefaultColors.Add( picker, picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint );
+				}
+				if ( currentColorIndex.ContainsKey( picker ) )
+				{
+					currentColorIndex[picker]++;
+					currentColorIndex[picker] = currentColorIndex[picker] % cycleColors.Count;
+				}
+				else
+				{
+					currentColorIndex[picker] = 0;
+				}
+				picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = cycleColors[currentColorIndex[picker]];
+			}
+			else if ( Input.Pressed( "attack2" ) && DefaultColors.ContainsKey( picker ) )
+			{
+				currentColorIndex[picker] = 0;
+				picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = DefaultColors[picker];
+			}
 		}
 	}
 
@@ -210,6 +259,10 @@ public sealed class Playercontroller : Component
 		GameObject picker = aim.GameObject;
 		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
 		{
+			var particle = new SceneParticles( Scene.SceneWorld, "particles/createeffect.vpcf" );
+			particle.SetControlPoint( 0, aim.HitPosition );
+			particle.SetControlPoint( 0, Rotation.Identity );
+			// particles.Add( particle );
 			Sound.PlayFile( SoundFile.Load( "Sounds/balloon_pop_cute.sound" ) );
 			Log.Info( "got \"entitiescount\" stat" );
 			Sandbox.Services.Stats.Increment( "entitiescount", 1 );
@@ -287,6 +340,10 @@ public sealed class Playercontroller : Component
 							moveBody.AngularVelocity = Vector3.Zero;
 							moveBody.AngularDamping = 0;
 							CanDrag = false;
+							var particle = new SceneParticles( Scene.SceneWorld, "particles/createeffect.vpcf" );
+							particle.SetControlPoint( 0, aim.HitPosition );
+							particle.SetControlPoint( 0, Rotation.Identity );
+							particles.Add( particle );
 						}
 					}
 					if ( Input.Pressed( "Use" ) )
