@@ -8,6 +8,7 @@
 @namespace GeneralGame
 
 <root>
+	@if (ind != 5) {
 	<div class="output">
 		@foreach (var entry in Entries)
 		{
@@ -17,17 +18,20 @@
 			</div>
 		}
 	</div>
+	}
 	<div class="tool">Current Tool: @Tools[ind]</div>
+	@if (ind != 5) {
 	<div class="info">ping: @Networking.HostConnection.Ping</div>
 	<div class="crosshair" />
 	<TextEntry @ref="InputBox" onsubmit="@ChatFinished"></TextEntry>
+	}
 </root>
 
 @code
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save&Quit(lmb)"];
 	private TextEntry InputBox { get; set; }
 	
 	private List<Entry> Entries { get; set; } = new();
@@ -37,22 +41,22 @@
 			ind++;
 			ind = ind % (int)Tools.Count();
 		}
-		if ( InputBox is null )
-			return;
+		if ( InputBox is not null ) {
 
-		Panel.AcceptsFocus = false;
+			Panel.AcceptsFocus = false;
 
-		if ( Input.Pressed( "chat" ) )
-		{
-			InputBox.Focus();
+			if ( Input.Pressed( "chat" ) )
+			{
+				InputBox.Focus();
+			}
+
+			if ( Entries.RemoveAll( x => x.timeSinceAdded > 30f ) > 0 )
+			{
+				StateHasChanged();
+			}
+
+			SetClass( "open", InputBox.HasFocus );
 		}
-
-		if ( Entries.RemoveAll( x => x.timeSinceAdded > 30f ) > 0 )
-		{
-			StateHasChanged();
-		}
-
-		SetClass( "open", InputBox.HasFocus );
 		StateHasChanged();
 	}
 

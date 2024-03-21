@@ -1,8 +1,5 @@
-using Sandbox;
-using Sandbox.Services;
-using Sandbox.Utility;
 using System;
-using System.Diagnostics;
+using System.Text.Json.Nodes;
 
 public sealed class Playercontroller : Component
 {
@@ -29,7 +26,7 @@ public sealed class Playercontroller : Component
 	);
 	int ind = 0;
 	List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save"];
 	Dictionary<GameObject, Color> DefaultColors = new();
 	private List<Color> cycleColors = new List<Color> { Color.Red, Color.Green, Color.Cyan, Color.Blue, Color.Yellow, Color.Magenta, Color.Orange, Color.Yellow };
 	private Dictionary<GameObject, int> currentColorIndex = new Dictionary<GameObject, int>();
@@ -120,6 +117,14 @@ public sealed class Playercontroller : Component
 		{
 			ColorTool( aim );
 		}
+		if ( Tools[ind] == "Thruster" )
+		{
+			Thruster( aim );
+		}
+		if ( Tools[ind] == "Save" )
+		{
+			Save( aim );
+		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
@@ -154,6 +159,40 @@ public sealed class Playercontroller : Component
 			Camera.Transform.Position = Transform.Position;
 			Camera.Transform.Rotation = Transform.Rotation;
 
+		}
+	}
+
+	private void Save( SceneTraceResult aim )
+	{
+		if ( Input.Pressed( "attack1" ) && Networking.IsHost && isMe )
+		{
+			// Serialize the current scene to a JSON object.
+			foreach ( var obj in Scene.SceneWorld.SceneObjects )
+			{
+				if ( obj.Tags.Has("player") )
+				{
+					obj.Delete();
+				}
+			}
+			JsonObject resource = Scene.Serialize();
+			Log.Info( resource );
+
+			// Use 'using' statement for automatic resource management.
+			FileSystem.Data.WriteJson<JsonObject>( "scene.json", resource );
+			Game.Disconnect();
+			Game.Close();
+		}
+	}
+
+	private void Thruster( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
+		{
+			if ( Input.Pressed( "attack1" ) )
+			{
+				var ThrusterObject = new GameObject();
+			}
 		}
 	}
 
@@ -343,7 +382,7 @@ public sealed class Playercontroller : Component
 							var particle = new SceneParticles( Scene.SceneWorld, "particles/createeffect.vpcf" );
 							particle.SetControlPoint( 0, aim.HitPosition );
 							particle.SetControlPoint( 0, Rotation.Identity );
-							particles.Add( particle );
+							// particles.Add( particle );
 						}
 					}
 					if ( Input.Pressed( "Use" ) )
