@@ -1,7 +1,7 @@
 Lobby {
     position: absolute;
     top: 0px;
-    left: 0px;
+    left: -130px;
     right: 0px;
     bottom: 0px;
     background-color: #111;
@@ -41,11 +41,44 @@ Lobby {
         }
     }
 
+    .saves {
+        position: absolute;
+        margin-top: 64px;
+        left: 1850px;
+        width: 500px;
+        flex-grow: 1;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+        font-size: 30px;
+        gap: 5px;
+
+
+        p {
+            color: gold;
+        }
+
+        .saveItem {
+            div {
+                margin-left: 10px;
+            }
+
+            .close {
+                color: red;
+                width: 100px;
+            }
+
+            .button {
+                width: 150px;
+            }
+        }
+    }
+
     .left {
         margin-top: 64px;
         flex-direction: column;
         width: 800px;
-        left: 0px;
+        left: 60%;
 
         > .title {
             font-size: 64px;
@@ -71,22 +104,6 @@ Lobby {
             margin-top: 64px;
             flex-direction: column;
             gap: 16px;
-
-            > .button {
-                background-color: transparent;
-                color: #aaa;
-                font-size: 32px;
-                padding: 10px;
-                border-radius: 8px;
-                cursor: pointer;
-                width: 300px;
-                flex-direction: column;
-                transition: all 0.2s ease-out;
-
-                &:hover {
-                    background-color: #333;
-                }
-            }
         }
     }
 
@@ -157,5 +174,21 @@ Lobby {
         width: 100%;
         height: 100%;
         justify-content: center;
+    }
+
+    .button {
+        background-color: transparent;
+        color: #aaa;
+        font-size: 32px;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 300px;
+        flex-direction: column;
+        transition: all 0.2s ease-out;
+
+        &:hover {
+            background-color: #333;
+        }
     }
 }

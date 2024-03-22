@@ -8,8 +8,8 @@ public sealed class Playercontroller : Component
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
 	[Property] public GameObject chat;
-	Model model = Model.Cube;
-	Color color = Color.Green;
+	public Model model = Model.Cube;
+	public Color color = Color.Green;
 	Vector3 scale = Vector3.One;
 	Boolean isMe;
 	string SteamName = "No Name";
@@ -19,6 +19,8 @@ public sealed class Playercontroller : Component
 	Vector3 lastobjectPos;
 	Vector3 offsetobject;
 	GameObject moveObject = null;
+	GameObject lastObject = null;
+	bool isChange = false;
 	float distObject;
 	BBox hull = new BBox(
 		new Vector3( -10 ),
@@ -26,8 +28,10 @@ public sealed class Playercontroller : Component
 	);
 	int ind = 0;
 	List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save", "Rope", "Weld"];
 	Dictionary<GameObject, Color> DefaultColors = new();
+
+	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
 	private List<Color> cycleColors = new List<Color> { Color.Red, Color.Green, Color.Cyan, Color.Blue, Color.Yellow, Color.Magenta, Color.Orange, Color.Yellow };
 	private Dictionary<GameObject, int> currentColorIndex = new Dictionary<GameObject, int>();
 
@@ -47,6 +51,7 @@ public sealed class Playercontroller : Component
 		return Scene.Trace.Ray(start, end )
 			.UsePhysicsWorld()
 			.Radius(2f)
+			.WithoutTags([ "ragdoll" ])
 			.Run();
 	}
 	protected override void OnUpdate()
@@ -59,6 +64,13 @@ public sealed class Playercontroller : Component
 			{
 				particles.Remove( particle );
 				particle.Delete();
+			}
+		}
+		for ( int i = 0; i < (int)Tools.Count(); i++ )
+		{
+			if ( Input.Pressed( $"Slot{i + 1}" ) )
+			{
+				ind = i;
 			}
 		}
 		if ( Input.Pressed( "Drop" ) )
@@ -125,6 +137,14 @@ public sealed class Playercontroller : Component
 		{
 			Save( aim );
 		}
+		if ( Tools[ind] == "Rope" )
+		{
+			Rope( aim );
+		}
+		if ( Tools[ind] == "Weld" )
+		{
+			Weld( aim );
+		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
@@ -162,6 +182,48 @@ public sealed class Playercontroller : Component
 		}
 	}
 
+	private void Weld( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && Input.Pressed( "attack1" ) )
+		{
+			if ( lastObject == null )
+			{
+				lastObject = picker;
+			}
+			else
+			{
+				lastObject.Components.Create<FixedJoint>();
+				lastObject.Components.GetInChildrenOrSelf<FixedJoint>().Body = picker;
+				picker.Components.Create<FixedJoint>();
+				picker.Components.GetInChildrenOrSelf<FixedJoint>().Body = lastObject;
+				lastObject = null;
+			}
+		}
+	}
+
+	private void Rope( SceneTraceResult aim )
+	{
+		GameObject picker = aim.GameObject;
+		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && Input.Pressed( "attack1" ) )
+		{
+			if ( lastObject == null )
+			{
+				lastObject = picker;
+			}
+			else
+			{
+				lastObject.Components.Create<SpringJoint>();
+				lastObject.Components.GetInChildrenOrSelf<SpringJoint>().Body = picker;
+				lastObject.Components.GetInChildrenOrSelf<SpringJoint>().Frequency = 0.6f;
+				picker.Components.Create<SpringJoint>();
+				picker.Components.GetInChildrenOrSelf<SpringJoint>().Body = lastObject;
+				picker.Components.GetInChildrenOrSelf<SpringJoint>().Frequency = 0.6f;
+				lastObject = null;
+			}
+		}
+	}
+
 	private void Save( SceneTraceResult aim )
 	{
 		if ( Input.Pressed( "attack1" ) && Networking.IsHost && isMe )
@@ -175,10 +237,12 @@ public sealed class Playercontroller : Component
 				}
 			}
 			JsonObject resource = Scene.Serialize();
-			Log.Info( resource );
+			// Log.Info( resource );
 
 			// Use 'using' statement for automatic resource management.
-			FileSystem.Data.WriteJson<JsonObject>( "scene.json", resource );
+			int lastfile = FileSystem.Data.ReadJson<int>( "lastsave" );
+			FileSystem.Data.WriteJson<JsonObject>( $"scene{lastfile}.json", resource ); 
+			FileSystem.Data.WriteJson<int>( "lastsave", lastfile+1 );
 			Game.Disconnect();
 			Game.Close();
 		}
@@ -371,18 +435,19 @@ public sealed class Playercontroller : Component
 					if ( moveBody != null )
 					{
 						Vector3 velocity = moveBody.Velocity;
-						Vector3.SmoothDamp( lastobjectPos, moveObject.Transform.Position, ref velocity, 0.075f, Time.Delta );
+						Vector3.SmoothDamp( lastobjectPos, moveObject.Transform.Position, ref velocity, 0.9f, Time.Delta );
 						moveBody.Velocity = velocity;
+						lastobjectPos = picker.Transform.Position;
 						if ( Input.Pressed( "attack2" ) )
 						{
 							moveBody.Velocity = Vector3.Zero;
 							moveBody.AngularVelocity = Vector3.Zero;
 							moveBody.AngularDamping = 0;
 							CanDrag = false;
-							var particle = new SceneParticles( Scene.SceneWorld, "particles/createeffect.vpcf" );
+							var particle = new SceneParticles( Scene.SceneWorld, "particles/physgun_freeze.vpcf" );
 							particle.SetControlPoint( 0, aim.HitPosition );
 							particle.SetControlPoint( 0, Rotation.Identity );
-							// particles.Add( particle );
+							particles.Add( particle );
 						}
 					}
 					if ( Input.Pressed( "Use" ) )
@@ -394,7 +459,6 @@ public sealed class Playercontroller : Component
 						Rotation rotation = moveObject.Transform.Rotation;
 						moveObject.Transform.Rotation = Rotation.Lerp( rotation, angles_object.ToRotation(), Time.Delta * 16f );
 					}
-					lastobjectPos = picker.Transform.Position;
 				}
 			}
 			if ( !Input.Down( "attack1" ) && isMe )

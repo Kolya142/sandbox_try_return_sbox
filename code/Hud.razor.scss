@@ -13,6 +13,19 @@ Hud {
 		top: 50%;
 	}
 
+	.modelback {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+
+		background: rgba(113, 119, 255, 0.15);
+		border-radius: 16px;
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
+		border: 1px solid rgba(113, 119, 255, 0.31);
+	}
+
 	.info {
 		position: absolute;
 		left: 0px;
@@ -54,5 +67,22 @@ Hud {
 		position: absolute;
 		left: 0;
 		color: white;
+	}
+
+	.tools {
+		position: absolute;
+		top: 93vh;
+		left: 30%;
+		transform: translate(20%, 0);
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		padding: 10px;
+		background-color: rgba(128, 128, 128, 0.4);
+		border-radius: 5px;
+	}
+
+	.tool1 {
+		background-color: rgba(255, 255, 255, 0.6);
 	}
 }

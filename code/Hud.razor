@@ -7,7 +7,7 @@
 @implements Component.INetworkListener
 @namespace GeneralGame
 
-<root>
+<root style="pointer-events: @(isSelect ? "all" : "none");">
 	@if (ind != 5) {
 	<div class="output">
 		@foreach (var entry in Entries)
@@ -21,25 +21,53 @@
 	}
 	<div class="tool">Current Tool: @Tools[ind]</div>
 	@if (ind != 5) {
-	<div class="info">ping: @Networking.HostConnection.Ping</div>
+	<div class="info">ping: @Networking.HostConnection.Ping, Press q to select model</div>
+	@if (isSelect) {
+		<div class="modelback">
+			<PackageList ShowFilters="@true" style="padding-bottom: 50px;" Query="type:model sort:trending" OnSelected="@OnPackageSelected" Take=@(50)></PackageList>
+		</div>
+	}
 	<div class="crosshair" />
 	<TextEntry @ref="InputBox" onsubmit="@ChatFinished"></TextEntry>
 	}
+	<div class="tools">
+		@foreach (var tool in Tools) {
+			<div class="tool1">
+				@tool
+			</div>
+		}
+	</div>
 </root>
 
 @code
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save&Quit(lmb)"];
+	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save&Quit(lmb)", "Rope", "Weld"];
 	private TextEntry InputBox { get; set; }
-	
+	bool isSelect = false;
 	private List<Entry> Entries { get; set; } = new();
+	async void OnPackageSelected( Package package ) {
+		var packageg = await Package.FetchAsync(package.FullIdent, false);
+		await packageg.MountAsync();
+		isSelect = false;
+		Log.Info( package.FullIdent );
+		Playercontroller.Local.model = Model.Load(packageg.GetMeta("PrimaryAsset", ""));
+		Playercontroller.Local.color = Color.White;
+	}
 	protected override void OnUpdate()
     {
 		if (Input.Pressed("Drop")) {
 			ind++;
 			ind = ind % (int)Tools.Count();
+		}
+		if (Input.Pressed("Model")) {
+			isSelect = true;
+		}
+		for ( int i = 0; i < (int)Tools.Count(); i++ ) {
+			if ( Input.Pressed($"Slot{i+1}") ) {
+				ind = i;
+			}
 		}
 		if ( InputBox is not null ) {
 

@@ -19,6 +19,14 @@ public sealed class GameController : Component
 				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS NOT DEV SERVER";
 			}
 		}
+		if ( !FileSystem.Data.DirectoryExists( "saves" ) )
+		{
+			FileSystem.Data.CreateDirectory( "saves" );
+		}
+		if ( !FileSystem.Data.FileExists( "lastsave" ) )
+		{
+			FileSystem.Data.WriteJson<int>( "lastsave", 0 );
+		}
 	}
 	protected override void OnUpdate()
 	{
