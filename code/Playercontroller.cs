@@ -182,6 +182,21 @@ public sealed class Playercontroller : Component
 		}
 	}
 
+	private void JointLine( GameObject a, GameObject b )
+	{
+		GameObject Line = new();
+		Line.Components.Create<LineRenderer>();
+		Line.Components.GetInChildrenOrSelf<LineRenderer>().Color = Color.Cyan;
+		List<GameObject> points = new();
+		points.Add( a );
+		points.Add( b );
+		Line.Components.GetInChildrenOrSelf<LineRenderer>().Points = points;
+		List<Curve.Frame> frames = new();
+		frames.Add( new Curve.Frame( 0, 1 ) );
+		frames.Add( new Curve.Frame( 1, 1 ) );
+		Line.Components.GetInChildrenOrSelf<LineRenderer>().Width = new Curve( frames );
+	}
+
 	private void Weld( SceneTraceResult aim )
 	{
 		GameObject picker = aim.GameObject;
@@ -197,6 +212,7 @@ public sealed class Playercontroller : Component
 				lastObject.Components.GetInChildrenOrSelf<FixedJoint>().Body = picker;
 				picker.Components.Create<FixedJoint>();
 				picker.Components.GetInChildrenOrSelf<FixedJoint>().Body = lastObject;
+				JointLine( picker, lastObject );
 				lastObject = null;
 			}
 		}
@@ -219,6 +235,7 @@ public sealed class Playercontroller : Component
 				picker.Components.Create<SpringJoint>();
 				picker.Components.GetInChildrenOrSelf<SpringJoint>().Body = lastObject;
 				picker.Components.GetInChildrenOrSelf<SpringJoint>().Frequency = 0.6f;
+				JointLine( picker, lastObject );
 				lastObject = null;
 			}
 		}
