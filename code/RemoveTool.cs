@@ -11,7 +11,7 @@ namespace Sandbox
 		static public void Remove( SceneTraceResult aim, Playercontroller Player )
 		{
 			GameObject picker = aim.GameObject;
-			if ( picker != null && Player.isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
+			if ( picker != null && Player.isMe && aim.Body.BodyType == PhysicsBodyType.Dynamic )
 			{
 				if ( Input.Pressed( "attack1" ) )
 				{

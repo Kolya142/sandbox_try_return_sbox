@@ -23,6 +23,7 @@ public sealed class Playercontroller : Component
 	public Vector3 lastobjectPos;
 	public Vector3 offsetobject;
 	public GameObject moveObject = null;
+	public PhysicsBody moveBody = null;
 	public GameObject lastObject = null;
 	bool isChange = false;
 	public float distObject;

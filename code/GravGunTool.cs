@@ -10,48 +10,32 @@ namespace Sandbox
 	{
 		static public void GravGun( SceneTraceResult aim, Playercontroller Player )
 		{
-			GameObject picker = aim.GameObject;
-			if ( picker != null && Player.isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && aim.Distance < 500f )
+			PhysicsBody body = aim.Body;
+			if ( body != null && Player.isMe && body.BodyType == PhysicsBodyType.Dynamic && aim.Distance < 500f )
 			{
 				if ( Input.Pressed( "attack2" ) )
 				{
-					if ( Player.moveObject == null )
+					if ( Player.moveBody == null )
 					{
-						Player.moveObject = picker;
-						if ( Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-						{
-							Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = false;
-						}
+						Player.moveBody = body;
 					}
 					else
 					{
-						if ( Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-						{
-							Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
-						}
-						Player.moveObject = null;
+						Player.moveBody = null;
 					}
 				}
 				else if ( Input.Pressed( "attack1" ) )
 				{
-					if ( Player.moveObject == null )
-						Player.moveObject = picker;
-					if ( Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-					{
-						Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
-						Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Player.Transform.Rotation.Forward * 1000f;
-					}
-					Player.moveObject = null;
+					if ( Player.moveBody == null )
+						Player.moveBody = body;
+					Player.moveBody.ApplyImpulse( Player.Transform.Rotation.Forward * 1000000f );
+					Player.moveBody = null;
 				}
 			}
-			if ( Player.moveObject != null )
+			if ( Player.moveBody != null )
 			{
-				Player.moveObject.Transform.Position = Player.Transform.Position + Player.Transform.Rotation.Forward * 150f;
-				Player.moveObject.Transform.Rotation = Rotation.Identity;
-				if ( Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-				{
-					Player.moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Vector3.Zero;
-				}
+				Player.moveBody.Position = Player.Transform.Position + Player.Transform.Rotation.Forward * 150f;
+				// Player.moveBody.Rotation = Rotation.Identity;
 			}
 		}
 	}
