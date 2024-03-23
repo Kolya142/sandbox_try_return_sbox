@@ -22,6 +22,7 @@
 	<div class="tool">Current Tool: @Tools[ind]</div>
 	@if (ind != 5) {
 	<div class="info">ping: @Networking.HostConnection.Ping, Press q to select model</div>
+	<div class="health">Health: @(Playercontroller.Local != null ? Playercontroller.Local.Health : -1)</div>
 	@if (isSelect) {
 		<div class="modelback">
 			<PackageList ShowFilters="@true" style="padding-bottom: 50px;" Query="type:model sort:trending" OnSelected="@OnPackageSelected" Take=@(50)></PackageList>
@@ -43,7 +44,7 @@
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save&Quit(lmb)", "Rope", "Weld"];
+	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Display", "Save&Quit(lmb)", "Rope", "Weld"];
 	private TextEntry InputBox { get; set; }
 	bool isSelect = false;
 	private List<Entry> Entries { get; set; } = new();

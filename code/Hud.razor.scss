@@ -26,6 +26,12 @@ Hud {
 		border: 1px solid rgba(113, 119, 255, 0.31);
 	}
 
+	.health {
+		font-size: 80px;
+		position: absolute;
+		top: 92%;
+	}
+
 	.info {
 		position: absolute;
 		left: 0px;

@@ -11,7 +11,10 @@ public sealed class Playercontroller : Component
 	public Model model = Model.Cube;
 	public Color color = Color.Green;
 	public Vector3 scale = Vector3.One;
+	public GameObject gun = null;
 	public Boolean isMe;
+	public Model GunModel = Cloud.Model( "https://asset.party/jakx/pistoldeusex" );
+	public float Health = 100;
 	string SteamName = "No Name";
 	bool netInit;
 	public bool CanDrag;
@@ -27,8 +30,9 @@ public sealed class Playercontroller : Component
 		new Vector3( 10 )
 	);
 	int ind = 0;
+	bool cnasd = true;
 	public List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save", "Rope", "Weld"];
+	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Display", "Save", "Rope", "Weld"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
@@ -41,9 +45,19 @@ public sealed class Playercontroller : Component
 		base.OnAwake();
 		Transform.Scale = 0.5f;
 		Camera = Scene.Camera.Components.Get<CameraComponent>();
-		Camera.FieldOfView = 80;
+		Camera.FieldOfView = 80f;
+		gun = new GameObject();
+		gun.Components.Create<ModelRenderer>();
+		gun.Components.GetInChildrenOrSelf<ModelRenderer>().Model = GunModel;
 		// chat.Components.GetInChildrenOrSelf<TextRenderer>().Text
 
+	}
+	public void OnDeath()
+	{
+		if ( Health > 0 )
+			return;
+		Health = 100;
+		Transform.Position = Vector3.Zero;
 	}
 	private SceneTraceResult Trace(Vector3 start, Vector3 end)
 	{
@@ -96,7 +110,18 @@ public sealed class Playercontroller : Component
 			}
 			// Network.OwnerConnection.SteamId
 		}
-		// chat.Transform.Rotation = Camera.Transform.Rotation; TODO fix this
+		if ( cnasd )
+		{
+			try
+			{
+				chat.Transform.Rotation = Scene.Camera.Components.Get<CameraComponent>().Transform.Rotation;
+			}
+			catch
+			{
+				cnasd = false;
+				Log.Info( "WHAT, IS ERROR?" );
+			}
+		}
 		if ( isMe && ( !Input.Down( "Use" ) || Tools[ind] != "PhysGun") )
 		{
 			angles += Input.AnalogLook * 0.5f;
@@ -134,6 +159,15 @@ public sealed class Playercontroller : Component
 		if ( Tools[ind] == "Color" )
 		{
 			ColorTool.Color( aim, this );
+		}
+		if ( Tools[ind] == "Gun" )
+		{
+			gun.Transform.Scale = Vector3.One;
+			GunTool.Gun( aim, this );
+		}
+		else
+		{
+			gun.Transform.Scale = Vector3.Zero;
 		}
 		/*
 		if ( Tools[ind] == "Thruster" )

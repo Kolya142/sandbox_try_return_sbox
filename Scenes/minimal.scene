@@ -2365,6 +2365,304 @@
           "Wireframe": false
         }
       ]
+    },
+    {
+      "__guid": "a53a9c14-69e9-4dd5-9283-a6943f3529d3",
+      "Name": "E",
+      "Position": "-274.0108,-178.0146,166.9219",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MeshComponent",
+          "__guid": "4b99f0bb-5819-4d29-b216-c7af8c62cca2",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+            "TextureOrigin": "-274.0108,-178.0146,133.0972",
+            "Positions": [
+              "-4.56131,-17.73767,1.097595",
+              "4.56131,-17.73767,1.097595",
+              "4.56131,17.73767,1.097595",
+              "-4.56131,17.73767,1.097595",
+              "-4.56131,17.73767,-1.097595",
+              "4.56131,17.73767,-1.097595",
+              "4.56131,-17.73767,-1.097595",
+              "-4.56131,-17.73767,-1.097595"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureAngle": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "MaterialIndex": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "Materials": [
+              "materials/dev/reflectivity_30.vmat"
+            ]
+          },
+          "Static": true
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "fe9d10e4-6b0e-4447-b155-7a2530dc9e07",
+          "Name": "Box (4)",
+          "Position": "-16.50354,-0.06881714,0.0001068115",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "MeshComponent",
+              "__guid": "ed30a78f-c583-4d46-a9a3-46606940ba9a",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+                "TextureOrigin": "-290.5143,-192.5097,133.0973",
+                "Positions": [
+                  "-11.84503,-2.563995,1.097595",
+                  "11.84503,-2.563995,1.097595",
+                  "11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,-1.097595",
+                  "11.84503,2.563995,-1.097595",
+                  "11.84503,-2.563995,-1.097595",
+                  "-11.84503,-2.563995,-1.097595"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,0,0",
+                  "0,-1,0",
+                  "0,1,0",
+                  "-1,0,0",
+                  "1,0,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "0,-1,0",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25"
+                ],
+                "TextureAngle": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat"
+                ]
+              },
+              "Static": true
+            }
+          ]
+        },
+        {
+          "__guid": "123b69f6-7ae8-4ad6-9ba7-2581c0bbb5fe",
+          "Name": "Box",
+          "Position": "-16.50357,-15.0546,0.00009155273",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "MeshComponent",
+              "__guid": "86c07eaf-2476-4e2d-9ed6-c8769268823f",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+                "TextureOrigin": "-290.5143,-192.5097,133.0973",
+                "Positions": [
+                  "-11.84503,-2.563995,1.097595",
+                  "11.84503,-2.563995,1.097595",
+                  "11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,-1.097595",
+                  "11.84503,2.563995,-1.097595",
+                  "11.84503,-2.563995,-1.097595",
+                  "-11.84503,-2.563995,-1.097595"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,0,0",
+                  "0,-1,0",
+                  "0,1,0",
+                  "-1,0,0",
+                  "1,0,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "0,-1,0",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25"
+                ],
+                "TextureAngle": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat"
+                ]
+              },
+              "Static": true
+            }
+          ]
+        },
+        {
+          "__guid": "2f1cbe05-2441-4df4-a95d-be49fda62b76",
+          "Name": "Box (5)",
+          "Position": "-16.50354,14.9577,0.0001068115",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "MeshComponent",
+              "__guid": "a34a733a-01da-42c2-93cd-eacb63852277",
+              "Collision": "Mesh",
+              "Color": "1,1,1,1",
+              "IsTrigger": false,
+              "Mesh": {
+                "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+                "TextureOrigin": "-290.5143,-192.5097,133.0973",
+                "Positions": [
+                  "-11.84503,-2.563995,1.097595",
+                  "11.84503,-2.563995,1.097595",
+                  "11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,1.097595",
+                  "-11.84503,2.563995,-1.097595",
+                  "11.84503,2.563995,-1.097595",
+                  "11.84503,-2.563995,-1.097595",
+                  "-11.84503,-2.563995,-1.097595"
+                ],
+                "TextureUAxis": [
+                  "1,0,0",
+                  "1,0,0",
+                  "0,-1,0",
+                  "0,1,0",
+                  "-1,0,0",
+                  "1,0,0"
+                ],
+                "TextureVAxis": [
+                  "0,-1,0",
+                  "0,-1,0",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1",
+                  "0,0,-1"
+                ],
+                "TextureScale": [
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25",
+                  "0.25,0.25"
+                ],
+                "TextureAngle": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "MaterialIndex": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                "Materials": [
+                  "materials/dev/reflectivity_30.vmat"
+                ]
+              },
+              "Static": true
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2390,7 +2688,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-23T14:10:09.138933\u002B03:00",
+  "LastSaved": "2024-03-23T16:13:34.0782417\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
