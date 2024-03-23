@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,25 @@ namespace Sandbox
 {
 	public class RopeTool
 	{
+		static public void CreateRope(GameObject a, GameObject b)
+		{
+			a.Components.Create<SpringJoint>();
+			int lastind = a.Components.GetAll<SpringJoint>().ToArray().Length - 1;
+			SpringJoint joint = a.Components.GetAll<SpringJoint>().ToArray()[lastind];
+			joint.Body = b;
+			joint.Frequency = 5f;
+			joint.Damping = 0.6f;
+			joint.MinLength = b.Transform.Position.Distance( a.Transform.Position ) * 2f;
+
+			b.Components.Create<SpringJoint>();
+			lastind = b.Components.GetAll<SpringJoint>().ToArray().Length - 1;
+			joint = b.Components.GetAll<SpringJoint>().ToArray()[lastind];
+			joint.Body = a;
+			joint.Frequency = 5f;
+			joint.Damping = 0.6f;
+			joint.MinLength = b.Transform.Position.Distance( a.Transform.Position ) * 2f;
+			JointLine.Create( b, a );
+		}
 		static public void Rope( SceneTraceResult aim, Playercontroller Player )
 		{
 			GameObject picker = aim.GameObject;
@@ -19,22 +39,7 @@ namespace Sandbox
 				}
 				else
 				{
-					Player.lastObject.Components.Create<SpringJoint>();
-					int lastind = Player.lastObject.Components.GetAll<SpringJoint>().ToArray().Length - 1;
-					SpringJoint joint = Player.lastObject.Components.GetAll<SpringJoint>().ToArray()[lastind];
-					joint.Body = picker;
-					joint.Frequency = 5f;
-					joint.Damping = 0.6f;
-					joint.MinLength = picker.Transform.Position.Distance( Player.lastObject.Transform.Position ) * 2f;
-
-					picker.Components.Create<SpringJoint>();
-					lastind = picker.Components.GetAll<SpringJoint>().ToArray().Length - 1;
-					joint = picker.Components.GetAll<SpringJoint>().ToArray()[lastind];
-					joint.Body = Player.lastObject;
-					joint.Frequency = 5f;
-					joint.Damping = 0.6f;
-					joint.MinLength = picker.Transform.Position.Distance( Player.lastObject.Transform.Position ) * 2f;
-					JointLine.Create( picker, Player.lastObject );
+					CreateRope(Player.lastObject, picker);
 					Player.lastObject = null;
 				}
 			}

@@ -1,0 +1,48 @@
+{
+  "RootObject": {
+    "__guid": "d560930a-4048-47e9-af4e-d89e467f0612",
+    "Name": "Balloon",
+    "Position": "-342.9224,96.54411,317.7054",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "ModelRenderer",
+        "__guid": "4f4ad732-3f9b-4c32-bbb6-1b1131399c95",
+        "BodyGroups": 18446744073709551615,
+        "Model": "models/citizen_props/balloonregular01.vmdl",
+        "RenderType": "On",
+        "Tint": "1,0,0,1"
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "f3dccc5d-721c-441d-874c-0a8f23ad9b26",
+        "IsTrigger": false,
+        "Model": "models/citizen_props/balloonregular01.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "2af88894-2a32-435c-b6eb-e93953e0e4c4",
+        "AngularDamping": 0,
+        "Gravity": false,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      },
+      {
+        "__type": "Balloon",
+        "__guid": "dc04fe2b-5499-4476-a493-d2894b5b64a5"
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

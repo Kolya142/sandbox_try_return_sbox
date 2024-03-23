@@ -28,6 +28,14 @@ namespace Sandbox
 						{
 							hitObject.Components.GetInChildrenOrSelf<Playercontroller>().Health -= 4.5f;
 						}
+						if ( hitObject.Components.GetInChildrenOrSelf<Balloon>() != null )
+						{
+							hitObject.Destroy();
+							var particle = new SceneParticles( Player.Scene.SceneWorld, "particles/tool_hit.vpcf" );
+							particle.SetControlPoint( 0, aim.HitPosition );
+							particle.SetControlPoint( 0, Rotation.Identity );
+							Player.particles.Add( particle );
+						}
 
 						if ( hitObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
 						{

@@ -3,6 +3,7 @@ using Sandbox;
 public sealed class GameController : Component
 {
 	[Property] public GameObject ServerTitle;
+	[Property] public GameObject BallonPrefab;
 
 	protected override void OnAwake()
 	{

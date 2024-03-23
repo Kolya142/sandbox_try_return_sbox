@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "e114652f-12d2-4565-aa5e-e899983a10e2",
+    "__guid": "5ea5bb83-e0f6-402d-bcb8-1129bf8168d9",
     "Name": "player",
     "Tags": "player",
     "Enabled": true,
@@ -8,31 +8,35 @@
     "Components": [
       {
         "__type": "Playercontroller",
-        "__guid": "e7101f4d-3a5e-474b-91c8-f2a72326de2a",
+        "__guid": "cc8b2b71-332a-4796-8bdb-f59001eb2329",
         "aim_show": {
           "_type": "gameobject",
-          "go": "2dc977d6-2062-4cf1-b52c-7388fa15ab84"
+          "go": "aa13a986-8e8b-4691-af2a-c8dfb20fa5d8"
         },
         "chat": {
           "_type": "gameobject",
-          "go": "5a25ad89-c6ed-4a82-ae61-46f1d06ec697"
+          "go": "c8139229-b813-4e05-9e0b-969c292591d8"
+        },
+        "modelself": {
+          "_type": "gameobject",
+          "go": "0bb51b9b-fb17-44a2-bc2b-e1efbb2b9378"
         },
         "point": {
           "_type": "gameobject",
-          "go": "f97b7297-2b95-44c6-a748-1dd7e10b6955"
+          "go": "b5d4e02d-487a-4b9a-ad0f-3e9ab364e32c"
         }
       }
     ],
     "Children": [
       {
-        "__guid": "2dc977d6-2062-4cf1-b52c-7388fa15ab84",
+        "__guid": "aa13a986-8e8b-4691-af2a-c8dfb20fa5d8",
         "Name": "Point",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "8b190101-982c-4334-8398-6475cc29a6e0",
+        "__guid": "b69b9ff4-0c5a-46b1-8c18-a159a182bbe3",
         "Name": "Line",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
@@ -40,7 +44,7 @@
         "Components": [
           {
             "__type": "LineRenderer",
-            "__guid": "be706748-abaa-401a-afcb-3e7e26875660",
+            "__guid": "b16799f8-b578-4772-b6bb-7e47437638c7",
             "Color": {
               "color": [
                 {
@@ -58,11 +62,11 @@
             "Points": [
               {
                 "_type": "gameobject",
-                "go": "2dc977d6-2062-4cf1-b52c-7388fa15ab84"
+                "go": "aa13a986-8e8b-4691-af2a-c8dfb20fa5d8"
               },
               {
                 "_type": "gameobject",
-                "go": "f97b7297-2b95-44c6-a748-1dd7e10b6955"
+                "go": "b5d4e02d-487a-4b9a-ad0f-3e9ab364e32c"
               }
             ],
             "SplineBias": 0,
@@ -80,14 +84,14 @@
         ]
       },
       {
-        "__guid": "f97b7297-2b95-44c6-a748-1dd7e10b6955",
+        "__guid": "b5d4e02d-487a-4b9a-ad0f-3e9ab364e32c",
         "Name": "Point (1)",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "5a25ad89-c6ed-4a82-ae61-46f1d06ec697",
+        "__guid": "c8139229-b813-4e05-9e0b-969c292591d8",
         "Name": "Text",
         "Position": "0,0,28.32174",
         "Enabled": true,
@@ -95,7 +99,7 @@
         "Components": [
           {
             "__type": "TextRenderer",
-            "__guid": "060c9a9f-2e04-4c20-ae35-e9572506d6f2",
+            "__guid": "588b6b03-de21-4d94-904f-ce5b9e352f7b",
             "Color": "0.45103,0.47149,0.5297,1",
             "FontFamily": "Poppins",
             "FontSize": 64,
@@ -105,7 +109,7 @@
         ]
       },
       {
-        "__guid": "884e794a-6464-48aa-abfe-1be693067229",
+        "__guid": "0bb51b9b-fb17-44a2-bc2b-e1efbb2b9378",
         "Name": "Object",
         "Position": "24.60003,0,0",
         "Rotation": "0,-0.7071068,0,0.7071068",
@@ -114,16 +118,23 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "132919b0-5cf2-438d-87d5-e162ee7d14f8",
+            "__guid": "b9d98ea4-e761-440b-9cbb-64cc5c1d84ce",
             "BodyGroups": 18446744073709551615,
             "Model": "models/arrow.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
+          },
+          {
+            "__type": "ModelCollider",
+            "__guid": "21627102-59d3-454d-a91c-1808f8e7dd27",
+            "IsTrigger": false,
+            "Model": "models/arrow.vmdl",
+            "Static": true
           }
         ]
       },
       {
-        "__guid": "ca17dc40-2f9c-4a70-9fb7-437266b24a2f",
+        "__guid": "a584d07a-a1e6-49cc-933a-28b008a27fbf",
         "Name": "World",
         "Position": "0,0,42.4635",
         "Rotation": "0,0,-1,0.0000001947072",
@@ -132,7 +143,7 @@
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "3ce318f2-79f3-4c18-b14e-df2712cebefb",
+            "__guid": "2ece1c71-1e4d-4b78-83ad-afed717fdf39",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "256,256",
@@ -141,10 +152,10 @@
           },
           {
             "__type": "Avatorshow",
-            "__guid": "bb95873a-dc96-4fac-99cb-b2f0db5044fb",
+            "__guid": "b454bcb9-c87d-44ec-bd30-c94c71d8b603",
             "Player": {
               "_type": "gameobject",
-              "go": "e114652f-12d2-4565-aa5e-e899983a10e2"
+              "go": "5ea5bb83-e0f6-402d-bcb8-1129bf8168d9"
             }
           }
         ]

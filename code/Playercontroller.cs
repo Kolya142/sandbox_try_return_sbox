@@ -8,6 +8,7 @@ public sealed class Playercontroller : Component
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
 	[Property] public GameObject chat;
+	[Property] public GameObject modelself;
 	public Model model = Model.Cube;
 	public Color color = Color.Green;
 	public Vector3 scale = Vector3.One;
@@ -32,7 +33,7 @@ public sealed class Playercontroller : Component
 	int ind = 0;
 	bool cnasd = true;
 	public List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Display", "Save", "Rope", "Weld"];
+	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Balloon", "Display", "Save", "Rope", "Weld"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
@@ -64,6 +65,7 @@ public sealed class Playercontroller : Component
 		return Scene.Trace.Ray(start, end )
 			.UsePhysicsWorld()
 			.Radius(2f)
+			.IgnoreGameObject(modelself)
 			.WithoutTags([ "ragdoll" ])
 			.Run();
 	}
@@ -110,6 +112,7 @@ public sealed class Playercontroller : Component
 			}
 			// Network.OwnerConnection.SteamId
 		}
+		/*
 		if ( cnasd )
 		{
 			try
@@ -122,6 +125,7 @@ public sealed class Playercontroller : Component
 				Log.Info( "WHAT, IS ERROR?" );
 			}
 		}
+		*/
 		if ( isMe && ( !Input.Down( "Use" ) || Tools[ind] != "PhysGun") )
 		{
 			angles += Input.AnalogLook * 0.5f;
@@ -167,7 +171,11 @@ public sealed class Playercontroller : Component
 		}
 		else
 		{
-			gun.Transform.Scale = Vector3.Zero;
+			gun.Transform.Position = Vector3.Down * 100f;
+		}
+		if ( Tools[ind] == "Balloon" )
+		{
+			BallonTool.Balloon( aim, this );
 		}
 		/*
 		if ( Tools[ind] == "Thruster" )
