@@ -5,7 +5,7 @@ Hud {
 
 	.crosshair {
 		position: absolute;
-		background-color: red;
+		background-color: rgba(black, 0.1);
 		height: 20px;
 		width: 20px;
 		transform: translate(-50%, -50%);

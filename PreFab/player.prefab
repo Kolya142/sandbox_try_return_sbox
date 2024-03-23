@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "f6bea010-bfa3-4af4-b2a4-61c445c9e5d4",
+    "__guid": "e114652f-12d2-4565-aa5e-e899983a10e2",
     "Name": "player",
     "Tags": "player",
     "Enabled": true,
@@ -8,31 +8,31 @@
     "Components": [
       {
         "__type": "Playercontroller",
-        "__guid": "d401c677-7604-442c-8780-bc9a68e0a17e",
+        "__guid": "e7101f4d-3a5e-474b-91c8-f2a72326de2a",
         "aim_show": {
           "_type": "gameobject",
-          "go": "1e19bf51-a001-448e-b5cf-b186df6b8c47"
+          "go": "2dc977d6-2062-4cf1-b52c-7388fa15ab84"
         },
         "chat": {
           "_type": "gameobject",
-          "go": "ce86af36-6012-4625-b3db-37aa0ae62d57"
+          "go": "5a25ad89-c6ed-4a82-ae61-46f1d06ec697"
         },
         "point": {
           "_type": "gameobject",
-          "go": "645340ee-0cb1-4859-b305-5d3f028e1a78"
+          "go": "f97b7297-2b95-44c6-a748-1dd7e10b6955"
         }
       }
     ],
     "Children": [
       {
-        "__guid": "1e19bf51-a001-448e-b5cf-b186df6b8c47",
+        "__guid": "2dc977d6-2062-4cf1-b52c-7388fa15ab84",
         "Name": "Point",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "24eca72f-612d-4a63-aa50-17bdb65f77fb",
+        "__guid": "8b190101-982c-4334-8398-6475cc29a6e0",
         "Name": "Line",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
@@ -40,7 +40,7 @@
         "Components": [
           {
             "__type": "LineRenderer",
-            "__guid": "c634cd11-238f-4187-bac9-27b1a0809d00",
+            "__guid": "be706748-abaa-401a-afcb-3e7e26875660",
             "Color": {
               "color": [
                 {
@@ -58,11 +58,11 @@
             "Points": [
               {
                 "_type": "gameobject",
-                "go": "1e19bf51-a001-448e-b5cf-b186df6b8c47"
+                "go": "2dc977d6-2062-4cf1-b52c-7388fa15ab84"
               },
               {
                 "_type": "gameobject",
-                "go": "645340ee-0cb1-4859-b305-5d3f028e1a78"
+                "go": "f97b7297-2b95-44c6-a748-1dd7e10b6955"
               }
             ],
             "SplineBias": 0,
@@ -80,32 +80,32 @@
         ]
       },
       {
-        "__guid": "645340ee-0cb1-4859-b305-5d3f028e1a78",
+        "__guid": "f97b7297-2b95-44c6-a748-1dd7e10b6955",
         "Name": "Point (1)",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "ce86af36-6012-4625-b3db-37aa0ae62d57",
+        "__guid": "5a25ad89-c6ed-4a82-ae61-46f1d06ec697",
         "Name": "Text",
-        "Position": "0,0,51.48011",
+        "Position": "0,0,28.32174",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "TextRenderer",
-            "__guid": "bff94747-184e-4ac0-8019-1787d1c2a28a",
+            "__guid": "060c9a9f-2e04-4c20-ae35-e9572506d6f2",
             "Color": "0.45103,0.47149,0.5297,1",
             "FontFamily": "Poppins",
             "FontSize": 64,
             "Scale": 0.3,
-            "Text": "\u0022Chat\u0022\nI make"
+            "Text": "User"
           }
         ]
       },
       {
-        "__guid": "8e0aba2f-da62-4352-bbd0-0b141dedf534",
+        "__guid": "884e794a-6464-48aa-abfe-1be693067229",
         "Name": "Object",
         "Position": "24.60003,0,0",
         "Rotation": "0,-0.7071068,0,0.7071068",
@@ -114,11 +114,38 @@
         "Components": [
           {
             "__type": "ModelRenderer",
-            "__guid": "c7131749-212b-4e53-9196-05aa0335e944",
+            "__guid": "132919b0-5cf2-438d-87d5-e162ee7d14f8",
             "BodyGroups": 18446744073709551615,
             "Model": "models/arrow.vmdl",
             "RenderType": "On",
             "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "ca17dc40-2f9c-4a70-9fb7-437266b24a2f",
+        "Name": "World",
+        "Position": "0,0,42.4635",
+        "Rotation": "0,0,-1,0.0000001947072",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "WorldPanel",
+            "__guid": "3ce318f2-79f3-4c18-b14e-df2712cebefb",
+            "HorizontalAlign": "Center",
+            "LookAtCamera": false,
+            "PanelSize": "256,256",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Avatorshow",
+            "__guid": "bb95873a-dc96-4fac-99cb-b2f0db5044fb",
+            "Player": {
+              "_type": "gameobject",
+              "go": "e114652f-12d2-4565-aa5e-e899983a10e2"
+            }
           }
         ]
       }

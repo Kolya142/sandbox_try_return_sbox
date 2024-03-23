@@ -965,6 +965,83 @@
       ]
     },
     {
+      "__guid": "f714c81f-719d-4de8-b331-63114bb96ab2",
+      "Name": "Cube (36)",
+      "Position": "-402.9318,-311.8571,387.0162",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "19827eef-f83a-4f8b-aa19-5e8f95c85caa",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "0.4245,1,0.40465,1"
+        },
+        {
+          "__type": "SphereCollider",
+          "__guid": "8f59e3b0-f20d-4b83-9851-5c02ebbec9c4",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 10,
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "e992c6e8-bd33-45ab-8669-e43e3548eb71",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        },
+        {
+          "__type": "SpringJoint",
+          "__guid": "a5fe418b-7949-4ace-978c-fbf6e45cd0fe",
+          "Body": {
+            "_type": "gameobject",
+            "go": "eea4d23c-b411-4407-978d-8f15f89da76e"
+          },
+          "BreakForce": 0,
+          "BreakTorque": 0,
+          "Damping": 0.7,
+          "EnableCollision": false,
+          "Frequency": 4.5,
+          "MaxLength": 0,
+          "MinLength": 0
+        }
+      ]
+    },
+    {
+      "__guid": "eea4d23c-b411-4407-978d-8f15f89da76e",
+      "Name": "Cube (37)",
+      "Position": "-529.8755,-311.8571,404.8279",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "ee1f334b-439d-4375-b403-b8f5d8e5a76c",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/sphere.vmdl",
+          "RenderType": "On",
+          "Tint": "1,0.40465,0.90078,1"
+        },
+        {
+          "__type": "SphereCollider",
+          "__guid": "36c0b1a6-70fc-4423-a404-d23729514d58",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Radius": 10,
+          "Static": true
+        }
+      ]
+    },
+    {
       "__guid": "ba1cd399-53b6-44b6-bfc6-0fa3c30ff1d3",
       "Name": "Cube (15)",
       "Position": "-223.4355,-311.8571,182.8118",
@@ -2243,6 +2320,51 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "6d7ed638-804b-4da0-92cf-20232b6ca6cd",
+      "Name": "Object",
+      "Position": "-425.8625,-191.7747,384.0118",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "LineRenderer",
+          "__guid": "d3ba7d68-5584-4bd8-941c-f53d86bc0e3c",
+          "Color": {
+            "color": [
+              {
+                "t": 0.5,
+                "c": "0,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "EndCap": "None",
+          "Opaque": true,
+          "Points": [
+            {
+              "_type": "gameobject",
+              "go": "f714c81f-719d-4de8-b331-63114bb96ab2"
+            },
+            {
+              "_type": "gameobject",
+              "go": "eea4d23c-b411-4407-978d-8f15f89da76e"
+            }
+          ],
+          "SplineBias": 0,
+          "SplineContinuity": 0,
+          "SplineInterpolation": 0,
+          "SplineTension": 0,
+          "StartCap": "None",
+          "Width": [
+            {
+              "y": 0.5
+            }
+          ],
+          "Wireframe": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2268,7 +2390,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-22T22:44:00.327227\u002B03:00",
+  "LastSaved": "2024-03-23T14:10:09.138933\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

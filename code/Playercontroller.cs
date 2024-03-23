@@ -4,36 +4,36 @@ using System.Text.Json.Nodes;
 public sealed class Playercontroller : Component
 {
 	Angles angles = new Angles();
-	Angles angles_object = new Angles();
+	public Angles angles_object = new Angles();
 	[Property] public GameObject aim_show;
 	[Property] public GameObject point;
 	[Property] public GameObject chat;
 	public Model model = Model.Cube;
 	public Color color = Color.Green;
-	Vector3 scale = Vector3.One;
-	Boolean isMe;
+	public Vector3 scale = Vector3.One;
+	public Boolean isMe;
 	string SteamName = "No Name";
 	bool netInit;
-	bool CanDrag;
+	public bool CanDrag;
 	CameraComponent Camera;
-	Vector3 lastobjectPos;
-	Vector3 offsetobject;
-	GameObject moveObject = null;
-	GameObject lastObject = null;
+	public Vector3 lastobjectPos;
+	public Vector3 offsetobject;
+	public GameObject moveObject = null;
+	public GameObject lastObject = null;
 	bool isChange = false;
-	float distObject;
+	public float distObject;
 	BBox hull = new BBox(
 		new Vector3( -10 ),
 		new Vector3( 10 )
 	);
 	int ind = 0;
-	List<SceneParticles> particles = new List<SceneParticles>();
+	public List<SceneParticles> particles = new List<SceneParticles>();
 	string[] Tools = ["PhysGun", "Scale", "GravGun", "Remove", "Color", "Display", "Save", "Rope", "Weld"];
-	Dictionary<GameObject, Color> DefaultColors = new();
+	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
-	private List<Color> cycleColors = new List<Color> { Color.Red, Color.Green, Color.Cyan, Color.Blue, Color.Yellow, Color.Magenta, Color.Orange, Color.Yellow };
-	private Dictionary<GameObject, int> currentColorIndex = new Dictionary<GameObject, int>();
+	public List<Color> cycleColors = new List<Color> { Color.Red, Color.Green, Color.Cyan, Color.Blue, Color.Yellow, Color.Magenta, Color.Orange, Color.Yellow };
+	public Dictionary<GameObject, int> currentColorIndex = new Dictionary<GameObject, int>();
 
 
 	protected override void OnAwake()
@@ -43,7 +43,6 @@ public sealed class Playercontroller : Component
 		Camera = Scene.Camera.Components.Get<CameraComponent>();
 		Camera.FieldOfView = 80;
 		// chat.Components.GetInChildrenOrSelf<TextRenderer>().Text
-
 
 	}
 	private SceneTraceResult Trace(Vector3 start, Vector3 end)
@@ -95,6 +94,7 @@ public sealed class Playercontroller : Component
 			{
 				textRenderer.Text = SteamName;
 			}
+			// Network.OwnerConnection.SteamId
 		}
 		// chat.Transform.Rotation = Camera.Transform.Rotation; TODO fix this
 		if ( isMe && ( !Input.Down( "Use" ) || Tools[ind] != "PhysGun") )
@@ -103,47 +103,55 @@ public sealed class Playercontroller : Component
 			angles.pitch = angles.pitch.Clamp( -60f, 90f );
 			Transform.Rotation = Rotation.Lerp( Transform.Rotation, angles.ToRotation(), Time.Delta * 16f );
 		}
+
 		SceneTraceResult aim = Trace( Transform.Position, Transform.Position + Transform.Rotation.Forward * 5000f );
-		aim_show.Transform.Position = aim.EndPosition;
-		if ( isMe ) 
-			point.Transform.Position = Transform.Position + Transform.Rotation.Forward * 50f + Transform.Rotation.Right * 40f;
-		else
+		if ( !isMe )
+		{	
+			aim_show.Transform.Position = aim.EndPosition;
 			point.Transform.Position = Transform.Position;
+		}
+		else if ( aim.Hit )
+		{
+			Gizmo.Draw.Color = Color.Cyan;
+			Gizmo.Draw.SolidSphere( aim.HitPosition, 5f, 50 );
+		}
 		if ( Tools[ind] == "PhysGun" )
 		{
-			PhysGun( aim );
+			PhysGunTool.PhysGun( aim, this );
 		}
 		if ( Tools[ind] == "Scale" )
 		{
-			Scale( aim );
+			ScaleTool.Scale( aim, this );
 		}
 		if ( Tools[ind] == "GravGun" )
 		{
-			GravGun( aim );
+			GravGunTool.GravGun( aim, this );
 		}	
 		if ( Tools[ind] == "Remove" )
 		{
-			Remove( aim );
+			RemoveTool.Remove( aim, this );
 		}
 		if ( Tools[ind] == "Color" )
 		{
-			ColorTool( aim );
+			ColorTool.Color( aim, this );
 		}
+		/*
 		if ( Tools[ind] == "Thruster" )
 		{
 			Thruster( aim );
 		}
+		*/
 		if ( Tools[ind] == "Save" )
 		{
-			Save( aim );
+			SaveTool.Save( aim, this );
 		}
 		if ( Tools[ind] == "Rope" )
 		{
-			Rope( aim );
+			RopeTool.Rope( aim, this );
 		}
 		if ( Tools[ind] == "Weld" )
 		{
-			Weld( aim );
+			WeldTool.Weld( aim, this );
 		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
@@ -182,89 +190,7 @@ public sealed class Playercontroller : Component
 		}
 	}
 
-	private void JointLine( GameObject a, GameObject b )
-	{
-		GameObject Line = new();
-		Line.Components.Create<LineRenderer>();
-		Line.Components.GetInChildrenOrSelf<LineRenderer>().Color = Color.Cyan;
-		List<GameObject> points = new();
-		points.Add( a );
-		points.Add( b );
-		Line.Components.GetInChildrenOrSelf<LineRenderer>().Points = points;
-		List<Curve.Frame> frames = new();
-		frames.Add( new Curve.Frame( 0, 1 ) );
-		frames.Add( new Curve.Frame( 1, 1 ) );
-		Line.Components.GetInChildrenOrSelf<LineRenderer>().Width = new Curve( frames );
-	}
-
-	private void Weld( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && Input.Pressed( "attack1" ) )
-		{
-			if ( lastObject == null )
-			{
-				lastObject = picker;
-			}
-			else
-			{
-				lastObject.Components.Create<FixedJoint>();
-				lastObject.Components.GetInChildrenOrSelf<FixedJoint>().Body = picker;
-				picker.Components.Create<FixedJoint>();
-				picker.Components.GetInChildrenOrSelf<FixedJoint>().Body = lastObject;
-				JointLine( picker, lastObject );
-				lastObject = null;
-			}
-		}
-	}
-
-	private void Rope( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && Input.Pressed( "attack1" ) )
-		{
-			if ( lastObject == null )
-			{
-				lastObject = picker;
-			}
-			else
-			{
-				lastObject.Components.Create<SpringJoint>();
-				lastObject.Components.GetInChildrenOrSelf<SpringJoint>().Body = picker;
-				lastObject.Components.GetInChildrenOrSelf<SpringJoint>().Frequency = 0.6f;
-				picker.Components.Create<SpringJoint>();
-				picker.Components.GetInChildrenOrSelf<SpringJoint>().Body = lastObject;
-				picker.Components.GetInChildrenOrSelf<SpringJoint>().Frequency = 0.6f;
-				JointLine( picker, lastObject );
-				lastObject = null;
-			}
-		}
-	}
-
-	private void Save( SceneTraceResult aim )
-	{
-		if ( Input.Pressed( "attack1" ) && Networking.IsHost && isMe )
-		{
-			// Serialize the current scene to a JSON object.
-			foreach ( var obj in Scene.SceneWorld.SceneObjects )
-			{
-				if ( obj.Tags.Has("player") )
-				{
-					obj.Delete();
-				}
-			}
-			JsonObject resource = Scene.Serialize();
-			// Log.Info( resource );
-
-			// Use 'using' statement for automatic resource management.
-			int lastfile = FileSystem.Data.ReadJson<int>( "lastsave" );
-			FileSystem.Data.WriteJson<JsonObject>( $"scene{lastfile}.json", resource ); 
-			FileSystem.Data.WriteJson<int>( "lastsave", lastfile+1 );
-			Game.Disconnect();
-			Game.Close();
-		}
-	}
-
+	/*
 	private void Thruster( SceneTraceResult aim )
 	{
 		GameObject picker = aim.GameObject;
@@ -276,230 +202,7 @@ public sealed class Playercontroller : Component
 			}
 		}
 	}
-
-	private void ColorTool( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
-		{
-			if ( Input.Pressed( "attack1" ) )
-			{
-				if ( !DefaultColors.ContainsKey( picker ) )
-				{
-					DefaultColors.Add( picker, picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint );
-				}
-				if ( currentColorIndex.ContainsKey( picker ) )
-				{
-					currentColorIndex[picker]++;
-					currentColorIndex[picker] = currentColorIndex[picker] % cycleColors.Count;
-				}
-				else
-				{
-					currentColorIndex[picker] = 0;
-				}
-				picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = cycleColors[currentColorIndex[picker]];
-			}
-			else if ( Input.Pressed( "attack2" ) && DefaultColors.ContainsKey( picker ) )
-			{
-				currentColorIndex[picker] = 0;
-				picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = DefaultColors[picker];
-			}
-		}
-	}
-
-	private void Remove( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
-		{
-			if ( Input.Pressed( "attack1" ) )
-			{
-				picker.Destroy();
-			}
-		} 
-	}
-
-	private void GravGun( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && aim.Distance < 500f ) {
-			if ( Input.Pressed( "attack2" ) )
-			{
-				if ( moveObject == null )
-				{
-					moveObject = picker;
-					if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-					{
-						moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = false;
-					}
-				}
-				else
-				{
-					if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-					{
-						moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
-					}
-					moveObject = null;
-				}
-			} 
-			else if ( Input.Pressed( "attack1" ) )
-			{
-				if ( moveObject == null )
-					moveObject = picker;
-				if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-				{
-					moveObject.Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled = true;
-					moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Transform.Rotation.Forward * 1000f;
-				}
-				moveObject = null;
-			}
-		}
-		if ( moveObject != null )
-		{
-			moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * 150f;
-			moveObject.Transform.Rotation = Rotation.Identity;
-			if ( moveObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
-			{
-				moveObject.Components.GetInChildrenOrSelf<Rigidbody>().Velocity = Vector3.Zero;
-			}
-		}
-	}
-
-	private void Scale( SceneTraceResult aim )
-	{
-		GameObject picker = aim.GameObject;
-		if ( picker != null && isMe )
-		{
-			picker.Transform.Scale *= new Vector3( Input.MouseWheel.y * 0.1f + 1f );
-		}
-	}
-
-	private void PhysGun(SceneTraceResult aim)
-	{
-		GameObject picker = aim.GameObject;
-		if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && isMe )
-		{
-			var particle = new SceneParticles( Scene.SceneWorld, "particles/createeffect.vpcf" );
-			particle.SetControlPoint( 0, aim.HitPosition );
-			particle.SetControlPoint( 0, Rotation.Identity );
-			// particles.Add( particle );
-			Sound.PlayFile( SoundFile.Load( "Sounds/balloon_pop_cute.sound" ) );
-			Log.Info( "got \"entitiescount\" stat" );
-			Sandbox.Services.Stats.Increment( "entitiescount", 1 );
-			GameObject newobject = new GameObject( true, "spawned" );
-			newobject.Transform.Position = aim.HitPosition;
-			newobject.Transform.Scale = scale;
-			newobject.Components.Create<ModelRenderer>();
-			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Model = model;
-			if ( model == Model.Cube )
-			{
-				newobject.Components.Create<BoxCollider>();
-			}
-			else if ( model == Model.Sphere )
-			{
-				newobject.Components.Create<SphereCollider>();
-				newobject.Components.GetInChildrenOrSelf<SphereCollider>().Radius *= 2;
-			}
-			else if ( model.Name == "models/dev/plane.vmdl" )
-			{
-				newobject.Components.Create<BoxCollider>();
-				newobject.Components.GetInChildrenOrSelf<BoxCollider>().Scale = new Vector3( 100, 100, 3 );
-			}
-			else
-			{
-				newobject.Components.Create<ModelCollider>();
-				newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = model;
-			}
-			newobject.Components.GetInChildrenOrSelf<ModelRenderer>().Tint = color;
-			Log.Info( model.Name );
-			newobject.Components.Create<Rigidbody>();
-		}
-		if ( Input.Pressed( "Reload" ) && isMe )
-		{
-			model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
-			color = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint;
-			scale = picker.Transform.Scale;
-		}
-		// Log.Info(picker);
-		if ( picker != null && isMe )
-		{
-
-			float dist = MathF.Sqrt(
-								MathF.Pow( aim.HitPosition.x - Transform.Position.x, 2 ) +
-								MathF.Pow( aim.HitPosition.y - Transform.Position.y, 2 ) +
-								MathF.Pow( aim.HitPosition.z - Transform.Position.z, 2 )
-								);
-			if ( Input.Down( "attack1" ) && CanDrag )
-			{
-				if ( moveObject == null )
-				{
-					if ( !picker.Components.GetInChildrenOrSelf<Collider>().Static )
-					{
-						moveObject = picker;
-						distObject = dist;
-						lastobjectPos = picker.Transform.Position;
-						offsetobject = aim.HitPosition - picker.Transform.Position;
-						Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
-						if ( moveBody != null )
-							moveBody.MotionEnabled = false;
-					}
-				}
-				else
-				{
-					distObject += Input.MouseWheel.y * 6f * (Input.Down( "Run" ) ? 2f : 1f);
-					Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
-					moveObject.Transform.Position = Transform.Position + Transform.Rotation.Forward * distObject - offsetobject;
-					if ( moveBody != null )
-					{
-						Vector3 velocity = moveBody.Velocity;
-						Vector3.SmoothDamp( lastobjectPos, moveObject.Transform.Position, ref velocity, 0.9f, Time.Delta );
-						moveBody.Velocity = velocity;
-						lastobjectPos = picker.Transform.Position;
-						if ( Input.Pressed( "attack2" ) )
-						{
-							moveBody.Velocity = Vector3.Zero;
-							moveBody.AngularVelocity = Vector3.Zero;
-							moveBody.AngularDamping = 0;
-							CanDrag = false;
-							var particle = new SceneParticles( Scene.SceneWorld, "particles/physgun_freeze.vpcf" );
-							particle.SetControlPoint( 0, aim.HitPosition );
-							particle.SetControlPoint( 0, Rotation.Identity );
-							particles.Add( particle );
-						}
-					}
-					if ( Input.Pressed( "Use" ) )
-						angles_object = moveObject.Transform.Rotation.Angles();
-					if ( Input.Down( "Use" ) )
-					{
-						// Log.Info( Input.AnalogLook.Forward );
-						angles_object += Input.AnalogLook * 0.5f;
-						Rotation rotation = moveObject.Transform.Rotation;
-						moveObject.Transform.Rotation = Rotation.Lerp( rotation, angles_object.ToRotation(), Time.Delta * 16f );
-					}
-				}
-			}
-			if ( !Input.Down( "attack1" ) && isMe )
-			{
-				if ( moveObject != null && CanDrag )
-				{
-					Rigidbody moveBody = moveObject.Components.GetInChildrenOrSelf<Rigidbody>();
-					if ( moveBody != null )
-					{
-						moveBody.MotionEnabled = true;
-						moveBody.PhysicsBody.Enabled = true;
-						//moveBody.Enabled = true;
-					}
-					if ( moveBody.Velocity.Length > 1000f )
-					{
-						Log.Info( "got \"velua\" stat" );
-						Sandbox.Services.Stats.Increment( "velya", 1 );
-					}
-				}
-				CanDrag = true;
-				moveObject = null;
-			}
-		}
-	}
+	*/
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
