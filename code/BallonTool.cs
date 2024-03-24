@@ -10,16 +10,16 @@ namespace Sandbox
 	{
 		static public void Balloon( SceneTraceResult aim, Playercontroller Player )
 		{
-			if ( !aim.Hit || aim.GameObject == null )
+			if ( !aim.Hit || aim.Body == null )
 				return;
 			if ( Input.Pressed( "attack1" ) )
 			{
 				// Log.Info( 1 );
-				GameObject picker = aim.GameObject;
+				PhysicsBody picker = aim.Body;
 				// Log.Info( Game.ActiveScene.Components.GetAll<GameController>() );
 				GameObject balloon = Game.ActiveScene.Components.GetAll<GameController>().ToArray()[0].BallonPrefab.Clone( aim.HitPosition );
 				// Log.Info( 3 ); 
-				RopeTool.CreateRope( picker, balloon );
+				RopeTool.CreateRope( picker.GetGameObject(), balloon );
 			}
 			else if ( Input.Pressed( "attack2" ) )
 			{

@@ -34,7 +34,7 @@ public sealed class Playercontroller : Component
 	int ind = 0;
 	bool cnasd = true;
 	public List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Balloon", "Display", "Save", "Rope", "Weld"];
+	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Balloon", "Display", "Save", "Rope", "Weld", "Lidar"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
@@ -54,6 +54,7 @@ public sealed class Playercontroller : Component
 		// chat.Components.GetInChildrenOrSelf<TextRenderer>().Text
 
 	}
+
 	public void OnDeath()
 	{
 		if ( Health > 0 )
@@ -61,7 +62,7 @@ public sealed class Playercontroller : Component
 		Health = 100;
 		Transform.Position = Vector3.Zero;
 	}
-	private SceneTraceResult Trace(Vector3 start, Vector3 end)
+	public SceneTraceResult Trace(Vector3 start, Vector3 end)
 	{
 		return Scene.Trace.Ray(start, end )
 			.UsePhysicsWorld()
@@ -84,12 +85,12 @@ public sealed class Playercontroller : Component
 		}
 		for ( int i = 0; i < (int)Tools.Count(); i++ )
 		{
-			if ( Input.Pressed( $"Slot{i + 1}" ) )
+			if ( Input.Pressed( $"Slot{i + 1}" ) && isMe )
 			{
 				ind = i;
 			}
 		}
-		if ( Input.Pressed( "Drop" ) )
+		if ( Input.Pressed( "Drop" ) && isMe )
 		{
 			ind++;
 			ind = ind % Tools.Count();
@@ -109,7 +110,7 @@ public sealed class Playercontroller : Component
 			var textRenderer = chat.Components.GetInChildrenOrSelf<TextRenderer>();
 			if ( textRenderer != null )
 			{
-				textRenderer.Text = SteamName;
+				textRenderer.Text = SteamName + "\nHealth: " + Health.ToString();
 			}
 			// Network.OwnerConnection.SteamId
 		}
@@ -130,7 +131,7 @@ public sealed class Playercontroller : Component
 		if ( isMe && ( !Input.Down( "Use" ) || Tools[ind] != "PhysGun") )
 		{
 			angles += Input.AnalogLook * 0.5f;
-			angles.pitch = angles.pitch.Clamp( -60f, 90f );
+			angles.pitch = angles.pitch.Clamp( -90f, 90f );
 			Transform.Rotation = Rotation.Lerp( Transform.Rotation, angles.ToRotation(), Time.Delta * 16f );
 		}
 
@@ -140,7 +141,7 @@ public sealed class Playercontroller : Component
 			aim_show.Transform.Position = aim.EndPosition;
 			point.Transform.Position = Transform.Position;
 		}
-		else if ( aim.Hit )
+		else if ( aim.Hit && ((Tools[ind] == "PhysGun" && !Input.Down("attack1")) || Tools[ind] != "PhysGun") )
 		{
 			Gizmo.Draw.Color = Color.Cyan;
 			Gizmo.Draw.SolidSphere( aim.HitPosition, 5f, 50 );
@@ -196,6 +197,10 @@ public sealed class Playercontroller : Component
 		{
 			WeldTool.Weld( aim, this );
 		}
+		if ( Tools[ind] == "Lidar" )
+		{
+			LidarTool.Lidar( aim, this );
+		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
 			move *= 5;
@@ -249,5 +254,11 @@ public sealed class Playercontroller : Component
 	protected override void OnDestroy()
 	{
 		base.OnDestroy();
+	}
+
+	[Broadcast]
+	public void Damage(float damage)
+	{
+		Health -= damage;
 	}
 }

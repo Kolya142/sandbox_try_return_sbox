@@ -11,7 +11,8 @@ namespace Sandbox
 		static public void Color( SceneTraceResult aim, Playercontroller Player )
 		{
 			GameObject picker = aim.GameObject;
-			if ( picker != null && Player.isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static )
+			PhysicsBody body = aim.Body;
+			if ( picker != null && Player.isMe && body.BodyType != PhysicsBodyType.Static )
 			{
 				if ( Input.Pressed( "attack1" ) )
 				{

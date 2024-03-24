@@ -12,7 +12,7 @@ public sealed class Balloon : Component
 		if ( !Components.GetInChildrenOrSelf<Rigidbody>().MotionEnabled )
 			return;
 		Vector3 velocity = Components.GetInChildrenOrSelf<Rigidbody>().Velocity;
-		velocity = Vector3.Lerp( velocity, Vector3.Up * 105f, 0.4f );
+		velocity = Vector3.Lerp( velocity, Vector3.Up * 150f, 0.4f );
 		Components.GetInChildrenOrSelf<Rigidbody>().Velocity = velocity;
 	}
 }

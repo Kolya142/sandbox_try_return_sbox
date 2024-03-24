@@ -31,7 +31,7 @@ namespace Sandbox
 		static public void Rope( SceneTraceResult aim, Playercontroller Player )
 		{
 			GameObject picker = aim.GameObject;
-			if ( picker != null && Player.isMe && !picker.Components.GetInChildrenOrSelf<Collider>().Static && Input.Pressed( "attack1" ) )
+			if ( picker != null && Player.isMe && aim.Body.BodyType != PhysicsBodyType.Static && Input.Pressed( "attack1" ) )
 			{
 				if ( Player.lastObject == null )
 				{

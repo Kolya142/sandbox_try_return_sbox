@@ -474,7 +474,7 @@
     {
       "__guid": "5c36464a-ad89-44f0-a173-c8526c2eddca",
       "Name": "Cube (18)",
-      "Position": "-129.7867,-899.9885,304.9324",
+      "Position": "149.7713,-1104.189,304.9324",
       "Enabled": true,
       "NetworkMode": 0,
       "Components": [
@@ -509,9 +509,131 @@
       ]
     },
     {
+      "__guid": "ae83f9bd-eda0-4c92-9047-29221c82a9f5",
+      "Name": "Text (8)",
+      "Position": "165.7118,-1522.192,362.8004",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "09e5e430-896e-4fb8-aa65-21b4dfb9f4d7",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "Ragdoll"
+        }
+      ]
+    },
+    {
+      "__guid": "92e2e252-6616-4970-b98c-e93e9386108f",
+      "Name": "Cube (17)",
+      "Position": "79.69748,-1457.836,285.7402",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SkinnedModelRenderer",
+          "__guid": "d763dd7f-b268-4629-96e6-601984afdf0b",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelPhysics",
+          "__guid": "4e02a0cc-b135-43ff-b063-c2d3b6dab212",
+          "Locking": {},
+          "Model": "models/citizen/citizen.vmdl",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "d763dd7f-b268-4629-96e6-601984afdf0b",
+            "go": "92e2e252-6616-4970-b98c-e93e9386108f",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        }
+      ]
+    },
+    {
+      "__guid": "9fee2d4e-189e-42f2-acec-b7ba8cfafacb",
+      "Name": "Cube (16)",
+      "Position": "79.69748,-1543.259,285.7402",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SkinnedModelRenderer",
+          "__guid": "310c5cae-2f77-4acb-a0c1-848105f5c02d",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen_sfm.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelPhysics",
+          "__guid": "ed97b8df-b44d-41c9-9073-b175a3901b10",
+          "Locking": {},
+          "Model": "models/citizen/citizen_sfm.vmdl",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "310c5cae-2f77-4acb-a0c1-848105f5c02d",
+            "go": "9fee2d4e-189e-42f2-acec-b7ba8cfafacb",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        }
+      ]
+    },
+    {
+      "__guid": "31324059-8f19-41c5-9c46-e26aff8328ee",
+      "Name": "Cube (21)",
+      "Position": "79.69748,-1679.931,285.7402",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SkinnedModelRenderer",
+          "__guid": "4c0d738c-ef94-4934-bd64-158d3c6671f4",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelPhysics",
+          "__guid": "ae140acd-4a32-46ec-a29b-36d563a80f92",
+          "Locking": {},
+          "Model": "models/citizen/citizen.vmdl",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "4c0d738c-ef94-4934-bd64-158d3c6671f4",
+            "go": "31324059-8f19-41c5-9c46-e26aff8328ee",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "CharacterController",
+          "__guid": "da41b371-3480-42d0-b120-3ecba208c0bf",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "",
+          "Radius": 16,
+          "StepHeight": 18
+        }
+      ]
+    },
+    {
       "__guid": "20e1be72-c1ed-4b50-989b-d129773a2111",
       "Name": "Cube (32)",
-      "Position": "-199.8605,-1077.808,304.9324",
+      "Position": "79.69748,-1282.009,304.9324",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -548,7 +670,7 @@
     {
       "__guid": "210eb0e2-b341-4953-846a-808cb500f155",
       "Name": "Cube (31)",
-      "Position": "-199.8605,-981.0549,304.9324",
+      "Position": "79.69748,-1185.255,304.9324",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -585,7 +707,7 @@
     {
       "__guid": "f37bfc21-2aee-40a2-b5cc-9b30c5b23e4c",
       "Name": "Cube (30)",
-      "Position": "-199.8605,-899.9885,304.9324",
+      "Position": "79.69748,-1104.189,304.9324",
       "Enabled": true,
       "NetworkMode": 0,
       "Components": [
@@ -622,7 +744,7 @@
     {
       "__guid": "11485ae7-7883-45bd-972e-4340f499e095",
       "Name": "Cube (35)",
-      "Position": "-273.6767,-1077.808,304.9324",
+      "Position": "5.881287,-1282.009,304.9324",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -659,7 +781,7 @@
     {
       "__guid": "abc3e87c-905f-408a-a9b1-cdee8fc82c44",
       "Name": "Cube (34)",
-      "Position": "-273.6767,-981.0549,304.9324",
+      "Position": "5.881287,-1185.255,304.9324",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -696,7 +818,7 @@
     {
       "__guid": "5cfc6c55-f76d-4524-8a07-ba56841908b3",
       "Name": "Cube (33)",
-      "Position": "-273.6767,-899.9885,304.9324",
+      "Position": "5.881287,-1104.189,304.9324",
       "Enabled": true,
       "NetworkMode": 0,
       "Components": [
@@ -733,7 +855,7 @@
     {
       "__guid": "a383d995-b566-4974-82da-b750b5092a13",
       "Name": "Cube (19)",
-      "Position": "-129.7867,-981.0549,304.9324",
+      "Position": "149.7713,-1185.255,304.9324",
       "Enabled": true,
       "NetworkMode": 1,
       "Components": [
@@ -770,7 +892,7 @@
     {
       "__guid": "75d9b909-bb04-4f2c-ae0d-3134b4487666",
       "Name": "Cube (20)",
-      "Position": "-129.7867,-1077.808,304.9324",
+      "Position": "149.7713,-1282.009,304.9324",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1255,7 +1377,7 @@
           "FontFamily": "Poppins",
           "FontSize": 64,
           "Scale": 0.3,
-          "Text": "IS NOT DEV SERVER"
+          "Text": "IS NOT SERVER, IS LOBBY"
         }
       ]
     },
@@ -1318,7 +1440,7 @@
     {
       "__guid": "06aaa89e-40f1-4534-bc6c-c996fa2b8fdc",
       "Name": "Box",
-      "Position": "-206.1314,-991.8849,269.9224",
+      "Position": "-206.1314,-1474.497,269.9224",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1332,14 +1454,14 @@
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
             "TextureOrigin": "-206.1314,-515.5898,386.056",
             "Positions": [
-              "-143.4927,-164.8726,2.363593",
-              "143.4927,-164.8726,2.363593",
-              "143.4927,164.8726,2.363593",
-              "-143.4927,164.8726,2.363593",
-              "-143.4927,164.8726,-2.363593",
-              "143.4927,164.8726,-2.363593",
-              "143.4927,-164.8726,-2.363593",
-              "-143.4927,-164.8726,-2.363593"
+              "-382.62,-439.6288,6.30247",
+              "382.62,-439.6288,6.30247",
+              "382.62,439.6288,6.30247",
+              "-382.62,439.6288,6.30247",
+              "-382.62,439.6288,-6.30247",
+              "382.62,439.6288,-6.30247",
+              "382.62,-439.6288,-6.30247",
+              "-382.62,-439.6288,-6.30247"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -1387,16 +1509,16 @@
       ]
     },
     {
-      "__guid": "72f8500f-67b8-46d2-8078-e1b10f5d4aec",
+      "__guid": "94b3877c-bb1d-4cea-98e1-dbb2f01b721a",
       "Name": "Box (1)",
-      "Position": "-86.68982,-991.8849,269.9224",
-      "Rotation": "0.5,0.5,0.5,0.5",
+      "Position": "182.5516,-1474.497,645.5848",
+      "Rotation": "0,0.7071068,0,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
         {
           "__type": "MeshComponent",
-          "__guid": "ef9d3227-94a8-4de3-b1ef-d74a47964ef9",
+          "__guid": "624d2104-54db-4bd1-a83b-d35d3ce1dd57",
           "Collision": "Mesh",
           "Color": "1,1,1,1",
           "IsTrigger": false,
@@ -1404,14 +1526,230 @@
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
             "TextureOrigin": "-206.1314,-515.5898,386.056",
             "Positions": [
-              "-167.0168,-164.8726,2.363593",
-              "167.0168,-164.8726,2.363593",
-              "167.0168,164.8726,2.363593",
-              "-167.0168,164.8726,2.363593",
-              "-167.0168,164.8726,-2.363593",
-              "167.0168,164.8726,-2.363593",
-              "167.0168,-164.8726,-2.363593",
-              "-167.0168,-164.8726,-2.363593"
+              "-382.62,-439.6288,6.30247",
+              "382.62,-439.6288,6.30247",
+              "382.62,439.6288,6.30247",
+              "-382.62,439.6288,6.30247",
+              "-382.62,439.6288,-6.30247",
+              "382.62,439.6288,-6.30247",
+              "382.62,-439.6288,-6.30247",
+              "-382.62,-439.6288,-6.30247"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureAngle": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "MaterialIndex": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "a7d4a296-9186-4f7b-98e0-6e7055c5d7dc",
+      "Name": "Box (2)",
+      "Position": "-585.4489,-1474.497,645.5851",
+      "Rotation": "0,0.7071068,0,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MeshComponent",
+          "__guid": "99f708a7-1ac7-4202-91e6-a0317d1c70bc",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "Positions": [
+              "-382.62,-439.6288,6.30247",
+              "382.62,-439.6288,6.30247",
+              "382.62,439.6288,6.30247",
+              "-382.62,439.6288,6.30247",
+              "-382.62,439.6288,-6.30247",
+              "382.62,439.6288,-6.30247",
+              "382.62,-439.6288,-6.30247",
+              "-382.62,-439.6288,-6.30247"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureAngle": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "MaterialIndex": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "799fa09e-d59e-4c43-acae-fe68467d0903",
+      "Name": "Box (3)",
+      "Position": "-201.1859,-1040.371,645.5847",
+      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MeshComponent",
+          "__guid": "24f70787-4229-4d01-a839-b075e0f86c21",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "Positions": [
+              "-382.62,-439.6288,6.30247",
+              "382.62,-439.6288,6.30247",
+              "382.62,439.6288,6.30247",
+              "-382.62,439.6288,6.30247",
+              "-382.62,439.6288,-6.30247",
+              "382.62,439.6288,-6.30247",
+              "382.62,-439.6288,-6.30247",
+              "-382.62,-439.6288,-6.30247"
+            ],
+            "TextureUAxis": [
+              "1,0,0",
+              "1,0,0",
+              "0,-1,0",
+              "0,1,0",
+              "-1,0,0",
+              "1,0,0"
+            ],
+            "TextureVAxis": [
+              "0,-1,0",
+              "0,-1,0",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1",
+              "0,0,-1"
+            ],
+            "TextureScale": [
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25",
+              "0.25,0.25"
+            ],
+            "TextureAngle": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "MaterialIndex": [
+              -1,
+              -1,
+              -1,
+              -1,
+              -1,
+              -1
+            ]
+          },
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "7d4bd6a6-e096-448d-ba56-35ea369c3062",
+      "Name": "Box (4)",
+      "Position": "-201.1859,-1919.962,645.5847",
+      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "MeshComponent",
+          "__guid": "a651f0a2-58d4-48a7-b7c2-42c93978c8fe",
+          "Collision": "Mesh",
+          "Color": "1,1,1,1",
+          "IsTrigger": false,
+          "Mesh": {
+            "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
+            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "Positions": [
+              "-382.62,-439.6288,6.30247",
+              "382.62,-439.6288,6.30247",
+              "382.62,439.6288,6.30247",
+              "-382.62,439.6288,6.30247",
+              "-382.62,439.6288,-6.30247",
+              "382.62,439.6288,-6.30247",
+              "382.62,-439.6288,-6.30247",
+              "-382.62,-439.6288,-6.30247"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -1461,7 +1799,7 @@
     {
       "__guid": "80108227-6142-4fb4-bffe-559e82a68edf",
       "Name": "Text",
-      "Position": "-113.8462,-988.0096,362.8004",
+      "Position": "165.7118,-1192.21,362.8004",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1472,7 +1810,102 @@
           "FontFamily": "Poppins",
           "FontSize": 64,
           "Scale": 0.3,
-          "Text": "Network Test\n1-never, 2-object, 3-snaphot"
+          "Text": "Network Test\n1-never, 2-object, 3-snapshot"
+        }
+      ]
+    },
+    {
+      "__guid": "6f6eba8a-8774-45d1-91aa-16c290248cfb",
+      "Name": "Text (1)",
+      "Position": "-189.1298,-1032.674,540.3512",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "99c5778c-b653-47cd-baff-b00f881f97a2",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Test Box"
+        }
+      ]
+    },
+    {
+      "__guid": "d3e0cc48-f582-4d22-80ab-4f318bd99975",
+      "Name": "Text (4)",
+      "Position": "-189.13,-1032.674,604.8433",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "8f310463-ef44-4f0e-9199-b87b7d71da41",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Test Box"
+        }
+      ]
+    },
+    {
+      "__guid": "fad31dd7-1fca-47ea-9521-d8b0199d8da1",
+      "Name": "Text (5)",
+      "Position": "-189.1302,-1032.674,669.4053",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "a947d15c-cf94-4918-89e6-50fd039e8d8f",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Test Box"
+        }
+      ]
+    },
+    {
+      "__guid": "e6963d1f-95ca-4c9d-a96e-1be8da26347e",
+      "Name": "Text (6)",
+      "Position": "-189.1304,-1032.674,731.8506",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "8df4c2ee-ab4f-4a70-bb4e-fd4b05949319",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Test Box"
+        }
+      ]
+    },
+    {
+      "__guid": "818646f7-c05a-444e-a17f-e224a260eb04",
+      "Name": "Text (7)",
+      "Position": "-189.1306,-1032.674,796.6519",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "2f9effcd-48c3-400a-a549-b2255872f13d",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Test Box"
         }
       ]
     },
@@ -2147,7 +2580,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-23T22:33:05.6253879\u002B03:00",
+  "LastSaved": "2024-03-24T13:57:23.882144\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

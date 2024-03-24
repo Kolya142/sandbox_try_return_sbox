@@ -26,7 +26,7 @@ namespace Sandbox
 					{
 						if ( hitObject.Components.GetInChildrenOrSelf<Playercontroller>() != null )
 						{
-							hitObject.Components.GetInChildrenOrSelf<Playercontroller>().Health -= 4.5f;
+							hitObject.Components.GetInChildrenOrSelf<Playercontroller>().Damage(4.5f);
 						}
 						if ( hitObject.Components.GetInChildrenOrSelf<Balloon>() != null )
 						{

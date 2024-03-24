@@ -84,20 +84,21 @@ namespace Sandbox
 						newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = Player.model;
 					}*/
 				}
-			if ( Input.Pressed( "Reload" ) && Player.isMe )
+			if ( Input.Pressed( "Reload" ) && Player.isMe && picker.Components.GetInChildrenOrSelf<ModelRenderer>() != null )
 			{
 				Player.model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
 				Player.color = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint;
 				Player.scale = picker.Transform.Scale;
 			}
 			// Log.Info(picker);
-			if ( body != null && body.BodyType == PhysicsBodyType.Dynamic && Player.isMe )
+			if ( body != null && body.BodyType != PhysicsBodyType.Static && Player.isMe && Player.moveBody == null )
 			{
-				if ( Input.Pressed( "attack1" ) )
+				if ( Input.Down( "attack1" ) )
 				{
 					Player.moveBody = body;
 					Transform transform = new Transform( aim.HitPosition );
 					Player.offsetobject = transform.PointToLocal( body.Transform.Position );
+					Player.moveBody.Locking = default;
 					Player.moveBody.MotionEnabled = true;
 					Player.distObject = aim.Distance;
 				}
@@ -110,9 +111,46 @@ namespace Sandbox
 				Player.moveBody.SmoothMove( Position, Time.Delta * 3.0f, Time.Delta );
 				// Player.moveBody.Position = Vector3.Lerp( Player.moveBody.Position, Player.Transform.Position + Player.Transform.Rotation.Forward * Player.distObject, Time.Delta * 5f );
 				Gizmo.Draw.Color = Color.Cyan;
-				Gizmo.Draw.SolidSphere( Player.moveBody.Transform.PointToWorld( Player.offsetobject ), 5f, 50 );
+				Gizmo.Draw.SolidSphere( Player.moveBody.Position - Player.offsetobject, 5f, 50 ); 
+
+				Gizmo.Draw.Color = Color.Cyan;
+				Gizmo.Draw.SolidSphere( Position, 5f, 50 );
+
+				Vector3 Start = Player.moveBody.Position - Player.offsetobject;
+				Vector3 End = Position;
+				float dist = Start.Distance( End );
+				Vector3 delta = ( Start - End ).Normal;
+				for ( float n = 0f; n < dist; n += 10f )
+				{
+					Gizmo.Draw.Color = Color.Cyan;
+					Gizmo.Draw.SolidSphere( Start - delta * n, 2f, 50 );
+				}
+
+				Player.distObject += 2f * Input.MouseWheel.y * (Input.Down("run") ? 2f : 1f) * (Input.Down( "duck" ) ? 0.5f : 1f);
 			}
-			if ( !Input.Down( "attack1" ) && Player.moveBody != null )
+			if ( Input.Down( "attack1" ) && Input.Pressed( "attack2" ) )
+			{
+				Player.moveBody.BodyType = PhysicsBodyType.Keyframed;
+				Player.moveBody.Velocity = default;
+				PhysicsLock locking = new PhysicsLock();
+				locking.X = true;
+				locking.Y = true;
+				locking.Z = true;
+				locking.Yaw = true;
+				locking.Pitch = true;
+				locking.Roll = true;
+				Player.moveBody.Locking = locking;
+			}
+			if ( Input.Down( "attack1" ) && Input.Pressed( "use" ) )
+			{
+				Player.angles_object = Player.moveBody.Rotation.Angles();
+			}
+			if ( Input.Down( "attack1" ) && Input.Down( "use" ) )
+			{
+				Player.angles_object += Input.AnalogLook * 0.5f;
+				Player.moveBody.Rotation = Rotation.Lerp( Player.moveBody.Rotation, Player.angles_object.ToRotation(), Time.Delta * 160f );
+			}
+			if ( !Input.Down( "attack1" ) )
 			{
 				Player.moveBody = null;
 				// Player.moveBody.Position = Vector3.Lerp( Player.moveBody.Position, Player.Transform.Position + Player.Transform.Rotation.Forward * Player.distObject, Time.Delta * 5f );
