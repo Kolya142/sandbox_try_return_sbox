@@ -11,6 +11,8 @@ namespace Sandbox
 	{
 		static public void PhysGun( SceneTraceResult aim, Playercontroller Player )
 		{
+			if ( !Player.isMe )
+				return;
 			GameObject picker = aim.GameObject;
 			PhysicsBody body = aim.Body;
 			if ( Input.Pressed( "attack2" ) && !Input.Down( "attack1" ) && Player.isMe )

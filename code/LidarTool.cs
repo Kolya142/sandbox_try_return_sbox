@@ -12,9 +12,9 @@ namespace Sandbox
 		{
 			if ( Player.isMe )
 			{
-				for ( int i = 0; i < Screen.Width; i += 40 )
+				for ( int i = 0; i < Screen.Width; i += 35 )
 				{
-					for ( int j = 0; j < Screen.Height + 20; j += 40 )
+					for ( int j = 0; j < Screen.Height + 20; j += 35 )
 					{
 						Ray ray = Game.ActiveScene.Camera.ScreenPixelToRay( new Vector3( i, j ) );
 						SceneTraceResult traceResut = Player.Trace( ray.Position, ray.Forward * 1000 + ray.Position );

@@ -618,15 +618,14 @@
           "RigidbodyFlags": 0
         },
         {
-          "__type": "CharacterController",
-          "__guid": "da41b371-3480-42d0-b120-3ecba208c0bf",
-          "Acceleration": 10,
-          "Bounciness": 0.3,
-          "GroundAngle": 45,
-          "Height": 64,
-          "IgnoreLayers": "",
-          "Radius": 16,
-          "StepHeight": 18
+          "__type": "LocalCloth",
+          "__guid": "e23d5832-b7f4-44d2-ab69-183c29806c91",
+          "BodyTarget": {
+            "_type": "component",
+            "component_id": "4c0d738c-ef94-4934-bd64-158d3c6671f4",
+            "go": "31324059-8f19-41c5-9c46-e26aff8328ee",
+            "component_type": "SkinnedModelRenderer"
+          }
         }
       ]
     },
@@ -767,6 +766,44 @@
         {
           "__type": "Rigidbody",
           "__guid": "5e941743-cbe5-480a-bcc0-a488855c9b6b",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "74a5ddee-78be-4a11-bf8a-2afc267bec87",
+      "Name": "Cube (22)",
+      "Position": "5.881287,-1417.651,304.9324",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "9adcfa70-d87a-47fe-a59b-6e23fc09a383",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/glass.vmat",
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "ed0fb6f2-66e7-418d-87aa-0b07dcc4ea3e",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "145daed8-9b5c-4569-8178-971d9b6fd185",
           "AngularDamping": 0,
           "Gravity": true,
           "LinearDamping": 0,
@@ -1502,6 +1539,9 @@
               -1,
               -1,
               -1
+            ],
+            "Materials": [
+              "materials/glass.vmat"
             ]
           },
           "Static": true
@@ -2580,7 +2620,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-24T13:57:23.882144\u002B03:00",
+  "LastSaved": "2024-03-24T18:00:22.5403779\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

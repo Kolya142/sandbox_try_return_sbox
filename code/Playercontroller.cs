@@ -34,7 +34,7 @@ public sealed class Playercontroller : Component
 	int ind = 0;
 	bool cnasd = true;
 	public List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Remove", "Color", "Balloon", "Display", "Save", "Rope", "Weld", "Lidar"];
+	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun", "Thruster", "Remove", "Color", "Balloon", "Display", "Save", "Rope", "Weld", "Lidar", "CreateTerry"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
@@ -141,11 +141,6 @@ public sealed class Playercontroller : Component
 			aim_show.Transform.Position = aim.EndPosition;
 			point.Transform.Position = Transform.Position;
 		}
-		else if ( aim.Hit && ((Tools[ind] == "PhysGun" && !Input.Down("attack1")) || Tools[ind] != "PhysGun") )
-		{
-			Gizmo.Draw.Color = Color.Cyan;
-			Gizmo.Draw.SolidSphere( aim.HitPosition, 5f, 50 );
-		}
 		if ( Tools[ind] == "PhysGun" )
 		{
 			PhysGunTool.PhysGun( aim, this );
@@ -166,6 +161,14 @@ public sealed class Playercontroller : Component
 		{
 			ColorTool.Color( aim, this );
 		}
+		if ( Tools[ind] == "Thruster" )
+		{
+			ThrusterTool.Thruster( aim, this );
+		}
+		if ( Tools[ind] == "CreateTerry")
+		{
+			CreateTerryTool.CreateTerry( aim, this );
+		}
 		if ( Tools[ind] == "Gun" )
 		{
 			gun.Transform.Scale = Vector3.One;
@@ -173,7 +176,8 @@ public sealed class Playercontroller : Component
 		}
 		else
 		{
-			gun.Transform.Position = Vector3.Down * 100f;
+			if ( Network.IsOwner )
+				gun.Transform.Position = Vector3.Down * 100f;
 		}
 		if ( Tools[ind] == "Balloon" )
 		{
@@ -200,6 +204,22 @@ public sealed class Playercontroller : Component
 		if ( Tools[ind] == "Lidar" )
 		{
 			LidarTool.Lidar( aim, this );
+		}
+		if ( isMe )
+		{
+			if ( Tools[ind] == "Display" )
+			{
+				Game.ActiveScene.Camera.FieldOfView += 1.5f * Input.MouseWheel.y;
+			}
+			else
+			{
+				if ( isMe && aim.Hit && ((Tools[ind] == "PhysGun" && !Input.Down( "attack1" )) || Tools[ind] != "PhysGun") )
+				{
+					Gizmo.Draw.Color = Color.Cyan;
+					Gizmo.Draw.SolidSphere( aim.HitPosition, 5f, 50 );
+				}
+				Game.ActiveScene.Camera.FieldOfView = 80f;
+			}
 		}
 		Vector3 move = Input.AnalogMove;
 		if ( Input.Down( "Run" ) )
