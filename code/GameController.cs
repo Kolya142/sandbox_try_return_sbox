@@ -4,11 +4,12 @@ public sealed class GameController : Component
 {
 	[Property] public GameObject ServerTitle;
 	[Property] public GameObject BallonPrefab;
+	[Property] public GameObject CarPrefab;
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
-		if ( Networking.IsHost )
+		if ( Networking.IsHost && ServerTitle != null )
 		{
 			if ( Game.IsEditor )
 			{

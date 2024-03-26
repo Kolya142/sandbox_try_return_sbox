@@ -147,7 +147,7 @@
           "GroupName": "Inventory"
         },
         {
-          "Name": "Slot0",
+          "Name": "Slot10",
           "KeyboardCode": "0",
           "GroupName": "Inventory"
         },
@@ -205,6 +205,46 @@
         {
           "Name": "Model",
           "KeyboardCode": "Q",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Map",
+          "KeyboardCode": "M",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "attack3",
+          "KeyboardCode": "MOUSE3",
+          "GroupName": "Actions"
+        },
+        {
+          "Name": "Slot11",
+          "KeyboardCode": "-",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Slot12",
+          "KeyboardCode": "=",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Slot13",
+          "KeyboardCode": "BACKSPACE",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Slot14",
+          "KeyboardCode": "INS",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Slot15",
+          "KeyboardCode": "HOME",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "Slot16",
+          "KeyboardCode": "PGUP",
           "GroupName": "Other"
         }
       ],

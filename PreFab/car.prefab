@@ -1,0 +1,179 @@
+{
+  "RootObject": {
+    "__guid": "50f5f2a9-f377-4fba-bb5a-984d278c3a23",
+    "Name": "car",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "SkinnedModelRenderer",
+        "__guid": "5abf6879-355b-4aac-b5e1-5dc967e9cdf7",
+        "BodyGroups": 18446744073709551615,
+        "CreateBoneObjects": false,
+        "Model": "models/car/car.vmdl",
+        "RenderType": "On",
+        "Tint": "1,1,1,1"
+      },
+      {
+        "__type": "CarController",
+        "__guid": "e83eb544-3f5a-4a6e-b0e9-f9349880447d",
+        "lb": {
+          "_type": "gameobject",
+          "go": "85ee4faa-9068-4321-9c4b-eaf7050459c3"
+        },
+        "lf": {
+          "_type": "gameobject",
+          "go": "2eac0a73-d194-4ce0-8afe-37a21d7518fd"
+        },
+        "rb": {
+          "_type": "gameobject",
+          "go": "0a608f17-ce26-45ec-976e-da20e123ffa1"
+        },
+        "rf": {
+          "_type": "gameobject",
+          "go": "f61c57e8-c741-4b2e-9f10-30115c2a7c55"
+        },
+        "rotationspeed": 200,
+        "speed": 1000
+      },
+      {
+        "__type": "ModelCollider",
+        "__guid": "f775c8e7-b2d7-46c7-b611-166872978241",
+        "IsTrigger": false,
+        "Model": "models/car/car.vmdl",
+        "Static": false
+      },
+      {
+        "__type": "Rigidbody",
+        "__guid": "e3d173e9-8f98-43f8-b4fa-8b5df03b9e5c",
+        "AngularDamping": 0,
+        "Gravity": true,
+        "LinearDamping": 0,
+        "Locking": {},
+        "MassOverride": 0,
+        "MotionEnabled": true,
+        "RigidbodyFlags": 0,
+        "StartAsleep": false
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "0a608f17-ce26-45ec-976e-da20e123ffa1",
+        "Name": "rb",
+        "Position": "28.10001,18,26",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "49ba3a13-1eb0-4df4-8f07-0f3d54f80261",
+            "BodyGroups": 18446744073709551615,
+            "Model": "entities/modular_vehicle/wheel_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "f61c57e8-c741-4b2e-9f10-30115c2a7c55",
+        "Name": "rf",
+        "Position": "-28.5,18,26",
+        "Rotation": "0,0,0.7071068,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "143eb770-d4c1-4073-960c-c9d57d8d02a4",
+            "BodyGroups": 18446744073709551615,
+            "Model": "entities/modular_vehicle/wheel_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "2eac0a73-d194-4ce0-8afe-37a21d7518fd",
+        "Name": "lf",
+        "Position": "28.1,-18,26",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "c3db033c-2db6-4880-ac66-d6e9f72eb1e5",
+            "BodyGroups": 18446744073709551615,
+            "Model": "entities/modular_vehicle/wheel_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "85ee4faa-9068-4321-9c4b-eaf7050459c3",
+        "Name": "lb",
+        "Position": "-28.5,-18,26",
+        "Rotation": "0,-0,-0.7071068,0.7071068",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "9def1296-1e36-4f46-b983-487ad42e0101",
+            "BodyGroups": 18446744073709551615,
+            "Model": "entities/modular_vehicle/wheel_a.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "c79f554e-4875-4ab9-8082-73c19596ba5e",
+        "Name": "fueltank",
+        "Position": "29,0,0",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "6d82195b-78df-4285-8952-0bb755533268",
+            "BodyGroups": 18446744073709551615,
+            "Model": "entities/modular_vehicle/vehicle_fuel_tank.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      },
+      {
+        "__guid": "e26675db-3ce8-4b76-8298-612b564a192d",
+        "Name": "seat",
+        "Position": "2.499997,-12.5,16.49999",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "ModelRenderer",
+            "__guid": "4b294dee-1bfe-4205-bac2-8c67334ab53a",
+            "BodyGroups": 18446744073709551615,
+            "Model": "models/props/couch/seat_right.vmdl",
+            "RenderType": "On",
+            "Tint": "1,1,1,1"
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": [
+    "facepunch.seat_right",
+    "rust.car",
+    "rust.vehicle_fuel_tank",
+    "rust.wheel_a"
+  ]
+}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sandbox.Services;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +28,7 @@ namespace Sandbox
 				GameObject newobject = new GameObject( true, "spawned" );
 				newobject.Transform.Position = aim.HitPosition;
 				newobject.Transform.Scale = Player.scale;
+				Player.ModelLoad( Player.model.Name, false );
 				// Player.model.BoneCount
 				if ( Player.model.BoneCount > 1 )
 				{
@@ -37,6 +39,7 @@ namespace Sandbox
 					newobject.Components.GetInChildrenOrSelf<ModelPhysics>().Renderer = newobject.Components.GetInChildrenOrSelf<SkinnedModelRenderer>();
 					newobject.Components.GetInChildrenOrSelf<SkinnedModelRenderer>().Tint = Player.color;
 					Log.Info( Player.model.Name );
+					Stats.Increment( "ctsp", 1 );
 				}
 				else
 				{
@@ -65,6 +68,7 @@ namespace Sandbox
 					}
 					newobject.Components.Create<Rigidbody>();
 				}
+				newobject.NetworkSpawn( Player.Network.OwnerConnection );
 					/*
 					if ( Player.model == Model.Cube )
 					{
@@ -103,14 +107,15 @@ namespace Sandbox
 					Player.moveBody.Locking = default;
 					Player.moveBody.MotionEnabled = true;
 					Player.distObject = aim.Distance;
+					Player.angles_object = Player.moveBody.Rotation.Angles();
 				}
 			}
 			if ( Input.Down( "attack1" ) && Player.moveBody != null )
 			{
-				Vector3 Position = Player.Transform.Position + Player.Transform.Rotation.Forward * Player.distObject;
+				Vector3 Position = Player.EyePosition() + Player.EyeRotatation.Forward * Player.distObject;
 				Transform transform = new Transform( Position );
 				Position = transform.PointToWorld( Player.offsetobject );
-				Player.moveBody.SmoothMove( Position, Time.Delta * 3.0f, Time.Delta );
+				Player.moveBody.SmoothMove( Position, Time.Delta * 3 * (Player.moveBody.Mass / 100000f), Time.Delta );
 				// Player.moveBody.Position = Vector3.Lerp( Player.moveBody.Position, Player.Transform.Position + Player.Transform.Rotation.Forward * Player.distObject, Time.Delta * 5f );
 				Gizmo.Draw.Color = Color.Cyan;
 				Gizmo.Draw.SolidSphere( Player.moveBody.Position - Player.offsetobject, 5f, 50 ); 
@@ -127,6 +132,8 @@ namespace Sandbox
 					Gizmo.Draw.Color = Color.Cyan;
 					Gizmo.Draw.SolidSphere( Start - delta * n, 2f, 50 );
 				}
+				Player.moveBody.Rotation = Rotation.Lerp( Player.moveBody.Rotation, Player.angles_object.ToRotation(), Time.Delta * 6f );
+				Player.angles_object = Angles.Lerp( Player.angles_object, Player.moveBody.Rotation.Angles(), Time.Delta * 2f );
 
 				Player.distObject += 2f * Input.MouseWheel.y * (Input.Down("run") ? 2f : 1f) * (Input.Down( "duck" ) ? 0.5f : 1f);
 			}
@@ -143,14 +150,9 @@ namespace Sandbox
 				locking.Roll = true;
 				Player.moveBody.Locking = locking;
 			}
-			if ( Input.Down( "attack1" ) && Input.Pressed( "use" ) )
-			{
-				Player.angles_object = Player.moveBody.Rotation.Angles();
-			}
 			if ( Input.Down( "attack1" ) && Input.Down( "use" ) )
 			{
 				Player.angles_object += Input.AnalogLook * 0.5f;
-				Player.moveBody.Rotation = Rotation.Lerp( Player.moveBody.Rotation, Player.angles_object.ToRotation(), Time.Delta * 160f );
 			}
 			if ( !Input.Down( "attack1" ) )
 			{

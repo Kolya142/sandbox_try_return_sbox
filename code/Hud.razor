@@ -8,7 +8,7 @@
 @namespace GeneralGame
 
 <root style="pointer-events: @(isSelect ? "all" : "none");">
-	@if (Tools[ind] != "Display") {
+	@if (Tools[ind] != "Camera") {
 	<div class="output">
 		@foreach (var entry in Entries)
 		{
@@ -20,15 +20,15 @@
 	</div>
 	}
 	<div class="tool">Current Tool: @Tools[ind]</div>
-	@if (Tools[ind] != "Display") {
-	<div class="info">ping: @Networking.HostConnection.Ping, Press q to select model, Press g to next tool</div>
+	@if (Tools[ind] != "Camera") {
+	<div class="info">ping: @Networking.HostConnection.Ping, Press q to select model, Press m to change map(server only), Press g to next tool</div>
 	<div class="health">Health: @(Playercontroller.Local != null ? Playercontroller.Local.Health : -1)</div>
 	<div class="crosshair" />
 	<TextEntry @ref="InputBox" onsubmit="@ChatFinished"></TextEntry>
 	<div class="tools">
-		@foreach (var tool in Tools) {
+		@for (int i = 0; i < Tools.Length; i++) {
 			<div class="tool1">
-				@tool
+				@(i+1): @Tools[i]
 			</div>
 		}
 	</div>
@@ -44,7 +44,7 @@
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Gun", "Scale", "GravGun(too stange)", "Thruster", "Remove", "Color", "Balloon", "Display", "Save&Quit(lmb)", "Rope", "Weld", "Lidar", "CreateTerry"];
+	string[] Tools = ["PhysGun", "Spawner", "Scale", "GravGun(too stange)", "Thruster", "Remove", "Color", "Balloon", "Light", "Camera", "Info", "Save&Quit(lmb)", "Rope", "Weld", "Lidar", "CreateTerry"];
 	private TextEntry InputBox { get; set; }
 	bool isSelect = false;
 	private List<Entry> Entries { get; set; } = new();
@@ -56,6 +56,11 @@
 		Playercontroller.Local.model = Model.Load(packageg.GetMeta("PrimaryAsset", ""));
 		Playercontroller.Local.color = Color.White;
 	}
+
+	private void OnMapPress()
+	{
+		Game.ActiveScene.LoadFromFile("scenes/custommap.scene");
+	}
 	protected override void OnUpdate()
     {
 		if (Input.Pressed("Drop")) {
@@ -64,6 +69,9 @@
 		}
 		if (Input.Pressed("Model")) {
 			isSelect = true;
+		}
+		if (Input.Pressed("Map")) {
+			OnMapPress();
 		}
 		for ( int i = 0; i < (int)Tools.Count(); i++ ) {
 			if ( Input.Pressed($"Slot{i+1}") ) {

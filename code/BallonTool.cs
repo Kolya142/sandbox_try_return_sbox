@@ -19,7 +19,14 @@ namespace Sandbox
 				// Log.Info( Game.ActiveScene.Components.GetAll<GameController>() );
 				GameObject balloon = Game.ActiveScene.Components.GetAll<GameController>().ToArray()[0].BallonPrefab.Clone( aim.HitPosition );
 				// Log.Info( 3 ); 
-				RopeTool.CreateRope( picker.GetGameObject(), balloon );
+
+				GameObject a = new GameObject();
+				a.Transform.Position = aim.HitPosition;
+				a.Components.Create<FixedJoint>().Body = aim.Body.GetGameObject();
+				a.Components.Create<Rigidbody>();
+				aim.Body.GetGameObject().Components.Create<FixedJoint>().Body = a;
+
+				RopeTool.CreateRope( a, balloon );
 			}
 			else if ( Input.Pressed( "attack2" ) )
 			{

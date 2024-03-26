@@ -388,6 +388,10 @@
             "_type": "gameobject",
             "prefab": "prefab/balloon.prefab"
           },
+          "CarPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefab/car.prefab"
+          },
           "ServerTitle": {
             "_type": "gameobject",
             "go": "2cb00bd8-3b08-4233-8e4d-8468c88e1918"
@@ -1308,7 +1312,7 @@
     {
       "__guid": "aa9c2a05-ece0-4e04-b1d8-de6efc64ae82",
       "Name": "Object",
-      "Position": "-140.2461,77.25171,325.0241",
+      "Position": "-140.2461,77.25171,156.7238",
       "Enabled": true,
       "NetworkMode": 2
     },
@@ -1359,7 +1363,13 @@
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 50000,
-          "ZNear": 10
+          "ZNear": 5
+        },
+        {
+          "__type": "FilmGrain",
+          "__guid": "e9c2be18-1848-416d-b163-e26705298a5b",
+          "Intensity": 0.01,
+          "Response": 0.5
         }
       ]
     },
@@ -1454,23 +1464,6 @@
           "__type": "AudioListener",
           "__guid": "c43c54f7-ca54-4715-a9e5-59c4de6a5eab",
           "UseCameraDirection": true
-        }
-      ]
-    },
-    {
-      "__guid": "357674b0-02bb-42de-a5a4-ca3f2ed6ab04",
-      "Name": "Cube",
-      "Position": "-233.2678,-542.5511,297.0558",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "ModelRenderer",
-          "__guid": "aef3cfdd-327a-41e0-b16a-225c0d6e594d",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
         }
       ]
     },
@@ -1695,7 +1688,7 @@
     {
       "__guid": "799fa09e-d59e-4c43-acae-fe68467d0903",
       "Name": "Box (3)",
-      "Position": "-201.1859,-1040.371,645.5847",
+      "Position": "-201.1859,-1040.371,685.3467",
       "Rotation": "-0.5,0.5,0.5,0.5",
       "Enabled": true,
       "NetworkMode": 2,
@@ -1708,16 +1701,16 @@
           "IsTrigger": false,
           "Mesh": {
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
-            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "TextureOrigin": "-245.8933,-515.5898,386.056",
             "Positions": [
-              "-382.62,-439.6288,6.30247",
-              "382.62,-439.6288,6.30247",
-              "382.62,439.6288,6.30247",
-              "-382.62,439.6288,6.30247",
-              "-382.62,439.6288,-6.30247",
-              "382.62,439.6288,-6.30247",
-              "382.62,-439.6288,-6.30247",
-              "-382.62,-439.6288,-6.30247"
+              "-342.8581,-439.6288,6.30249",
+              "342.8581,-439.6288,6.30249",
+              "342.8581,439.6288,6.30249",
+              "-342.8581,439.6288,6.30249",
+              "-342.8581,439.6288,-6.30249",
+              "342.8581,439.6288,-6.30249",
+              "342.8581,-439.6288,-6.30249",
+              "-342.8581,-439.6288,-6.30249"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -2595,6 +2588,401 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "c3f57b61-1fbc-428b-8c0e-fb32431515ba",
+      "Name": "boxx",
+      "Position": "103.5792,-29.2644,408.296",
+      "Scale": "0.07691055,0.07691055,0.07691055",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "df7c3e41-ab2b-4410-b9fd-aaf44887a85e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/boxx.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "a06fea61-4030-4070-afd6-c8dbe2c7da87",
+          "IsTrigger": false,
+          "Model": "models/boxx.vmdl",
+          "Static": false,
+          "Surface": "surfaces/wood.surface"
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "28e3eeeb-c779-4aae-b4ac-59a55d4cee4c",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "024a38cf-1385-4d4a-9c9e-2c6f338be799",
+      "Name": "Glass",
+      "Position": "107.5488,-1793.911,307.967",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "7c38e034-edc2-4121-b4bd-b0a183aeebdb",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        }
+      ]
+    },
+    {
+      "__guid": "29c54070-fd13-4d2e-8489-fd42546c942b",
+      "Name": "Glass (1)",
+      "Position": "-21.65923,-1793.911,282.9307",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "ca1da108-96c2-4773-9fb6-643fbb1afe98",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "6d2a597c-df80-4bb2-8fbb-d4583fefa877",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "e8bdba11-849a-4ea0-94c1-1dbb2510719d",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "4789129b-17bf-410d-acfb-4d70706f2fde",
+      "Name": "Glass (2)",
+      "Position": "-21.65923,-1793.911,288.1227",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "e96c9242-8a21-4835-a8a9-b1872e2384b5",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "63c2b192-51bf-4dee-9c2e-2062fd16fcbb",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "97316460-fdb3-40f1-9727-8ba1d7e77018",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "e3915301-686f-4a39-ab18-c5e354f26f3c",
+      "Name": "Glass (3)",
+      "Position": "-21.65923,-1793.911,293.227",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "19f33c86-81cd-4b23-b83e-dbdcc16794cf",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "2efdce2a-eb60-4828-aa59-4dd543b07c59",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "e720f1c4-8d3e-46fd-8960-0a2033745f2c",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "1daaf488-85d3-4b2e-81e9-4123c89cbb73",
+      "Name": "Glass (4)",
+      "Position": "-21.65923,-1793.911,298.5832",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "31877dc4-9dff-455f-8a6d-9684d40974d3",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "8e770e44-acad-4230-8a03-f8cc9b75c42a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "28f2c49b-c463-4aef-b722-d0a2b8212996",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
+    },
+    {
+      "__guid": "40737250-2548-4058-8a9e-c4485addea04",
+      "Name": "Glass (5)",
+      "Position": "-153.8877,-1793.91,333.1065",
+      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "67d8dc8f-3817-4bda-a837-64687c435ea6",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-50,-50",
+            "-50,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "e5a43287-bc8d-45e1-ba8a-6e2f2e3e4efb",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "a829b15c-04d5-4736-ac13-1dad06aa265e",
+      "Name": "Glass (6)",
+      "Position": "-387.7354,-1793.91,333.1065",
+      "Rotation": "-0.5,0.5,0.5,0.5",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Glass",
+          "__guid": "c8ab53f2-f94d-427f-9d75-da227b4b213c",
+          "Material": "materials/glass.vmat",
+          "Points": [
+            "-100,-50",
+            "-100,50",
+            "50,50",
+            "50,-50"
+          ],
+          "ShardLifeTime": 1,
+          "Surface": "surfaces/glass.surface",
+          "TextureAxisU": "1,0,0",
+          "TextureAxisV": "0,-1,0",
+          "TextureOffset": "0,0",
+          "TextureScale": "1,1",
+          "TextureSize": "512,512",
+          "Thickness": 1
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "49d651ab-9d3f-4b64-9974-b50a76c27709",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,2",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "1042f7f7-fbab-4e5a-b319-b8c4fdcabd7a",
+      "Name": "Text",
+      "Position": "174.369,-1796.542,404.5306",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "e448157e-cf2c-49f3-a8e0-a6c0746c49c5",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "Glass.\nis facepunch script,\nnot mine"
+        }
+      ]
+    },
+    {
+      "__guid": "e797ab30-2dda-411b-b507-69c1416787e3",
+      "Name": "Car (1)",
+      "Position": "-177.8713,-1210.936,286.5349",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "__Prefab": "prefab/car.prefab"
+    },
+    {
+      "__guid": "174aaa29-aa32-4a9e-a7e5-9838ab31e410",
+      "Name": "Object",
+      "Position": "-200.7014,-118.165,308.2649",
+      "Scale": "0.06228729,0.06228729,0.06228729",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "e45d15ec-bd76-4e1b-90a1-5560dde083b6",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/car.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "ModelCollider",
+          "__guid": "20682d7f-b9d9-4964-82b4-2013e2be7769",
+          "IsTrigger": false,
+          "Model": "models/car.vmdl",
+          "Static": false
+        },
+        {
+          "__type": "Rigidbody",
+          "__guid": "1e9aa18f-ceeb-456b-9301-78edb57c6cb9",
+          "AngularDamping": 0,
+          "Gravity": true,
+          "LinearDamping": 0,
+          "Locking": {},
+          "MassOverride": 0,
+          "MotionEnabled": true,
+          "RigidbodyFlags": 0,
+          "StartAsleep": false
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -2620,7 +3008,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-24T18:00:22.5403779\u002B03:00",
+  "LastSaved": "2024-03-26T20:50:42.7551041\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

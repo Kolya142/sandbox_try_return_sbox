@@ -1,0 +1,248 @@
+{
+  "__guid": "a53f98af-be50-4b4f-ab32-15402d5e341e",
+  "GameObjects": [
+    {
+      "__guid": "3e942cdf-4317-4b1e-b41a-e8de038054a5",
+      "Name": "Camera",
+      "Position": "0,0,-212.125",
+      "Tags": "maincamera",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "CameraComponent",
+          "__guid": "68d80f11-9a36-44e3-b155-41f15ba1b8e8",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": false,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 20
+        }
+      ]
+    },
+    {
+      "__guid": "b1fce521-d340-43a1-908b-e3f15bb2a9c4",
+      "Name": "Object",
+      "Position": "0,0,-124.7856",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "NetworkHelper",
+          "__guid": "c7678757-a3ed-4554-8c54-c7e8d254f461",
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefab/player.prefab"
+          },
+          "SpawnPoints": [
+            {
+              "_type": "gameobject",
+              "go": "b1fce521-d340-43a1-908b-e3f15bb2a9c4"
+            }
+          ],
+          "StartServer": true
+        }
+      ]
+    },
+    {
+      "__guid": "9219707d-22ba-4ab5-b629-7f4bce3c2cd1",
+      "Name": "Plane",
+      "Position": "0,0,-228.1992",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "1e65bd4d-e93b-4fe9-864c-db60af16236e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "PlaneCollider",
+          "__guid": "bcfe0438-f227-469d-a80c-ee5e4799c969",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50",
+          "Static": true
+        }
+      ]
+    },
+    {
+      "__guid": "c2ca611a-6d7a-43ef-a851-5b68cd336c86",
+      "Name": "Point Light",
+      "Position": "0,0,-122.4368",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "PointLight",
+          "__guid": "2a24e5ff-9720-4771-8b96-749de63a76c7",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "e9ee5fb4-694e-4f7b-b26b-e39ff059065e",
+      "Name": "Object",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ScreenPanel",
+          "__guid": "7e391c1c-6e55-4a78-84a5-619ad20c3dbb",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 100
+        },
+        {
+          "__type": "MapSelector",
+          "__guid": "d7e82dfb-53ef-4500-a20c-3d75624e9533",
+          "BallonPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefab/balloon.prefab"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "c18be906-0a26-4e4e-8b18-2ccdda77fabf",
+      "Name": "Object",
+      "Position": "65.54471,-18.0163,-204.7663",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Hud",
+          "__guid": "0f5b70db-344f-40fe-b45a-98bcee48c7e0"
+        },
+        {
+          "__type": "ScreenPanel",
+          "__guid": "ec0ccc33-1dd4-4ed2-b590-961ddc3495c3",
+          "AutoScreenScale": true,
+          "Opacity": 1,
+          "Scale": 1,
+          "ZIndex": 0
+        }
+      ]
+    },
+    {
+      "__guid": "fb1bc911-fd55-4590-97fe-3e51a22ac548",
+      "Name": "Text",
+      "Position": "57.63902,-9.736207,-214.5159",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "7b1443b4-48f3-4a13-9a6c-15e7141fe33b",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "The Map Is Loading"
+        }
+      ]
+    },
+    {
+      "__guid": "c65585a0-44b8-49d8-8a61-5522fad3c32d",
+      "Name": "Text (1)",
+      "Position": "1.95203,98.79298,-214.5159",
+      "Rotation": "0,0,0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "4a9ab920-7ea3-495e-af59-0094afd42596",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "The Map Is Loading"
+        }
+      ]
+    },
+    {
+      "__guid": "176ac889-207c-4fce-b64f-d3e491b41bf6",
+      "Name": "Text (3)",
+      "Position": "-3.400428,-116.446,-207.4133",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "ec2af369-abeb-453f-ba30-4c91b628bfad",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "The Map Is Loading"
+        }
+      ]
+    },
+    {
+      "__guid": "b9bcdbca-ff4c-4129-8ce7-442efc19d9b0",
+      "Name": "Text (2)",
+      "Position": "-60.25807,-9.736207,-214.5159",
+      "Rotation": "-0,0,-1,-0.00000004371139",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "ccffbe84-211c-4478-abc1-05c8d4d7bd6e",
+          "Color": "0.45103,0.47149,0.5297,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 0.3,
+          "Text": "The Map Is Loading"
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 30,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "custommap",
+  "Description": "",
+  "LastSaved": "2024-03-24T21:46:56.4932841\u002B03:00",
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

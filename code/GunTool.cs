@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,13 +11,13 @@ namespace Sandbox
 	{
 		static public void Gun( SceneTraceResult aim, Playercontroller Player )
 		{
-			Player.gun.Transform.Position = Player.Transform.Position;
+			Player.gun.Transform.Position = Player.EyePosition();
 
-			Player.gun.Transform.Rotation = Player.Transform.Rotation;
+			Player.gun.Transform.Rotation = Player.EyeRotatation;
 
-			Player.gun.Transform.Position += Player.Transform.Rotation.Forward * 40f;
-			Player.gun.Transform.Position += Player.Transform.Rotation.Right * 20f;
-			Player.gun.Transform.Position += Player.Transform.Rotation.Down * 20f;
+			Player.gun.Transform.Position += Player.EyeRotatation.Forward * 40f;
+			Player.gun.Transform.Position += Player.EyeRotatation.Right * 20f;
+			Player.gun.Transform.Position += Player.EyeRotatation.Down * 20f;
 			if ( Input.Pressed( "attack1" ) )
 			{
 				if ( aim.Hit )

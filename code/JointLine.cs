@@ -21,6 +21,7 @@ namespace Sandbox
 			frames.Add( new Curve.Frame( 0, 1 ) );
 			frames.Add( new Curve.Frame( 1, 1 ) );
 			Line.Components.GetInChildrenOrSelf<LineRenderer>().Width = new Curve( frames );
+			Line.NetworkSpawn();
 		}
 	}
 }
