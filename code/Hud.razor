@@ -38,15 +38,22 @@
 			<PackageList ShowFilters="@true" style="padding-bottom: 50px;" Query="type:model sort:trending" OnSelected="@OnPackageSelected" Take=@(50)></PackageList>
 		</div>
 	}
+	@if (menu) {
+		<div class="menu">
+			<button class="disconnect" OnClick="@Disconnect">Disconnect</button>
+			<button class="exit" OnClick="@Close">Close</button>
+		</div>
+	}
 </root>
 
 @code
 {
 	public record Entry( string author, string message, RealTimeSince timeSinceAdded );
 	int ind = 0;
-	string[] Tools = ["PhysGun", "Spawner", "Scale", "GravGun(too stange)", "Thruster", "Remove", "Color", "Balloon", "Light", "Camera", "Info", "Save&Quit(lmb)", "Rope", "Weld", "Lidar", "CreateTerry"];
+	string[] Tools = ["PhysGun", "Spawner", "Gun", "Scale", "GravGun(too stange)", "Thruster", "Remove", "Color", "Balloon", "Light", "Camera", "Info", "Save&Quit(lmb)", "Rope", "Weld", "Lidar", "CreateTerry"];
 	private TextEntry InputBox { get; set; }
 	bool isSelect = false;
+	bool menu = false;
 	private List<Entry> Entries { get; set; } = new();
 	async void OnPackageSelected( Package package ) {
 		var packageg = await Package.FetchAsync(package.FullIdent, false);
@@ -61,6 +68,14 @@
 	private void OnMapPress()
 	{
 		Game.ActiveScene.LoadFromFile("scenes/custommap.scene");
+	}
+	private void Disconnect()
+	{
+		Game.Disconnect();
+	}
+	private void Close()
+	{
+		Game.Close();
 	}
 	protected override void OnAwake()
 	{
@@ -78,6 +93,10 @@
 		}
 		if (Input.Pressed("Map") && Networking.IsHost) {
 			OnMapPress();
+		}
+		if (Input.EscapePressed)
+		{
+			menu = !menu;
 		}
 		for ( int i = 0; i < (int)Tools.Count(); i++ ) {
 			if ( Input.Pressed($"Slot{i+1}") ) {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using static Sandbox.Component;
 
 namespace Sandbox
 {
@@ -43,6 +44,14 @@ namespace Sandbox
 							float mass = hitObject.Components.GetInChildrenOrSelf<Rigidbody>().PhysicsBody.Mass / 50;
 							Vector3 impulse = Player.Transform.Rotation.Forward * 9000000f / hitObject.Transform.Scale.Length / mass;
 							hitObject.Components.GetInChildrenOrSelf<Rigidbody>().ApplyImpulseAt( aim.HitPosition, impulse );
+						}
+						var damage = new DamageInfo( 50f, Player.GameObject, Player.gun );
+						damage.Position = aim.HitPosition;
+						damage.Shape = aim.Shape;
+
+						foreach ( var damageable in aim.GameObject.Components.GetAll<IDamageable>() )
+						{
+							damageable.OnDamage( damage );
 						}
 					}
 				}
