@@ -55,14 +55,20 @@
 		Log.Info( package.FullIdent );
 		Playercontroller.Local.model = Model.Load(packageg.GetMeta("PrimaryAsset", ""));
 		Playercontroller.Local.color = Color.White;
+		Playercontroller.Local.ModelLoad(package.FullIdent, true);
 	}
 
 	private void OnMapPress()
 	{
 		Game.ActiveScene.LoadFromFile("scenes/custommap.scene");
 	}
+	protected override void OnAwake()
+	{
+		base.OnAwake();
+		AddTextLocal("System", $"{Playercontroller.Local} has joined the game");
+	}
 	protected override void OnUpdate()
-    {
+	{
 		if (Input.Pressed("Drop")) {
 			ind++;
 			ind = ind % (int)Tools.Count();
@@ -87,10 +93,7 @@
 				InputBox.Focus();
 			}
 
-			if ( Entries.RemoveAll( x => x.timeSinceAdded > 30f ) > 0 )
-			{
-				StateHasChanged();
-			}
+			Entries.RemoveAll(x => x.timeSinceAdded > 30f);
 
 			SetClass( "open", InputBox.HasFocus );
 		}
@@ -125,5 +128,19 @@
 
 		Entries.Add( new ( author, message, 0f ) );
 		StateHasChanged();
+	}
+
+	void INetworkListener.OnConnected(Connection channel)
+	{
+		if (IsProxy) return;
+
+		SendText("System", $"{channel.DisplayName} has joined the game");
+	}
+
+	void INetworkListener.OnDisconnected(Connection channel)
+	{
+		if (IsProxy) return;
+
+		SendText("System", $"{channel.DisplayName} has left the game");
 	}
 }

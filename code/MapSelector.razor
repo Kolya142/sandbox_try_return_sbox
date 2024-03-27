@@ -2,8 +2,8 @@
 @using Sandbox.UI;
 @inherits PanelComponent
 
-<root style="pointer-events: @(!isLoad ? "all" : "none");">
-	@if (!isLoad) 
+<root style="pointer-events: @(isLoad ? "all" : "none");">
+	@if (isLoad) 
 	{
 		<div class="hideall">
 			<PackageList ShowFilters="@true" style="padding-bottom: 50px;" Query="type:map sort:trending" OnSelected="@OnPackageSelected" Take=@(50)></PackageList>
@@ -13,8 +13,22 @@
 
 @code
 {
-	public bool isLoad = Networking.IsHost;
+	public bool isLoad = true;
+	private bool isinit = false;
+
+	protected override void OnUpdate()
+	{
+		if ( !isinit )
+			return;
+		if ( Game.ActiveScene.GetAllComponents<MapInstance>().ToArray().Length > 0 )
+		{
+			isinit = true;
+			isLoad = false;
+		}
+	}
 	[Property] public GameObject BallonPrefab;
+	[Property] public GameObject CarPrefab;
+	[Property] public GameObject ServerTitle;
 	async void OnPackageSelected( Package package )
 	{
 		GameObject mapinstanse = new GameObject();
@@ -23,7 +37,9 @@
 		map.MapName = package.FullIdent;
 		GameController game = mapinstanse.Components.Create<GameController>();
 		game.BallonPrefab = BallonPrefab;
-		isLoad = true;
+		game.CarPrefab = CarPrefab;
+		game.ServerTitle = ServerTitle;
+		isLoad = false;
 
 	}
 }

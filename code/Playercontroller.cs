@@ -13,6 +13,7 @@ public sealed class Playercontroller : Component
 	[Property] public GameObject chat;
 	[Property] public GameObject modelself;
 	[Property] public GameObject Eye;
+	[Property] public GameObject showavatar;
 	[Property] public CitizenAnimationHelper citizenAnimationHelper;
 	[Property] public CharacterController characterController;
 	[Property] public LocalCloth localcloth;
@@ -110,13 +111,20 @@ public sealed class Playercontroller : Component
 		return Transform.Position + Vector3.Up * EyeHeight;
 	}
 
+	private async void CloudLoadModel( string model )
+	{
+		var packageg = await Package.FetchAsync( model, false );
+		await packageg.MountAsync();
+		_ = Model.Load( packageg.GetMeta( "PrimaryAsset", "" ) );
+	}
+
 	[Broadcast]
 	public void ModelLoad(string model, bool isassetparty)
 	{
 		Log.Info( model );
 		if (isassetparty)
 		{
-			_ = Cloud.Model( model );
+			CloudLoadModel( model );
 		}
 		else
 		{
@@ -145,6 +153,10 @@ public sealed class Playercontroller : Component
 		foreach ( var child in modelself.Children )
 		{
 			child.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = rendertype;
+		}
+		if ( Network.IsOwner )
+		{
+			showavatar.Enabled = false;
 		}
 		for ( int i = 0; i < (int)Tools.Count(); i++ )
 		{

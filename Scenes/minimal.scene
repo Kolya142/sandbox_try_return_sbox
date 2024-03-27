@@ -1363,12 +1363,12 @@
           "TargetEye": "None",
           "Viewport": "0,0,1,1",
           "ZFar": 50000,
-          "ZNear": 5
+          "ZNear": 3
         },
         {
           "__type": "FilmGrain",
           "__guid": "e9c2be18-1848-416d-b163-e26705298a5b",
-          "Intensity": 0.01,
+          "Intensity": 0.019,
           "Response": 0.5
         }
       ]
@@ -1470,7 +1470,7 @@
     {
       "__guid": "06aaa89e-40f1-4534-bc6c-c996fa2b8fdc",
       "Name": "Box",
-      "Position": "-206.1314,-1474.497,269.9224",
+      "Position": "-362.8477,-1474.497,269.9224",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1482,16 +1482,16 @@
           "IsTrigger": false,
           "Mesh": {
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
-            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "TextureOrigin": "-362.8477,-515.5898,386.056",
             "Positions": [
-              "-382.62,-439.6288,6.30247",
-              "382.62,-439.6288,6.30247",
-              "382.62,439.6288,6.30247",
-              "-382.62,439.6288,6.30247",
-              "-382.62,439.6288,-6.30247",
-              "382.62,439.6288,-6.30247",
-              "382.62,-439.6288,-6.30247",
-              "-382.62,-439.6288,-6.30247"
+              "-539.3362,-439.6288,6.30246",
+              "539.3362,-439.6288,6.30246",
+              "539.3362,439.6288,6.30246",
+              "-539.3362,439.6288,6.30246",
+              "-539.3362,439.6288,-6.30246",
+              "539.3362,439.6288,-6.30246",
+              "539.3362,-439.6288,-6.30246",
+              "-539.3362,-439.6288,-6.30246"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -1616,7 +1616,7 @@
     {
       "__guid": "a7d4a296-9186-4f7b-98e0-6e7055c5d7dc",
       "Name": "Box (2)",
-      "Position": "-585.4489,-1474.497,645.5851",
+      "Position": "-896.8099,-1474.497,645.5853",
       "Rotation": "0,0.7071068,0,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
@@ -1688,7 +1688,7 @@
     {
       "__guid": "799fa09e-d59e-4c43-acae-fe68467d0903",
       "Name": "Box (3)",
-      "Position": "-201.1859,-1040.371,685.3467",
+      "Position": "-329.2941,-1040.371,685.3467",
       "Rotation": "-0.5,0.5,0.5,0.5",
       "Enabled": true,
       "NetworkMode": 2,
@@ -1701,16 +1701,16 @@
           "IsTrigger": false,
           "Mesh": {
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
-            "TextureOrigin": "-245.8933,-515.5898,386.056",
+            "TextureOrigin": "-245.8933,-387.4816,386.056",
             "Positions": [
-              "-342.8581,-439.6288,6.30249",
-              "342.8581,-439.6288,6.30249",
-              "342.8581,439.6288,6.30249",
-              "-342.8581,439.6288,6.30249",
-              "-342.8581,439.6288,-6.30249",
-              "342.8581,439.6288,-6.30249",
-              "342.8581,-439.6288,-6.30249",
-              "-342.8581,-439.6288,-6.30249"
+              "-342.8581,-567.7369,6.30249",
+              "342.8581,-567.7369,6.30249",
+              "342.8581,567.7369,6.30249",
+              "-342.8581,567.7369,6.30249",
+              "-342.8581,567.7369,-6.30249",
+              "342.8581,567.7369,-6.30249",
+              "342.8581,-567.7369,-6.30249",
+              "-342.8581,-567.7369,-6.30249"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -1760,7 +1760,7 @@
     {
       "__guid": "7d4bd6a6-e096-448d-ba56-35ea369c3062",
       "Name": "Box (4)",
-      "Position": "-201.1859,-1919.962,645.5847",
+      "Position": "-344.5917,-1919.962,645.5847",
       "Rotation": "-0.5,0.5,0.5,0.5",
       "Enabled": true,
       "NetworkMode": 2,
@@ -1773,16 +1773,16 @@
           "IsTrigger": false,
           "Mesh": {
             "Topology": "H4sIAAAAAAAACk3QCQ7CMBBD0bAUylp2uP9J8ZMmUkb6ysTjOGnn1tov7MI9rMI3TOEZDuEdLqHXunzTcEZta7YJr\u002BqVbJq5bP1YfI\u002BayzpWtr036OnnIetTPf0a9uXzVj19Ht50K11vVfy\u002BSx59KT/6nWanuqtrVno/x\u002B8/KXfKMaPx/wEMd\u002BZ5ZAEAAA==",
-            "TextureOrigin": "-206.1314,-515.5898,386.056",
+            "TextureOrigin": "-206.1314,-372.184,386.056",
             "Positions": [
-              "-382.62,-439.6288,6.30247",
-              "382.62,-439.6288,6.30247",
-              "382.62,439.6288,6.30247",
-              "-382.62,439.6288,6.30247",
-              "-382.62,439.6288,-6.30247",
-              "382.62,439.6288,-6.30247",
-              "382.62,-439.6288,-6.30247",
-              "-382.62,-439.6288,-6.30247"
+              "-382.62,-583.0346,6.302491",
+              "382.62,-583.0346,6.302491",
+              "382.62,583.0346,6.302491",
+              "-382.62,583.0346,6.302491",
+              "-382.62,583.0346,-6.302491",
+              "382.62,583.0346,-6.302491",
+              "382.62,-583.0346,-6.302491",
+              "-382.62,-583.0346,-6.302491"
             ],
             "TextureUAxis": [
               "1,0,0",
@@ -2983,6 +2983,269 @@
           "StartAsleep": false
         }
       ]
+    },
+    {
+      "__guid": "f5045f3d-b36d-4504-9fb3-5084178e08d0",
+      "Name": "Cube",
+      "Position": "-711.0867,-1763.257,277.942",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "461d451e-c04b-4e06-be73-228d1eacad46",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "1b4249c3-5d0a-4dee-b1ca-45943d1cf68a",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "447d591c-c68e-4694-b4dd-47296af2ae4b",
+      "Name": "Cube (27)",
+      "Position": "-711.0867,-1763.257,544.7514",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "8577bf35-2894-4d86-a99f-959f43cc4a93",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "ea7ce82a-4779-4b92-b549-a4b010e62962",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "43a4623f-4b8a-47a9-8c5d-142c9da07cdb",
+      "Name": "Cube (23)",
+      "Position": "-837.5228,-1763.257,412.2838",
+      "Rotation": "0,-0.7071068,0,0.7071068",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "00db1b8b-5464-4609-a771-56f7976ff1a7",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "e885d643-c070-4168-b865-77746f0a54e8",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "476e2758-3403-4220-aad6-10b348845097",
+      "Name": "Cube (24)",
+      "Position": "-578.7964,-1763.257,412.2837",
+      "Rotation": "0,-0.7071068,0,0.7071068",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "1ec2bb9f-902c-4c12-85f2-27a2b6fcbb41",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "d26b9b68-8e30-4ad7-ac2d-0511083e7bf5",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "7ef96bab-746a-4ebf-8d8c-bf877705083b",
+      "Name": "Cube (25)",
+      "Position": "-711.8519,-1633.583,412.2839",
+      "Rotation": "0.5,-0.5,0.5,0.5",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "13e4df57-dc71-4638-8968-936043b8b4ea",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "0f31a09d-8531-4ba7-872a-5b73f66182ad",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "785e4832-dce6-4543-9e24-9a6f33bae55e",
+      "Name": "Cube (26)",
+      "Position": "-711.8519,-1893.599,412.2839",
+      "Rotation": "0.5,-0.5,0.5,0.5",
+      "Scale": "5.433506,5.363264,0.1000005",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "75a2f5fc-9dde-4f4c-a319-af93e1894ab6",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "BoxCollider",
+          "__guid": "0b7208fb-bdab-4a9b-a54e-c31260a47fcf",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "50,50,50",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "5ba80838-496e-41d9-8ad4-f3d4e22a76ca",
+      "Name": "Point Light",
+      "Position": "-645.114,-1846.122,332.4337",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "PointLight",
+          "__guid": "64a700d4-f4c8-4ea5-92cf-24267efc5839",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "99188111-892c-4f27-a3e2-64d18f71e4fd",
+      "Name": "Point Light (1)",
+      "Position": "-638.2003,-1680.159,332.4337",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "PointLight",
+          "__guid": "4391f962-8480-486a-a149-a5aabb1bf003",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "7b03d0a2-cde9-4d9d-bada-f0c9d8a0760e",
+      "Name": "Point Light (2)",
+      "Position": "-806.3516,-1680.159,332.4337",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "PointLight",
+          "__guid": "f24af0ff-c9ac-4a4c-b210-f4d269c0919c",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "e6414c3c-6a56-4f4e-9146-082e9b586c85",
+      "Name": "Point Light (3)",
+      "Position": "-806.3516,-1866.723,332.4337",
+      "Tags": "light_point,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "PointLight",
+          "__guid": "a2d61e45-ac52-4a47-b5b5-130a4346930f",
+          "Attenuation": 1,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.91373,0.98039,1,1",
+          "Radius": 400,
+          "Shadows": true
+        }
+      ]
+    },
+    {
+      "__guid": "3ffa3d2e-9397-40a4-b279-3bebf853f493",
+      "Name": "Spot Light",
+      "Position": "-758.3828,-1834.84,395.3723",
+      "Rotation": "0,0.3826835,0,0.9238795",
+      "Tags": "light_spot,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "SpotLight",
+          "__guid": "44948839-8010-41c4-ae07-3b0c8009347c",
+          "Attenuation": 1.5,
+          "ConeInner": 15,
+          "ConeOuter": 45,
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0,0.76667,1,1",
+          "Radius": 10000,
+          "Shadows": true
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -3008,7 +3271,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-27T12:47:57.0524731\u002B03:00",
+  "LastSaved": "2024-03-27T13:48:11.9107194\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [

@@ -22,8 +22,8 @@ namespace Sandbox
 					}
 					else
 					{
+						Player.moveBody.BodyType = PhysicsBodyType.Dynamic;
 						Player.moveBody = null;
-						Player.moveBody.BodyType = PhysicsBodyType.Keyframed;
 					}
 				}
 				else if ( Input.Pressed( "attack1" ) )

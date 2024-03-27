@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "0e97889c-d862-4dae-9fa9-2c7dd3ef180c",
+    "__guid": "35a14038-2486-4172-b025-b76e6d797e36",
     "Name": "player",
     "Tags": "player",
     "Enabled": true,
@@ -8,49 +8,53 @@
     "Components": [
       {
         "__type": "Playercontroller",
-        "__guid": "9736d858-d3dd-4d04-aa6d-a5450a441fb6",
+        "__guid": "22c15621-dc1b-4c5a-aee0-adabf0bc955b",
         "aim_show": {
           "_type": "gameobject",
-          "go": "31b040a3-8fbc-491a-bcdc-1cf082fc76e5"
+          "go": "054aaa3a-151c-4163-8dd3-8f4e58715f74"
         },
         "characterController": {
           "_type": "component",
-          "component_id": "97da208f-6031-406b-83ee-e011961cbfcf",
-          "go": "0e97889c-d862-4dae-9fa9-2c7dd3ef180c",
+          "component_id": "2a82c138-7407-46b7-ab72-6b0b839b3382",
+          "go": "35a14038-2486-4172-b025-b76e6d797e36",
           "component_type": "CharacterController"
         },
         "chat": {
           "_type": "gameobject",
-          "go": "780a77b8-3190-4577-9efd-9cfd6beadc19"
+          "go": "db33a5d6-d238-4064-9af1-390eefc5098e"
         },
         "citizenAnimationHelper": {
           "_type": "component",
-          "component_id": "9b35c705-ab6d-4dc0-9be5-490a48d73afc",
-          "go": "b78bb611-ee44-499d-92a0-a999f45ad84e",
+          "component_id": "a1e77824-616a-4522-bf90-46d3c3ed2b65",
+          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
           "component_type": "CitizenAnimationHelper"
         },
         "Eye": {
           "_type": "gameobject",
-          "go": "fc58408c-9af8-4ff0-beb2-45fe3c65a89d"
+          "go": "4c05d784-7c2f-4542-aef1-b476cdb1c9a8"
         },
         "modelCollider": {
           "_type": "component",
-          "component_id": "a8fa733c-4034-4bbf-8104-5662d5bf3ddc",
-          "go": "b78bb611-ee44-499d-92a0-a999f45ad84e",
+          "component_id": "46f08ef9-a8d7-4254-b7bb-959eed4b9298",
+          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
           "component_type": "ModelCollider"
         },
         "modelself": {
           "_type": "gameobject",
-          "go": "b78bb611-ee44-499d-92a0-a999f45ad84e"
+          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d"
         },
         "point": {
           "_type": "gameobject",
-          "go": "f3c8abdc-5f22-4d8b-bb20-65f65cf036fd"
+          "go": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1"
+        },
+        "showavatar": {
+          "_type": "gameobject",
+          "go": "1d7f4ccf-ea6f-4e77-9c82-11cbe5fe5a7a"
         }
       },
       {
         "__type": "CharacterController",
-        "__guid": "97da208f-6031-406b-83ee-e011961cbfcf",
+        "__guid": "2a82c138-7407-46b7-ab72-6b0b839b3382",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
@@ -62,14 +66,14 @@
     ],
     "Children": [
       {
-        "__guid": "31b040a3-8fbc-491a-bcdc-1cf082fc76e5",
+        "__guid": "054aaa3a-151c-4163-8dd3-8f4e58715f74",
         "Name": "Point",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "5055c931-2114-438a-a2b9-8d6c224ae746",
+        "__guid": "73eea6fc-a10e-42e2-9737-688489bbfdc7",
         "Name": "Line",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
@@ -77,7 +81,7 @@
         "Components": [
           {
             "__type": "LineRenderer",
-            "__guid": "a2552bac-2a08-47f9-9e38-a0e5bdc555dc",
+            "__guid": "ace2cb63-94ba-4874-b80e-e3ab4dd22597",
             "Color": {
               "color": [
                 {
@@ -95,11 +99,11 @@
             "Points": [
               {
                 "_type": "gameobject",
-                "go": "31b040a3-8fbc-491a-bcdc-1cf082fc76e5"
+                "go": "054aaa3a-151c-4163-8dd3-8f4e58715f74"
               },
               {
                 "_type": "gameobject",
-                "go": "f3c8abdc-5f22-4d8b-bb20-65f65cf036fd"
+                "go": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1"
               }
             ],
             "SplineBias": 0,
@@ -117,14 +121,14 @@
         ]
       },
       {
-        "__guid": "f3c8abdc-5f22-4d8b-bb20-65f65cf036fd",
+        "__guid": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1",
         "Name": "Point (1)",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "780a77b8-3190-4577-9efd-9cfd6beadc19",
+        "__guid": "db33a5d6-d238-4064-9af1-390eefc5098e",
         "Name": "Text",
         "Position": "0,0,93.91421",
         "Enabled": true,
@@ -132,7 +136,7 @@
         "Components": [
           {
             "__type": "TextRenderer",
-            "__guid": "28eca2a8-f673-4132-9913-018950f9dfb5",
+            "__guid": "3dd4e130-c246-4647-8f94-6d6a825b3f39",
             "Color": "0.45103,0.47149,0.5297,1",
             "FontFamily": "Poppins",
             "FontSize": 64,
@@ -142,21 +146,21 @@
         ]
       },
       {
-        "__guid": "b78bb611-ee44-499d-92a0-a999f45ad84e",
+        "__guid": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
         "Name": "Object",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "ModelCollider",
-            "__guid": "a8fa733c-4034-4bbf-8104-5662d5bf3ddc",
+            "__guid": "46f08ef9-a8d7-4254-b7bb-959eed4b9298",
             "IsTrigger": false,
             "Model": "models/citizen/citizen.vmdl",
             "Static": false
           },
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "c6077882-55d1-4aae-92d4-fe12d4cd171e",
+            "__guid": "84dca76f-97e6-42da-86bb-ed56ff5a83aa",
             "BodyGroups": 341,
             "CreateBoneObjects": false,
             "Model": "models/citizen/citizen.vmdl",
@@ -165,26 +169,26 @@
           },
           {
             "__type": "CitizenAnimationHelper",
-            "__guid": "9b35c705-ab6d-4dc0-9be5-490a48d73afc",
+            "__guid": "a1e77824-616a-4522-bf90-46d3c3ed2b65",
             "BodyWeight": 1,
             "EyesWeight": 1,
             "HeadWeight": 1,
             "LookAtEnabled": false,
             "Target": {
               "_type": "component",
-              "component_id": "c6077882-55d1-4aae-92d4-fe12d4cd171e",
-              "go": "b78bb611-ee44-499d-92a0-a999f45ad84e",
+              "component_id": "84dca76f-97e6-42da-86bb-ed56ff5a83aa",
+              "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
               "component_type": "SkinnedModelRenderer"
             }
           },
           {
             "__type": "PlayerCloth",
-            "__guid": "99ac2e28-becc-454a-ae49-8b6ff4d10911"
+            "__guid": "bcd2bd4e-9739-4158-9838-35ee384011ef"
           }
         ]
       },
       {
-        "__guid": "4e4334e5-322c-4d74-807f-8b294fc7676c",
+        "__guid": "1d7f4ccf-ea6f-4e77-9c82-11cbe5fe5a7a",
         "Name": "World",
         "Position": "0,0,121.4354",
         "Rotation": "0,0,-1,0.0000001947072",
@@ -193,7 +197,7 @@
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "fbb5e108-edb8-449d-b39b-47b4786ec14d",
+            "__guid": "23e1b95a-70f5-40c2-bb97-30575a37676b",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "256,256",
@@ -202,16 +206,16 @@
           },
           {
             "__type": "Avatorshow",
-            "__guid": "0f7e8d35-fc48-4ba7-a958-fddf9d1500b9",
+            "__guid": "bcf33920-332f-4134-8f5d-86998390c15c",
             "Player": {
               "_type": "gameobject",
-              "go": "0e97889c-d862-4dae-9fa9-2c7dd3ef180c"
+              "go": "35a14038-2486-4172-b025-b76e6d797e36"
             }
           }
         ]
       },
       {
-        "__guid": "fc58408c-9af8-4ff0-beb2-45fe3c65a89d",
+        "__guid": "4c05d784-7c2f-4542-aef1-b476cdb1c9a8",
         "Name": "Eye",
         "Position": "-164.865,106.3755,-70.43384",
         "Enabled": true,

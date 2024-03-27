@@ -1,4 +1,5 @@
 using Sandbox;
+using Sandbox.Citizen;
 using System.Numerics;
 
 public sealed class CarController : Component, IUsable
@@ -55,6 +56,7 @@ public sealed class CarController : Component, IUsable
 		PlayerC.citizenAnimationHelper.IsGrounded = true;
 		PlayerC.citizenAnimationHelper.IsGrounded = true;
 		PlayerC.citizenAnimationHelper.Sitting = Sandbox.Citizen.CitizenAnimationHelper.SittingStyle.Chair;
+		PlayerC.citizenAnimationHelper.IsNoclipping = false;
 		Player.Transform.Scale = Transform.Scale;
 		Player.Transform.Rotation = Transform.Rotation;
 		PlayerC.modelself.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = ModelRenderer.ShadowRenderType.On;

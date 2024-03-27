@@ -15,10 +15,12 @@ public sealed class GameController : Component
 			{
 				Log.Info( "Dev Server" );
 				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS DEV SERVER\nIs automatic message\nIf (Networking.IsHost && Game.IsEditor)";
+				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Color = Color.Cyan;
 			}
 			else
 			{
 				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Text = "IS NOT DEV SERVER";
+				ServerTitle.Components.GetInChildrenOrSelf<TextRenderer>().Color = Color.Yellow;
 			}
 		}
 		if ( !FileSystem.Data.DirectoryExists( "saves" ) )
