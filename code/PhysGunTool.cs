@@ -90,7 +90,7 @@ namespace Sandbox
 						newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = Player.model;
 					}*/
 				}
-			if ( Input.Pressed( "Reload" ) && Player.isMe && picker.Components.GetInChildrenOrSelf<ModelRenderer>() != null )
+			if ( picker != null && Input.Pressed( "Reload" ) && Player.isMe && picker.Components.GetInChildrenOrSelf<ModelRenderer>() != null )
 			{
 				Player.model = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Model;
 				Player.color = picker.Components.GetInChildrenOrSelf<ModelRenderer>().Tint;

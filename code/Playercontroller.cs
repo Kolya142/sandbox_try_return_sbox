@@ -215,7 +215,7 @@ public sealed class Playercontroller : Component
 		SceneTraceResult aim = Trace( EyePosition(), EyePosition() + EyeRotatation.Forward * 5000f );
 
 
-		if ( Input.Pressed( "Use" ) && !( Input.Down( "attack1" ) && Tools[ind] == "PhysGun" ) && aim.Hit && aim.Distance < 300f && aim.GameObject != null )
+		if ( isMe && Input.Pressed( "Use" ) && !( Input.Down( "attack1" ) && Tools[ind] == "PhysGun" ) && aim.Hit && aim.Distance < 300f && aim.GameObject != null )
 		{
 			Log.Info( "Use" );
 			foreach ( var damageable in aim.GameObject.Components.GetAll<IUsable>() )

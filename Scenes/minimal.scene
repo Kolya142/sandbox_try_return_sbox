@@ -1290,10 +1290,10 @@
     },
     {
       "__guid": "c7031342-f725-4b2b-b150-e5aaef6d5a29",
-      "Name": "Screen",
+      "Name": "Hud",
       "Position": "157.6927,-295.7131,278.1873",
       "Enabled": true,
-      "NetworkMode": 2,
+      "NetworkMode": 1,
       "Components": [
         {
           "__type": "ScreenPanel",
@@ -3008,7 +3008,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-03-26T20:50:42.7551041\u002B03:00",
+  "LastSaved": "2024-03-27T12:47:57.0524731\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": [
