@@ -102,6 +102,7 @@ Hud {
 
 		button {
 			background-color: rgba(113, 119, 255, 0.15);
+			transition: all 0.2s ease-out;
 			height: 60px;
 
 			&:hover {
