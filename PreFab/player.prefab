@@ -1,6 +1,6 @@
 {
   "RootObject": {
-    "__guid": "35a14038-2486-4172-b025-b76e6d797e36",
+    "__guid": "21ea5af7-bbf7-4edd-a24b-135c3866b951",
     "Name": "player",
     "Tags": "player",
     "Enabled": true,
@@ -8,53 +8,53 @@
     "Components": [
       {
         "__type": "Playercontroller",
-        "__guid": "22c15621-dc1b-4c5a-aee0-adabf0bc955b",
+        "__guid": "ae832b52-7ea1-450c-99ee-cc4cdbdf125c",
         "aim_show": {
           "_type": "gameobject",
-          "go": "054aaa3a-151c-4163-8dd3-8f4e58715f74"
+          "go": "085ea249-ca37-4a0e-bf96-d90676552fa4"
         },
         "characterController": {
           "_type": "component",
-          "component_id": "2a82c138-7407-46b7-ab72-6b0b839b3382",
-          "go": "35a14038-2486-4172-b025-b76e6d797e36",
+          "component_id": "46c5593f-b7ca-419b-af0b-517959b1803c",
+          "go": "21ea5af7-bbf7-4edd-a24b-135c3866b951",
           "component_type": "CharacterController"
         },
         "chat": {
           "_type": "gameobject",
-          "go": "db33a5d6-d238-4064-9af1-390eefc5098e"
+          "go": "aeeea766-cf20-4830-83d4-e40548d7fc1c"
         },
         "citizenAnimationHelper": {
           "_type": "component",
-          "component_id": "a1e77824-616a-4522-bf90-46d3c3ed2b65",
-          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
+          "component_id": "26b8654b-c34b-4bdb-835f-d2cc8921cc08",
+          "go": "13529ebe-6c2a-48a2-948f-18a27682fd1f",
           "component_type": "CitizenAnimationHelper"
         },
         "Eye": {
           "_type": "gameobject",
-          "go": "4c05d784-7c2f-4542-aef1-b476cdb1c9a8"
+          "go": "eb586834-04d6-4839-be75-838050e73213"
         },
         "modelCollider": {
           "_type": "component",
-          "component_id": "46f08ef9-a8d7-4254-b7bb-959eed4b9298",
-          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
+          "component_id": "a737ffc6-770a-4ea2-8be8-8a36229dbf47",
+          "go": "13529ebe-6c2a-48a2-948f-18a27682fd1f",
           "component_type": "ModelCollider"
         },
         "modelself": {
           "_type": "gameobject",
-          "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d"
+          "go": "13529ebe-6c2a-48a2-948f-18a27682fd1f"
         },
         "point": {
           "_type": "gameobject",
-          "go": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1"
+          "go": "1c79ecbd-9ec1-448e-84a8-3f6c5864072f"
         },
         "showavatar": {
           "_type": "gameobject",
-          "go": "1d7f4ccf-ea6f-4e77-9c82-11cbe5fe5a7a"
+          "go": "7dc83aa2-710a-421e-895d-d2b72855cba0"
         }
       },
       {
         "__type": "CharacterController",
-        "__guid": "2a82c138-7407-46b7-ab72-6b0b839b3382",
+        "__guid": "46c5593f-b7ca-419b-af0b-517959b1803c",
         "Acceleration": 10,
         "Bounciness": 0.3,
         "GroundAngle": 45,
@@ -66,14 +66,14 @@
     ],
     "Children": [
       {
-        "__guid": "054aaa3a-151c-4163-8dd3-8f4e58715f74",
+        "__guid": "085ea249-ca37-4a0e-bf96-d90676552fa4",
         "Name": "Point",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "73eea6fc-a10e-42e2-9737-688489bbfdc7",
+        "__guid": "07dce940-a454-4015-a6e3-146bd298578a",
         "Name": "Line",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
@@ -81,7 +81,7 @@
         "Components": [
           {
             "__type": "LineRenderer",
-            "__guid": "ace2cb63-94ba-4874-b80e-e3ab4dd22597",
+            "__guid": "60d46de2-3275-4373-8628-c1142d7c47ff",
             "Color": {
               "color": [
                 {
@@ -99,11 +99,11 @@
             "Points": [
               {
                 "_type": "gameobject",
-                "go": "054aaa3a-151c-4163-8dd3-8f4e58715f74"
+                "go": "085ea249-ca37-4a0e-bf96-d90676552fa4"
               },
               {
                 "_type": "gameobject",
-                "go": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1"
+                "go": "1c79ecbd-9ec1-448e-84a8-3f6c5864072f"
               }
             ],
             "SplineBias": 0,
@@ -121,14 +121,14 @@
         ]
       },
       {
-        "__guid": "3ef916d0-6ed3-4baf-8df8-d8658dbd40d1",
+        "__guid": "1c79ecbd-9ec1-448e-84a8-3f6c5864072f",
         "Name": "Point (1)",
         "Rotation": "-0.0000000375149,-0.00000000003273793,-0.0008726646,0.9999997",
         "Enabled": true,
         "NetworkMode": 2
       },
       {
-        "__guid": "db33a5d6-d238-4064-9af1-390eefc5098e",
+        "__guid": "aeeea766-cf20-4830-83d4-e40548d7fc1c",
         "Name": "Text",
         "Position": "0,0,93.91421",
         "Enabled": true,
@@ -136,7 +136,7 @@
         "Components": [
           {
             "__type": "TextRenderer",
-            "__guid": "3dd4e130-c246-4647-8f94-6d6a825b3f39",
+            "__guid": "541848d9-d58f-4384-ac69-2fcc55bff403",
             "Color": "0.45103,0.47149,0.5297,1",
             "FontFamily": "Poppins",
             "FontSize": 64,
@@ -146,21 +146,21 @@
         ]
       },
       {
-        "__guid": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
+        "__guid": "13529ebe-6c2a-48a2-948f-18a27682fd1f",
         "Name": "Object",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "ModelCollider",
-            "__guid": "46f08ef9-a8d7-4254-b7bb-959eed4b9298",
+            "__guid": "a737ffc6-770a-4ea2-8be8-8a36229dbf47",
             "IsTrigger": false,
             "Model": "models/citizen/citizen.vmdl",
             "Static": false
           },
           {
             "__type": "SkinnedModelRenderer",
-            "__guid": "84dca76f-97e6-42da-86bb-ed56ff5a83aa",
+            "__guid": "1f02541f-5984-432f-94b6-63dc29fe3670",
             "BodyGroups": 341,
             "CreateBoneObjects": false,
             "Model": "models/citizen/citizen.vmdl",
@@ -169,26 +169,32 @@
           },
           {
             "__type": "CitizenAnimationHelper",
-            "__guid": "a1e77824-616a-4522-bf90-46d3c3ed2b65",
+            "__guid": "26b8654b-c34b-4bdb-835f-d2cc8921cc08",
             "BodyWeight": 1,
             "EyesWeight": 1,
             "HeadWeight": 1,
             "LookAtEnabled": false,
             "Target": {
               "_type": "component",
-              "component_id": "84dca76f-97e6-42da-86bb-ed56ff5a83aa",
-              "go": "219b7fe9-c6eb-448a-9558-cb5be398c74d",
+              "component_id": "1f02541f-5984-432f-94b6-63dc29fe3670",
+              "go": "13529ebe-6c2a-48a2-948f-18a27682fd1f",
               "component_type": "SkinnedModelRenderer"
             }
           },
           {
             "__type": "PlayerCloth",
-            "__guid": "bcd2bd4e-9739-4158-9838-35ee384011ef"
+            "__guid": "4e752c0f-8fcc-4f0d-ac71-9f72466eaee9",
+            "BodyTarget": {
+              "_type": "component",
+              "component_id": "1f02541f-5984-432f-94b6-63dc29fe3670",
+              "go": "13529ebe-6c2a-48a2-948f-18a27682fd1f",
+              "component_type": "SkinnedModelRenderer"
+            }
           }
         ]
       },
       {
-        "__guid": "1d7f4ccf-ea6f-4e77-9c82-11cbe5fe5a7a",
+        "__guid": "7dc83aa2-710a-421e-895d-d2b72855cba0",
         "Name": "World",
         "Position": "0,0,121.4354",
         "Rotation": "0,0,-1,0.0000001947072",
@@ -197,7 +203,7 @@
         "Components": [
           {
             "__type": "WorldPanel",
-            "__guid": "23e1b95a-70f5-40c2-bb97-30575a37676b",
+            "__guid": "d34f28c1-b2c2-4558-8736-23f36f7c035c",
             "HorizontalAlign": "Center",
             "LookAtCamera": false,
             "PanelSize": "256,256",
@@ -206,16 +212,16 @@
           },
           {
             "__type": "Avatorshow",
-            "__guid": "bcf33920-332f-4134-8f5d-86998390c15c",
+            "__guid": "08e469bc-0fb7-41a3-906b-98d2f376c721",
             "Player": {
               "_type": "gameobject",
-              "go": "35a14038-2486-4172-b025-b76e6d797e36"
+              "go": "21ea5af7-bbf7-4edd-a24b-135c3866b951"
             }
           }
         ]
       },
       {
-        "__guid": "4c05d784-7c2f-4542-aef1-b476cdb1c9a8",
+        "__guid": "eb586834-04d6-4839-be75-838050e73213",
         "Name": "Eye",
         "Position": "-164.865,106.3755,-70.43384",
         "Enabled": true,

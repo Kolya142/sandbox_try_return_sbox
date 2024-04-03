@@ -1248,7 +1248,7 @@
     {
       "__guid": "6f6eba8a-8774-45d1-91aa-16c290248cfb",
       "Name": "Text (1)",
-      "Position": "-189.1298,-1032.674,540.3512",
+      "Position": "-205.2351,-1032.674,480.4266",
       "Rotation": "0,-0,-0.7071068,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
@@ -1256,11 +1256,11 @@
         {
           "__type": "TextRenderer",
           "__guid": "99c5778c-b653-47cd-baff-b00f881f97a2",
-          "Color": "0,0.26667,1,1",
+          "Color": "0,0.53333,1,1",
           "FontFamily": "Poppins",
-          "FontSize": 64,
-          "Scale": 1.2,
-          "Text": "Test Box"
+          "FontSize": 7.03,
+          "Scale": 0.77,
+          "Text": "I Has \nBad \nDublicator"
         }
       ]
     },
@@ -1360,6 +1360,25 @@
       ]
     },
     {
+      "__guid": "ac4bf473-e791-4b0a-bb8d-23211e6f7c98",
+      "Name": "Text (10)",
+      "Position": "-552.6129,-1032.674,786.6209",
+      "Rotation": "0.1830127,-0.1830127,-0.6830127,0.6830127",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "TextRenderer",
+          "__guid": "2fabc56c-06ff-49ff-9abf-343ee21033ff",
+          "Color": "0,0.26667,1,1",
+          "FontFamily": "Poppins",
+          "FontSize": 64,
+          "Scale": 1.2,
+          "Text": "Note Wall"
+        }
+      ]
+    },
+    {
       "__guid": "6d7ed638-804b-4da0-92cf-20232b6ca6cd",
       "Name": "Object",
       "Position": "-425.8625,-191.7747,384.0118",
@@ -1380,6 +1399,7 @@
           },
           "EndCap": "None",
           "Opaque": true,
+          "Points": [],
           "SplineBias": 0,
           "SplineContinuity": 0,
           "SplineInterpolation": 0,
@@ -1856,7 +1876,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-04-03T15:43:12.1168202\u002B03:00",
+  "LastSaved": "2024-04-03T16:10:25.3257122\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

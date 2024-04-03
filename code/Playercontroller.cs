@@ -21,6 +21,7 @@ public sealed class Playercontroller : Component
 	public Model model = Model.Cube;
 	public Color color = Color.Green;
 	public Vector3 scale = Vector3.One;
+	public JsonObject test = null;
 	public GameObject gun = null;
 	public Boolean isMe;
 	public Model GunModel = Cloud.Model( "https://asset.party/jakx/pistoldeusex" );
@@ -248,6 +249,10 @@ public sealed class Playercontroller : Component
 		if ( Tools[ind] == "Spawner" )
 		{
 			SpawnTool.Spawn( aim, this );
+		}
+		if ( Tools[ind] == "Dublicator" )
+		{
+			DublicatorTool.Dublicate( aim, this );
 		}
 		if ( Tools[ind] == "Scale" )
 		{
