@@ -43,7 +43,7 @@ public sealed class Playercontroller : Component
 	int ind = 0;
 	bool cnasd = true;
 	public List<SceneParticles> particles = new List<SceneParticles>();
-	string[] Tools = ["PhysGun", "Spawner", "Gun", "Scale", "GravGun", "Thruster", "Remove", "Color", "Balloon", "Light", "Display", "Info", "Save", "Rope", "Weld", "Lidar", "CreateTerry"];
+	string[] Tools = ["PhysGun", "Spawner", "Dublicator", "Gun", "Scale", "GravGun", "Thruster", "Remove", "Color", "Balloon", "Light", "Display", "Info", "Save", "Rope", "Weld", "Lidar", "CreateTerry"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
 	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );

@@ -1775,6 +1775,62 @@
           "Tint": "0,1,0.66667,1"
         }
       ]
+    },
+    {
+      "__guid": "ab75b90e-7d04-4ca1-87c2-72a620dce5c1",
+      "Name": "Cube",
+      "Position": "-316.8929,-291.1107,577.1884",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelRenderer",
+          "__guid": "49941ec8-5399-41a1-83d5-176ebb4c3818",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "RagdollRope",
+          "__guid": "cacd55dd-7c44-47b4-a9ee-510b48ea808f",
+          "Object": {
+            "_type": "gameobject",
+            "go": "dc0dcbc0-0377-4b84-b979-ebc945e57f92"
+          }
+        }
+      ]
+    },
+    {
+      "__guid": "dc0dcbc0-0377-4b84-b979-ebc945e57f92",
+      "Name": "Terry (1)",
+      "Position": "-330.7568,-293.0845,625.4662",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "ModelPhysics",
+          "__guid": "fc1a3dc5-2cea-4f7d-a989-2c92d2530568",
+          "Locking": {},
+          "Model": "models/citizen/citizen.vmdl",
+          "Renderer": {
+            "_type": "component",
+            "component_id": "7a2be464-7837-42c3-a673-ff01920ea631",
+            "go": "dc0dcbc0-0377-4b84-b979-ebc945e57f92",
+            "component_type": "SkinnedModelRenderer"
+          },
+          "RigidbodyFlags": 0
+        },
+        {
+          "__type": "SkinnedModelRenderer",
+          "__guid": "7a2be464-7837-42c3-a673-ff01920ea631",
+          "BodyGroups": 341,
+          "CreateBoneObjects": false,
+          "Model": "models/citizen/citizen.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1800,7 +1856,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-04-03T15:26:21.6276219\u002B03:00",
+  "LastSaved": "2024-04-03T15:43:12.1168202\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
