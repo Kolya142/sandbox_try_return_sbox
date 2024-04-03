@@ -71,7 +71,7 @@
 	}
 	private void Disconnect()
 	{
-		Game.Disconnect();
+		Game.ActiveScene.LoadFromFile("scenes/lobby.scene");
 	}
 	private void Close()
 	{
@@ -80,7 +80,7 @@
 	protected override void OnAwake()
 	{
 		base.OnAwake();
-		AddTextLocal("System", $"{Playercontroller.Local} has joined the game");
+		AddTextLocal("System", $"{Steam.PersonaName} has joined the game");
 	}
 	protected override void OnUpdate()
 	{

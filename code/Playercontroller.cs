@@ -230,9 +230,9 @@ public sealed class Playercontroller : Component
 		if ( isMe && Input.Pressed( "Use" ) && !( Input.Down( "attack1" ) && Tools[ind] == "PhysGun" ) && aim.Hit && aim.Distance < 300f && aim.GameObject != null )
 		{
 			Log.Info( "Use" );
-			foreach ( var damageable in aim.GameObject.Components.GetAll<IUsable>() )
+			foreach ( var useable in aim.GameObject.Components.GetAll<IUsable>() )
 			{
-				aim.GameObject.Components.GetInChildrenOrSelf<IUsable>().OnUse( this );
+				useable.OnUse( this );
 			}
 		}
 
