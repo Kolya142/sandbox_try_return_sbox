@@ -1,5 +1,6 @@
 using Sandbox;
 using Sandbox.Citizen;
+using Sandbox.Services;
 using System;
 using System.Numerics;
 using System.Text.Json.Nodes;
@@ -21,7 +22,7 @@ public sealed class Playercontroller : Component
 	[Property] public ModelCollider modelCollider;
 	[Property] public GameObject viewgun;
 	[Property] public GameObject gun;
-	public Model model = Model.Cube;
+	public Model model = Model.Load( "models/citizen/citizen.vmdl" );
 	public Color color = Color.Green;
 	public Vector3 scale = Vector3.One;
 	public JsonObject test = null;
@@ -70,6 +71,7 @@ public sealed class Playercontroller : Component
 		//Log.Info( spawnPoints );
 		//Log.Info( spawnPoints.Count );
 		//Log.Info( index );
+		Stats.Increment( "what", 1 );
 		SpawnPoint spawnPoint = spawnPoints[index];
 		Transform.Position = spawnPoint.Transform.Position;
 	}
@@ -128,6 +130,7 @@ public sealed class Playercontroller : Component
 	[Broadcast]
 	public void ShootAnim()
 	{
+		Stats.Increment( "what", 1 );
 		citizenAnimationHelper.Target.Set( "b_attack", true );
 	}
 
@@ -143,6 +146,7 @@ public sealed class Playercontroller : Component
 		{
 			_ = Model.Load( model );
 		}
+		Stats.Increment( "what", 1 );
 	}
 
 	protected override void OnUpdate()
@@ -365,6 +369,7 @@ public sealed class Playercontroller : Component
 					Angles angl = Game.ActiveScene.Camera.Transform.Rotation.Angles();
 					angl.roll += 1.5f * Input.AnalogLook.yaw;
 					Game.ActiveScene.Camera.Transform.Rotation = angl.ToRotation();
+					Stats.Increment( "what", 0.01 );
 				}
 			}
 			else
@@ -433,6 +438,7 @@ public sealed class Playercontroller : Component
 			{
 				if ( Input.Pressed( "Jump" ) && characterController.TraceDirection( Vector3.Down ).Hit )
 				{
+					Stats.Increment( "what", 1 );
 					citizenAnimationHelper.TriggerJump();
 					characterController.Punch( Vector3.Up * 700 );
 				}

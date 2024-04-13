@@ -15,6 +15,7 @@ namespace Sandbox
 				return;
 			if ( Input.Pressed( "attack1" ) )
 			{
+				Stats.Increment( "what", 1 );
 				Stats.Increment( "ctsp", 1 );
 				GameObject car = Game.ActiveScene.Components.GetAll<GameController>().ToArray()[0].CarPrefab.Clone( aim.HitPosition );
 				car.NetworkSpawn();

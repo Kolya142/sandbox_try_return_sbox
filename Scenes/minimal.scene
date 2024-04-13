@@ -622,7 +622,7 @@
     {
       "__guid": "777b0128-0103-4da4-8ca3-620dd971fa4a",
       "Name": "Cube (8)",
-      "Position": "372.5763,-333.964,144.1852",
+      "Position": "372.5763,-290.1598,144.1852",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1890,7 +1890,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-04-13T22:13:50.2379875\u002B03:00",
+  "LastSaved": "2024-04-13T22:23:09.1450677\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

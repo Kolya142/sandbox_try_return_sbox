@@ -71,6 +71,7 @@
 	}
 	private void Disconnect()
 	{
+		Stats.Increment( "what", 1 );
 		Game.ActiveScene.LoadFromFile("scenes/lobby.scene");
 	}
 	private void Close()
@@ -89,6 +90,7 @@
 			ind = ind % (int)Tools.Count();
 		}
 		if (Input.Pressed("Model")) {
+			Stats.Increment( "what", 1 );
 			isSelect = true;
 		}
 		if (Input.Pressed("Map") && Networking.IsHost) {
