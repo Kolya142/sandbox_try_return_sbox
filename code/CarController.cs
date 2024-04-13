@@ -62,7 +62,10 @@ public sealed class CarController : Component, IUsable
 		PlayerC.modelself.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = ModelRenderer.ShadowRenderType.On;
 		foreach ( var child in PlayerC.modelself.Children )
 		{
-			child.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = ModelRenderer.ShadowRenderType.On;
+			if ( child.Components.GetInChildrenOrSelf<ModelRenderer>() != null )
+			{
+				child.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = ModelRenderer.ShadowRenderType.On;
+			}
 		}
 
 		Transform transform = new Transform( Transform.Position, Transform.Rotation, Transform.Scale );

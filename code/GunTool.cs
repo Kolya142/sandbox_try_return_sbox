@@ -39,7 +39,7 @@ namespace Sandbox
 						}
 						if ( hitObject.Components.GetInChildrenOrSelf<Balloon>() != null )
 						{
-							hitObject.Destroy();
+							// hitObject.Destroy();
 							var particle = new SceneParticles( Player.Scene.SceneWorld, "particles/tool_hit.vpcf" );
 							particle.SetControlPoint( 0, aim.HitPosition );
 							particle.SetControlPoint( 0, Rotation.Identity );
