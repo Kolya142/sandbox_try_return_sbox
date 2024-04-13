@@ -28,8 +28,10 @@ namespace Sandbox
 				GameObject newobject = new GameObject( true, "spawned" );
 				newobject.Transform.Position = aim.HitPosition;
 				newobject.Transform.Scale = Player.scale;
+				newobject.Components.Create<Prop>().Model = Player.model;
 				// Player.ModelLoad( Player.model.ResourceName, false );
 				// Player.model.BoneCount
+				/*
 				if ( Player.model.BoneCount > 1 )
 				{
 					newobject.Components.Create<SkinnedModelRenderer>();
@@ -67,7 +69,7 @@ namespace Sandbox
 						newobject.Components.GetInChildrenOrSelf<ModelCollider>().Model = Player.model;
 					}
 					newobject.Components.Create<Rigidbody>();
-				}
+				}*/
 				newobject.NetworkSpawn( Player.Network.OwnerConnection );
 					/*
 					if ( Player.model == Model.Cube )

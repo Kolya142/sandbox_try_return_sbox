@@ -1,6 +1,7 @@
 using Sandbox;
 using Sandbox.Citizen;
 using System;
+using System.Numerics;
 using System.Text.Json.Nodes;
 using System.Threading;
 
@@ -18,13 +19,13 @@ public sealed class Playercontroller : Component
 	[Property] public CharacterController characterController;
 	[Property] public LocalCloth localcloth;
 	[Property] public ModelCollider modelCollider;
+	[Property] public GameObject viewgun;
+	[Property] public GameObject gun;
 	public Model model = Model.Cube;
 	public Color color = Color.Green;
 	public Vector3 scale = Vector3.One;
 	public JsonObject test = null;
-	public GameObject gun = null;
 	public Boolean isMe;
-	public Model GunModel = Cloud.Model( "https://asset.party/jakx/pistoldeusex" );
 	public float Health = 100;
 	string SteamName = "No Name";
 	bool netInit;
@@ -61,18 +62,23 @@ public sealed class Playercontroller : Component
 	public Rotation EyeRotatation {
 		get => (Network.IsOwner ? angles.ToRotation() : Eye.Transform.Rotation);
 	}
-
-
+	private void Respawn()
+	{
+		List<SpawnPoint> spawnPoints = Game.ActiveScene.Components.GetAll<SpawnPoint>( FindMode.EnabledInSelfAndDescendants ).ToList();
+		int index = Game.Random.Next( spawnPoints.Count );
+		//Log.Info( spawnPoints );
+		//Log.Info( spawnPoints.Count );
+		//Log.Info( index );
+		SpawnPoint spawnPoint = spawnPoints[index];
+		Transform.Position = spawnPoint.Transform.Position;
+	}
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 		// Transform.Scale = 0.5f;
 		Camera = Scene.Camera.Components.Get<CameraComponent>();
 		Camera.FieldOfView = 80f;
-		gun = new GameObject();
-		gun.Transform.Position = Vector3.Down * 100000f;
-		gun.Components.Create<ModelRenderer>();
-		gun.Components.GetInChildrenOrSelf<ModelRenderer>().Model = GunModel;
+		Respawn();
 		// chat.Components.GetInChildrenOrSelf<TextRenderer>().Text
 
 	}
@@ -153,7 +159,8 @@ public sealed class Playercontroller : Component
 		modelself.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = rendertype;
 		foreach ( var child in modelself.Children )
 		{
-			child.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = rendertype;
+			if ( child.Components.GetInChildrenOrSelf<ModelRenderer>() != null )
+				child.Components.GetInChildrenOrSelf<ModelRenderer>().RenderType = rendertype;
 		}
 		if ( Network.IsOwner )
 		{
@@ -284,10 +291,15 @@ public sealed class Playercontroller : Component
 		}
 		else
 		{
-			if (gun != null)
+			if (gun != null && gun.Components.Get<ModelRenderer>( includeDisabled: true ) != null)
 			{
-				gun.Transform.Position = Vector3.Down * 10000f;
+				gun.Components.Get<ModelRenderer>( includeDisabled: true ).Enabled = false;
 			}
+			if ( viewgun != null && viewgun.Components.Get<ModelRenderer>( includeDisabled: true ) != null )
+			{
+				viewgun.Components.Get<ModelRenderer>( includeDisabled: true ).Enabled = false;
+			}
+			citizenAnimationHelper.HoldType = CitizenAnimationHelper.HoldTypes.None;
 		}
 		if ( Tools[ind] == "Balloon" )
 		{

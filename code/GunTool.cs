@@ -12,13 +12,20 @@ namespace Sandbox
 	{
 		static public void Gun( SceneTraceResult aim, Playercontroller Player )
 		{
-			Player.gun.Transform.Position = Player.EyePosition();
+			if ( !Player.IsProxy )
+			{
+				Player.viewgun.Transform.Position = Player.EyePosition();
 
-			Player.gun.Transform.Rotation = Player.EyeRotatation;
+				Player.viewgun.Transform.Rotation = Player.EyeRotatation;
 
-			Player.gun.Transform.Position += Player.EyeRotatation.Forward * 40f;
-			Player.gun.Transform.Position += Player.EyeRotatation.Right * 20f;
-			Player.gun.Transform.Position += Player.EyeRotatation.Down * 20f;
+				Player.gun.Components.Get<ModelRenderer>( includeDisabled: true ).RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
+			}
+			if ( Player.viewgun != null )
+				Player.viewgun.Components.Get<ModelRenderer>( includeDisabled: true ).Enabled = true; 
+			if ( Player.gun != null )
+				Player.gun.Components.Get<ModelRenderer>( includeDisabled: true ).Enabled = true;
+
+			Player.citizenAnimationHelper.HoldType = Citizen.CitizenAnimationHelper.HoldTypes.Pistol;
 			if ( Input.Pressed( "attack1" ) )
 			{
 				if ( aim.Hit )
