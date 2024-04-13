@@ -143,13 +143,15 @@ namespace Sandbox
 			{
 				Player.moveBody.BodyType = PhysicsBodyType.Keyframed;
 				Player.moveBody.Velocity = default;
-				PhysicsLock locking = new PhysicsLock();
-				locking.X = true;
-				locking.Y = true;
-				locking.Z = true;
-				locking.Yaw = true;
-				locking.Pitch = true;
-				locking.Roll = true;
+				PhysicsLock locking = new PhysicsLock
+				{
+					X = true,
+					Y = true,
+					Z = true,
+					Yaw = true,
+					Pitch = true,
+					Roll = true
+				};
 				Player.moveBody.Locking = locking;
 			}
 			if ( Input.Down( "attack1" ) && Input.Down( "use" ) )
