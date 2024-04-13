@@ -31,8 +31,11 @@ namespace Sandbox
 				if ( aim.Hit )
 				{
 					GameObject hitObject = aim.GameObject;
+					PhysicsBody hitBody = aim.Body;
 					if ( hitObject != null )
 					{
+						Player.viewgun.Components.Get<SkinnedModelRenderer>().Set( "fire", true );
+						Player.ShootAnim();
 						if ( hitObject.Components.GetInChildrenOrSelf<Playercontroller>() != null )
 						{
 							hitObject.Components.GetInChildrenOrSelf<Playercontroller>().Damage(4.5f);
@@ -45,14 +48,11 @@ namespace Sandbox
 							particle.SetControlPoint( 0, Rotation.Identity );
 							Player.particles.Add( particle );
 						}
-
-						if ( hitObject.Components.GetInChildrenOrSelf<Rigidbody>() != null )
+						if ( hitBody != null )
 						{
-							float mass = hitObject.Components.GetInChildrenOrSelf<Rigidbody>().PhysicsBody.Mass / 50;
-							Vector3 impulse = Player.Transform.Rotation.Forward * 9000000f / hitObject.Transform.Scale.Length / mass;
-							hitObject.Components.GetInChildrenOrSelf<Rigidbody>().ApplyImpulseAt( aim.HitPosition, impulse );
+							hitBody.ApplyImpulseAt( aim.HitPosition, aim.Direction * 1000.0f * aim.Body.Mass.Clamp( 0, 1000 ) );
 						}
-						var damage = new DamageInfo( 50f, Player.GameObject, Player.gun );
+						var damage = new DamageInfo( 10f, Player.GameObject, Player.gun );
 						damage.Position = aim.HitPosition;
 						damage.Shape = aim.Shape;
 

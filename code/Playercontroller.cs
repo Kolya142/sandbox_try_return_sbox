@@ -124,6 +124,11 @@ public sealed class Playercontroller : Component
 		await packageg.MountAsync();
 		_ = Model.Load( packageg.GetMeta( "PrimaryAsset", "" ) );
 	}
+	[Broadcast]
+	public void ShootAnim()
+	{
+		citizenAnimationHelper.Target.Set( "b_attack", true );
+	}
 
 	[Broadcast]
 	public void ModelLoad(string model, bool isassetparty)
@@ -145,6 +150,20 @@ public sealed class Playercontroller : Component
 			return;
 		if (isMe) 
 			BuildWishVelocity();
+		if (moveObject != null)
+		{
+			if (!moveObject.IsValid)
+			{
+				moveObject = null;
+			}
+		}
+		if ( moveBody != null )
+		{
+			if ( !moveBody.IsValid() )
+			{
+				moveBody = null;
+			}
+		}
 		// Log.Info( particles );
 		foreach ( var particle in particles )
 		{

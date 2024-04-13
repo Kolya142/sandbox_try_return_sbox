@@ -708,7 +708,6 @@
           "__guid": "be3e9ed2-d8e7-4fdf-ba91-4053ab233851",
           "Name": "Camera",
           "Position": "0,0,0",
-          "Tags": "maincamera",
           "Enabled": true,
           "NetworkMode": 2,
           "Components": [
@@ -1459,8 +1458,8 @@
     {
       "__guid": "ac4bf473-e791-4b0a-bb8d-23211e6f7c98",
       "Name": "Text (10)",
-      "Position": "-552.6129,-1032.674,786.6209",
-      "Rotation": "0.1830127,-0.1830127,-0.6830127,0.6830127",
+      "Position": "-504.2092,-1032.674,797.2531",
+      "Rotation": "0,-0,-0.7071068,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -1470,8 +1469,8 @@
           "Color": "0,0.26667,1,1",
           "FontFamily": "Poppins",
           "FontSize": 64,
-          "Scale": 1.2,
-          "Text": "Note Wall"
+          "Scale": 0.49,
+          "Text": "Where updates?"
         }
       ]
     },
@@ -1973,7 +1972,7 @@
   },
   "Title": "minimal",
   "Description": "",
-  "LastSaved": "2024-04-13T20:32:22.6067584\u002B03:00",
+  "LastSaved": "2024-04-13T21:36:59.445703\u002B03:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
