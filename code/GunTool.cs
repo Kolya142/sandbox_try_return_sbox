@@ -52,6 +52,12 @@ namespace Sandbox
 						{
 							hitBody.ApplyImpulseAt( aim.HitPosition, aim.Direction * 1000.0f * aim.Body.Mass.Clamp( 0, 1000 ) );
 						}
+						if ( Player.DecalEffect is not null )
+						{
+							var decal = Player.DecalEffect.Clone( new Transform( aim.HitPosition + aim.Normal * 2.0f, Rotation.LookAt( -aim.Normal, Vector3.Random ), Game.Random.Float( 0.8f, 1.2f ) ) );
+							decal.Components.Create<SelfDestroyComponent>().time = 20f;
+							decal.SetParent( aim.GameObject );
+						}
 						var damage = new DamageInfo( 10f, Player.GameObject, Player.gun );
 						damage.Position = aim.HitPosition;
 						damage.Shape = aim.Shape;

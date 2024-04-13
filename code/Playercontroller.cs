@@ -48,10 +48,11 @@ public sealed class Playercontroller : Component
 	string[] Tools = ["PhysGun", "Spawner", "Dublicator", "Gun", "Scale", "GravGun", "Thruster", "Remove", "Color", "Balloon", "Light", "Display", "Info", "Save", "Rope", "Weld", "Lidar", "CreateTerry"];
 	public Dictionary<GameObject, Color> DefaultColors = new();
 
-	public static Playercontroller Local => GameManager.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
+	public static Playercontroller Local => Game.ActiveScene.Components.GetAll<Playercontroller>( FindMode.EnabledInSelfAndDescendants ).ToList().FirstOrDefault( x => x.Network.OwnerConnection.SteamId == (ulong)Game.SteamId );
 
 	public Vector3 WishVelocity { get; private set; }
 	[Sync] public bool IsNoclipping { get; set }
+	[Property] public GameObject DecalEffect { get; set; }
 	public Vector3 NoclipVelocity;
 	public float EyeHeight = 64;
 	[Sync] public bool nenabled { get; set; } = true;
