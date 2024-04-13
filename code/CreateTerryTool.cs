@@ -27,8 +27,7 @@ namespace Sandbox
 				modelPhysics.Renderer = skinnedModelRenderer;
 
 				PlayerCloth cloth = terry.Components.Create<PlayerCloth>();
-				cloth.BodyTarget = skinnedModelRenderer;
-				cloth.cloth = Player.Network.OwnerConnection.GetUserData( "avatar" );
+				cloth.BodyRenderer = skinnedModelRenderer;
 				terry.NetworkSpawn( Player.Network.OwnerConnection );
 			}
 			if ( Input.Pressed( "attack3" ) )
